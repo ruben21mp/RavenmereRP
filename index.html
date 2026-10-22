@@ -617,7 +617,7 @@
         </div>
     </section>
 
-    <!-- Interactive Minigames Section con Fondo Mágico -->
+    <!-- Interactive Minigames Section con FONDO MÁGICO -->
     <section class="minigames-section" id="minigames">
         <h2 class="section-title">EXPERIENCIAS INTERACTIVAS</h2>
         <p class="section-subtitle">Descubre a qué Casa perteneces y qué Varita Ancestral responde a tu afinidad psicológica y astral.</p>
@@ -626,7 +626,7 @@
         <div class="minigame-container">
             <div class="minigame-header">
                 <h3 class="minigame-title">🔮 EL RITUAL DEL DESTINO (TEST DE CASA)</h3>
-                <p style="color: var(--text-muted)">Responde a 10 dilemas psicológicos y mágicos para revelar tu linaje y desbloquear tu Varita.</p>
+                <p style="color: var(--text-muted)">Responde a 10 dilemas morales e instintivos para revelar tu linaje ancestral y desbloquear tu Varita.</p>
             </div>
 
             <div id="quiz-body">
@@ -701,9 +701,11 @@
                 <div style="text-align: left; background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; line-height: 1.8;">
                     <p><strong>🌳 Madera:</strong> <span id="wand-wood"></span></p>
                     <p><strong>✨ Núcleo Mágico:</strong> <span id="wand-core"></span></p>
-                    <p><strong>📏 Longitud:</strong> <span id="wand-length"></span></p>
+                    <p><strong>📏 Longitud y Grosor:</strong> <span id="wand-length"></span></p>
                     <p><strong>➰ Flexibilidad:</strong> <span id="wand-flexibility"></span></p>
-                    <p><strong>🔮 Resonancia de Casa y Alma:</strong> <span id="wand-desc"></span></p>
+                    <p><strong>🪵 Empuñadura y Acabado:</strong> <span id="wand-handle"></span></p>
+                    <p><strong>🔮 Aura Mágica Resonante:</strong> <span id="wand-aura"></span></p>
+                    <p><strong>📜 Resonancia de Casa y Alma:</strong> <span id="wand-desc"></span></p>
                 </div>
 
                 <a href="https://discord.gg/CdFW8DRc" target="_blank" class="btn-primary">REGISTRAR MI CASA Y VARITA EN DISCORD</a>
@@ -715,7 +717,7 @@
     <!-- Recruitment Section con Fondo de Despacho -->
     <section class="section-recruitment-bg" id="reclutamiento">
         <h2 class="section-title">BUSCAMOS MIEMBROS FUNDADORES</h2>
-        <p class="section-subtitle">Únete al proyecto de Ravenmere RP. Estamos forming el equipo para crear una experiencia única de Roleplay y necesitamos gente con ganas, compromiso y pasión.</p>
+        <p class="section-subtitle">Únete al proyecto de Ravenmere RP. Estamos formando el equipo para crear una experiencia única de Roleplay y necesitamos gente con ganas, compromiso y pasión.</p>
 
         <div class="recruitment-grid">
             <!-- Programadores -->
@@ -887,97 +889,97 @@
         <p>&copy; 2026 Ravenmere RP — Más que un servidor, una familia. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- JavaScript para Minijuegos Interactivos Unificados -->
+    <!-- JavaScript para Minijuegos Interactivos Unificados y Sistema Extendido de Varitas (Más de 40 Maderas y Combinaciones Únicas) -->
     <script>
         const questions = [
             {
-                q: "1. Descubres que un rival ha encontrado un libro prohibido que le da ventaja unfairly. ¿Qué haces?",
+                q: "1. Caminas solo por un callejón de noche y presencias a un mago acorralando a alguien indefenso. ¿Cuál es tu reacción instintiva?",
                 options: [
-                    { text: "Lo desafías abiertamente a un duelo limpio para demostrar que el valor supera la trampa.", house: "valerius" },
-                    { text: "Buscas la forma de conseguir un artefacto similar o superior para no quedarte atrás.", house: "vipera" },
-                    { text: "Informas a los catedráticos y analizas el libro para entender sus peligros.", house: "corvus" },
-                    { text: "Hablas con él en privado para convencerle de que la honestidad es el único camino.", house: "silvan" }
+                    { text: "INTERVENCIÓN DIRECTA: Desenvainas tu varita y te pones en medio para proteger al inocente.", house: "valerius", id: 1 },
+                    { text: "ESTRATEGIA OCULTA: Te mantienes en las sombras y usas un encantamiento silencioso para incapacitar al agresor sin exponerte.", house: "vipera", id: 2 },
+                    { text: "ANÁLISIS LÓGICO: Valoras la situación, identificas los hechizos utilizados y buscas la forma más eficaz de detener el conflicto.", house: "corvus", id: 3 },
+                    { text: "MEDIACIÓN PACÍFICA: Intentas razonar con el agresor o pedir ayuda de inmediato a las autoridades locales.", house: "silvan", id: 4 }
                 ]
             },
             {
-                q: "2. Si pudieras dominar una rama mágica sin esfuerzo, ¿cuál elegirías?",
+                q: "2. Encuentras un antiguo baúl olvidado en las catacumbas del colegio. ¿Qué objeto te atrae primero al abrirlo?",
                 options: [
-                    { text: "Duelos Mágicos y Encantamientos de Combate Defensivo.", house: "valerius" },
-                    { text: "Artes Oscuras, Manipulación Mental y Magia de Sombras.", house: "vipera" },
-                    { text: "Astromancia, Alquimia Teórica y Encantamientos Antiguos.", house: "corvus" },
-                    { text: "Herbología Mágica, Cuidado de Criaturas y Magia Terrenal.", house: "silvan" }
+                    { text: "Una daga forjada en plata con runas de combate grabadas.", house: "valerius", id: 5 },
+                    { text: "Un frasco sellado con un elixir que promete otorgar influencia y poder.", house: "vipera", id: 6 },
+                    { text: "Un grimorio de cuero lleno de mapas astrales y lenguajes extintos.", house: "corvus", id: 7 },
+                    { text: "Un amuleto tallado en roble que parece vibrar en armonía con tu pulso.", house: "silvan", id: 8 }
                 ]
             },
             {
-                q: "3. ¿Qué lugar del Castillo Ravenmere te atrae más durante la noche?",
+                q: "3. ¿A qué le tienes más temor en lo más profundo de tu ser?",
                 options: [
-                    { text: "La Torre de Astronomía, bajo las constelaciones mágicas.", house: "corvus" },
-                    { text: "Las Mazmorras del Lago, envueltas en bruma y misterio.", house: "vipera" },
-                    { text: "Los Invernaderos de Madera Antigua y los campos del colegio.", house: "silvan" },
-                    { text: "El Gran Salón frente a la chimenea donde se reúnen los valientes.", house: "valerius" }
+                    { text: "A mostrar cobardía en el momento en que alguien dependa de mí.", house: "valerius", id: 9 },
+                    { text: "A pasar por la vida siendo alguien mediocre e irrelevante.", house: "vipera", id: 10 },
+                    { text: "A perder la claridad mental y la capacidad de entender el mundo.", house: "corvus", id: 11 },
+                    { text: "A traicionar la confianza de las personas que amo.", house: "silvan", id: 12 }
                 ]
             },
             {
-                q: "4. Ante una criatura mágica peligrosa suelta en el bosque, tu instinto es:",
+                q: "4. Estás perdido en el Bosque Prohibido y encuentras cuatro senderos. ¿Por cuál decides caminar?",
                 options: [
-                    { text: "Ponerte al frente para proteger a tus compañeros sin dudar.", house: "valerius" },
-                    { text: "Calcular cómo usar las habilidades de la criatura a tu favor.", house: "vipera" },
-                    { text: "Estudiar su comportamiento y buscar su punto débil en los registros.", house: "corvus" },
-                    { text: "Aproximarte con respeto e intentar calmarla con magia natural.", house: "silvan" }
+                    { text: "El sendero escarpado e iluminado por rayos, donde se escuchan rugidos lejanos.", house: "valerius", id: 13 },
+                    { text: "El sendero angosto y brumoso que se adentra hacia las ruinas más oscuras.", house: "vipera", id: 14 },
+                    { text: "El sendero serpenteante flanqueado por piedras con inscripciones místicas.", house: "corvus", id: 15 },
+                    { text: "El sendero ancho rodeado de vegetación viva y cantos de criaturas nocturnas.", house: "silvan", id: 16 }
                 ]
             },
             {
-                q: "5. ¿Cuál consideras que es tu mayor defecto?",
+                q: "5. ¿Cómo te gustaría ser recordado por las generaciones futuras de magos?",
                 options: [
-                    { text: "Impulsividad cuando veo una injusticia.", house: "valerius" },
-                    { text: "Ambición desmedida y dificultad para confiar.", house: "vipera" },
-                    { text: "Perfeccionismo y tendencia al aislamiento.", house: "corvus" },
-                    { text: "Cierto exceso de celo por proteger a los demás.", house: "silvan" }
+                    { text: "Como un héroe formidable que nunca dio un paso atrás ante el peligro.", house: "valerius", id: 17 },
+                    { text: "Como un líder astuto que logró alcanzar la cima del poder y el prestigio.", house: "vipera", id: 18 },
+                    { text: "Como un sabio legendario que desveló los misterios más profundos de la magia.", house: "corvus", id: 19 },
+                    { text: "Como un protector leal y un amigo incondicional para todos.", house: "silvan", id: 20 }
                 ]
             },
             {
-                q: "6. ¿Qué legado te gustaría dejar en la historia de Ravenmere?",
+                q: "6. Si te ofrecieran beber uno de estos elixires mágicos con efectos permanentes, ¿cuál elegirías?",
                 options: [
-                    { text: "Haber defendido el colegio en sus horas más oscuras.", house: "valerius" },
-                    { text: "Haber alcanzado el poder y el estatus más alto del mundo mágico.", house: "vipera" },
-                    { text: "Haber descubierto un hechizo o conocimiento olvidado por siglos.", house: "corvus" },
-                    { text: "Haber sido el amigo más leal y respetado por todos.", house: "silvan" }
+                    { text: "El Elixir del Coraje: Otorga inmunidad al miedo y fuerza física prodigiosa.", house: "valerius", id: 21 },
+                    { text: "El Elixir del Dominio: Otorga carisma irresistible y perspicacia para leer las intenciones ajenas.", house: "vipera", id: 22 },
+                    { text: "El Elixir de la Clarividencia: Otorga acceso a la memoria universal y comprensión absoluta.", house: "corvus", id: 23 },
+                    { text: "El Elixir de la Vitalidad: Otorga capacidad de sanación e inmunidad ante enfermedades.", house: "silvan", id: 24 }
                 ]
             },
             {
-                q: "7. Te ofrecen un elixir que te otorga un don por un día. ¿Cuál escoges?",
+                q: "7. Estás en un examen práctico y ves a tu mejor amigo cometer un error que le costará la expulsión. ¿Qué haces?",
                 options: [
-                    { text: "Fuerza e invulnerabilidad física/mágica.", house: "valerius" },
-                    { text: "Persuasión absoluta e invisibilidad ante los demás.", house: "vipera" },
-                    { text: "Lectura de mentes y clarividencia del futuro.", house: "corvus" },
-                    { text: "Sanación instantánea de cualquier enfermedad o herida.", house: "silvan" }
+                    { text: "Asumes parte de la culpa o te interpones para desviar la atención del examinador.", house: "valerius", id: 25 },
+                    { text: "Buscas una forma sutil de alterar el resultado sin que los profesores se den cuenta.", house: "vipera", id: 26 },
+                    { text: "Le das una pista teórica rápida y precisa usando lenguaje de señas o encantamientos no verbales.", house: "corvus", id: 27 },
+                    { text: "Le brindas tu apoyo moral inmediato y le ayudas a estudiar para la recuperación.", house: "silvan", id: 28 }
                 ]
             },
             {
-                q: "8. ¿Cómo reaccionas ante una derrota o un fracaso?",
+                q: "8. ¿Cuál de estas cualidades consideras más despreciable en otra persona?",
                 options: [
-                    { text: "Me levanto de inmediato con más ganas de pelear.", house: "valerius" },
-                    { text: "Analizo friamente mis errores y preparo mi venganza/recompensa.", house: "vipera" },
-                    { text: "Investigo durante horas qué falló en mi teoría o técnica.", house: "corvus" },
-                    { text: "Busco apoyo en mis amigos y acepto la lección con humildad.", house: "silvan" }
+                    { text: "La traición y la falta de honor.", house: "valerius", id: 29 },
+                    { text: "La ingenuidad y la falta de ambición.", house: "vipera", id: 30 },
+                    { text: "La ignorancia voluntaria y la estrechez de mente.", house: "corvus", id: 31 },
+                    { text: "El egoísmo y la crueldad hacia los demás.", house: "silvan", id: 32 }
                 ]
             },
             {
-                q: "9. ¿Qué instrumento mágico llevarías contigo a un viaje desconocido?",
+                q: "9. ¿Qué tipo de magia o disciplina te parece más fascinante?",
                 options: [
-                    { text: "La Espada Forjada de un antiguo caballero.", house: "valerius" },
-                    { text: "Un Anillo de Sello con encantamientos protectores.", house: "vipera" },
-                    { text: "Un Astrolabio Estelar que guía en la oscuridad.", house: "corvus" },
-                    { text: "Un Cáliz de Roble que purifica cualquier elemento.", house: "silvan" }
+                    { text: "La Transfiguración de combate y los Encantamientos de Protección.", house: "valerius", id: 33 },
+                    { text: "La Legeremancia, la Oclumancia y el arte de la Persuasión Mágica.", house: "vipera", id: 34 },
+                    { text: "La Astromancia, la Alquimia y la Aritmancia.", house: "corvus", id: 35 },
+                    { text: "La Herbología, el Cuidado de Criaturas Mágicas y la Magia Elemental Terrenal.", house: "silvan", id: 36 }
                 ]
             },
             {
-                q: "10. Para ti, ¿cuál es el verdadero significado de la magia?",
+                q: "10. Te encuentras frente al Espejo de la Verdad. ¿Qué ves reflejado al fondo?",
                 options: [
-                    { text: "Un arma de justicia y protección del débil.", house: "valerius" },
-                    { text: "La herramienta suprema para moldear el destino y destacar.", house: "vipera" },
-                    { text: "El misterio más fascinante del universo por comprender.", house: "corvus" },
-                    { text: "El lazo sagrado que nos conecta con la naturaleza y los demás.", house: "silvan" }
+                    { text: "A ti mismo de pie victorioso tras haber defendido con éxito a tus seres queridos.", house: "valerius", id: 37 },
+                    { text: "A ti mismo portando las vestiduras de la más alta autoridad del mundo mágico.", house: "vipera", id: 38 },
+                    { text: "A ti mismo rodeado de pergaminos y habiendo resuelto el mayor enigma del universo.", house: "corvus", id: 39 },
+                    { text: "A ti mismo rodeado de una familia unida, amigos leales y paz absoluta.", house: "silvan", id: 40 }
                 ]
             }
         ];
@@ -985,6 +987,7 @@
         let currentQuestion = 0;
         let houseScores = { valerius: 0, vipera: 0, corvus: 0, silvan: 0 };
         let assignedHouse = null;
+        let userChoicesHash = 0;
 
         function loadQuestion() {
             document.getElementById('quiz-progress').innerText = `Pregunta ${currentQuestion + 1} de ${questions.length}`;
@@ -997,13 +1000,14 @@
                 const btn = document.createElement('div');
                 btn.className = 'quiz-option';
                 btn.innerText = opt.text;
-                btn.onclick = () => selectOption(opt.house);
+                btn.onclick = () => selectOption(opt.house, opt.id);
                 optionsDiv.appendChild(btn);
             });
         }
 
-        function selectOption(house) {
+        function selectOption(house, optionId) {
             houseScores[house]++;
+            userChoicesHash += optionId * (currentQuestion + 7);
             currentQuestion++;
 
             if (currentQuestion < questions.length) {
@@ -1078,6 +1082,7 @@
             currentQuestion = 0;
             houseScores = { valerius: 0, vipera: 0, corvus: 0, silvan: 0 };
             assignedHouse = null;
+            userChoicesHash = 0;
             document.getElementById('quiz-body').style.display = 'block';
             document.getElementById('quiz-result').style.display = 'none';
             loadQuestion();
@@ -1087,7 +1092,61 @@
             document.getElementById('wand-section').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // --- GENERADOR DE VARITAS VINCULADO CON CASA Y HORÓSCOPO ---
+        // --- GENERADOR AVANZADO DE VARITAS (MÁS DE 40 MADERAS Y COMBINACIONES ÚNICAS) ---
+        const woodsPool = [
+            "Acacia del Nilo", "Acebo Imperial", "Abedul Blanco", "Álamo Estelar", "Avellano Ancestral",
+            "Cerezo Silvestre", "Ciprés de Niebla", "Ébano de la Noche", "Espino Blanco", "Fresno de Montaña",
+            "Haya Dorada", "Manzano Místico", "Nogal de las Nieblas", "Olmo Sagrado", "Pino de los Fiordos",
+            "Roble de Dragón", "Saúco Sombrío", "Sauce Llorón", "Tejo Antiguo", "Vid Mágica",
+            "Aliso Plateado", "Castaño Silvestre", "Tilo Encantado", "Moral de la Bruma", "Caoba Imperial",
+            "Peral Salvaje", "Arce Celestial", "Cerezo Negro", "Nogal Negro", "Tejo de las Sombras",
+            "Bambú Místico", "Cedro Ancestral", "Secuoya de las Alturas", "Olivo Sagrado", "Eucalipto Astral",
+            "Brezo Mágico", "Pícea del Norte", "Llantén Ancestral", "Abedul Rojo", "Pino Silvestre"
+        ];
+
+        const coresPool = [
+            "Fibra de Corazón de Dragón Carmesí (Poder y duelos excepcionales)",
+            "Pluma de Fénix Celestial (Versatilidad y magia luminosa)",
+            "Pelo de Unicornio de la Niebla (Pureza y consistencia inquebrantable)",
+            "Escama de Serpentina del Lago (Astucia y control sobre los elementos)",
+            "Pelo de Thestral Oscuro (Afinidad con encantamientos ocultos y percepción)",
+            "Espina de Kelpie Abisal (Dominio sobre fluidos y magia acuática)",
+            "Polvo de Cuerno de Horned Serpent (Intuición y clarividencia aguda)",
+            "Ceniza de Árbol Fundador (Resonancia directa con los orígenes de Ravenmere)"
+        ];
+
+        const flexibilitiesPool = [
+            "Rigidez absoluta e inquebrantable",
+            "Ligeramente flexible y leal al portador",
+            "Elástica y de rápida adaptación",
+            "Levemente maleable en manos expertas",
+            "Templada con núcleo de acero mágico",
+            "Flexible como un sauce al viento",
+            "Sólida, firme y de respuesta directa"
+        ];
+
+        const handlesPool = [
+            "Empuñadura de espiral gótica con incrustaciones de plata",
+            "Mango tallado con runas protectoras de los fundadores",
+            "Acabado de bronce antiguo pulido a mano",
+            "Empuñadura revestida en cuero de dragón con hilo de oro",
+            "Hueso de bestia ancestral tallado sin costuras",
+            "Madera expuesta sin pulir con nudos naturales",
+            "Culata geométrica con núcleo de obsidiana incrustada",
+            "Mango anatómico forrado en seda mágica oscura"
+        ];
+
+        const aurasPool = [
+            "Chispas de luz azul cobalto al canalizar",
+            "Sutil bruma verde esmeralda con aroma a petricor",
+            "Destellos dorados que parpadean levemente con la emoción",
+            "Ráfagas de sombras púrpuras que desvanecen el frío",
+            "Calor radiante similar a las ascuas de una chimenea",
+            "Escarcha brillante que congela el aire circundante al lanzar hechizos",
+            "Vibración sónica imperceptible que resuena con el metal",
+            "Luminosidad estelar constante que imita la vía láctea"
+        ];
+
         function generateWand() {
             const day = parseInt(document.getElementById('wand-day').value);
             const month = parseInt(document.getElementById('wand-month').value);
@@ -1097,84 +1156,51 @@
                 return;
             }
 
+            // Clave única combinando fecha y hash del test para evitar repeticiones
+            const seed = (day * 31) + (month * 12) + userChoicesHash;
+
+            const woodIndex = seed % woodsPool.length;
+            const coreIndex = (seed * 3) % coresPool.length;
+            const flexIndex = (seed * 7) % flexibilitiesPool.length;
+            const handleIndex = (seed * 11) % handlesPool.length;
+            const auraIndex = (seed * 13) % aurasPool.length;
+
+            const wood = woodsPool[woodIndex];
+            const core = coresPool[coreIndex];
+            const flexibility = flexibilitiesPool[flexIndex];
+            const handle = handlesPool[handleIndex];
+            const aura = aurasPool[auraIndex];
+
+            const lengthNum = (24 + (seed % 12));
+            const lengthInches = (9 + ((seed % 6) * 0.5)).toFixed(1);
+            const lengthStr = `${lengthNum} cm (${lengthInches} pulgadas)`;
+
+            // Horóscopo básico para acompañar
             let zodiac = "";
-            let wood = "";
+            if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) zodiac = "Aries ♈";
+            else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) zodiac = "Tauro ♉";
+            else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) zodiac = "Géminis ♊";
+            else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) zodiac = "Cáncer ♋";
+            else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) zodiac = "Leo ♌";
+            else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) zodiac = "Virgo ♍";
+            else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) zodiac = "Libra ♎";
+            else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) zodiac = "Escorpio ♏";
+            else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) zodiac = "Sagitario ♐";
+            else if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) zodiac = "Capricornio ♑";
+            else if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) zodiac = "Acuario ♒";
+            else zodiac = "Piscis ♓";
 
-            if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) {
-                zodiac = "Aries ♈ (Afinidad de Fuego)";
-                wood = "Roje Dorado y Roble de Dragón";
-            } else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) {
-                zodiac = "Tauro ♉ (Afinidad de Tierra)";
-                wood = "Sauce Silvestre y Caoba Antigua";
-            } else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
-                zodiac = "Géminis ♊ (Afinidad de Aire)";
-                wood = "Cerezal Mágico y Abedul Blanco";
-            } else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) {
-                zodiac = "Cáncer ♋ (Afinidad de Agua)";
-                wood = "Nogal Plateado y Madera del Lago";
-            } else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) {
-                zodiac = "Leo ♌ (Afinidad del Sol)";
-                wood = "Ébano Pulido y Acebo Imperial";
-            } else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) {
-                zodiac = "Virgo ♍ (Afinidad Terrenal)";
-                wood = "Avellano Ancestral y Pino Mágico";
-            } else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) {
-                zodiac = "Libra ♎ (Afinidad Cósmica)";
-                wood = "Olmo Sagrado y Árbol de Luna";
-            } else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) {
-                zodiac = "Escorpio ♏ (Afinidad de las Sombras)";
-                wood = "Madera de Sauce Oscuro y Ébano Negro";
-            } else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) {
-                zodiac = "Sagitario ♐ (Afinidad de Estrellas)";
-                wood = "Fresno de Montaña y Roble Ancestral";
-            } else if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) {
-                zodiac = "Capricornio ♑ (Afinidad de Piedra)";
-                wood = "Tejo Antiguo y Ciprés de Niebla";
-            } else if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) {
-                zodiac = "Acuario ♒ (Afinidad de Viento)";
-                wood = "Álamo Blanco y Madera Celestial";
-            } else {
-                zodiac = "Piscis ♓ (Afinidad Abisal)";
-                wood = "Sauce Llorón Mágico y Ámbar Místico";
-            }
-
-            let core = "";
-            let houseName = "";
-
-            if (assignedHouse === "valerius") {
-                core = "Fibra de Corazón de Dragón (Desata hechizos de máximo poder y duelos defensivos)";
-                houseName = "Casa Valerius";
-            } else if (assignedHouse === "vipera") {
-                core = "Escama de Basilisco Ancestral / Pelo de Thestral (Afinidad con magia de sombras y ambición)";
-                houseName = "Casa Vipera";
-            } else if (assignedHouse === "corvus") {
-                core = "Pluma de Fénix Dorado (Extremadamente rara, reservada para mentes inquisitivas y eruditas)";
-                houseName = "Casa Corvus";
-            } else if (assignedHouse === "silvan") {
-                core = "Pelo de Unicornio de la Niebla (Asegura la magia más pura, leal y conectada con la naturaleza)";
-                houseName = "Casa Silvan";
-            } else {
-                core = "Fibra de Corazón de Dragón Silvestre (Afinidad neutra no seleccionada)";
-                houseName = "Ravenmere General";
-            }
-
-            const flexibilities = [
-                "Ligeramente flexible y leal",
-                "Rígida y de firmeza inquebrantable",
-                "Elástica y adaptable a cualquier magia",
-                "Levemente maleable en manos expertas"
-            ];
-
-            const length = (24 + ((day + month) % 11)) + " cm (" + (9 + (day % 5)) + " pulgadas)";
-            const chosenFlex = flexibilities[(day * month) % flexibilities.length];
+            let houseText = assignedHouse ? `Linaje: Casa ${assignedHouse.toUpperCase()}` : "Afinidad Neutral de Ravenmere";
 
             document.getElementById('wand-title').innerText = "VARITA DE " + wood.toUpperCase();
-            document.getElementById('wand-zodiac').innerText = "Afinidad Astral: " + zodiac + " | Linaje: " + houseName;
+            document.getElementById('wand-zodiac').innerText = `Signo Astral: ${zodiac} | ${houseText}`;
             document.getElementById('wand-wood').innerText = wood;
             document.getElementById('wand-core').innerText = core;
-            document.getElementById('wand-length').innerText = length;
-            document.getElementById('wand-flexibility').innerText = chosenFlex;
-            document.getElementById('wand-desc').innerText = "Esta varita ha sido forjada equilibrando la energía de tu signo (" + zodiac + ") con el linaje de tu casa (" + houseName + "). Su flexión y longitud reflejan el equilibrio perfecto entre tu determinación psicológica y tu día de nacimiento.";
+            document.getElementById('wand-length').innerText = lengthStr;
+            document.getElementById('wand-flexibility').innerText = flexibility;
+            document.getElementById('wand-handle').innerText = handle;
+            document.getElementById('wand-aura').innerText = aura;
+            document.getElementById('wand-desc').innerText = `Esta pieza única ha sido seleccionada por los artesanos basándose en tu perfil psicológico y tu firma astral. Su resonancia con tu energía asegura que ninguna otra varita en el mundo mágico posea idéntica combinación de madera y núcleo.`;
 
             document.getElementById('wand-form').style.display = 'none';
             document.getElementById('wand-result').style.display = 'block';
