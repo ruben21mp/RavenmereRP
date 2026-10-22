@@ -48,25 +48,39 @@
             background: rgba(10, 11, 14, 0.9);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 1rem 2rem;
+            padding: 0.8rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .header-logo {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.4));
+        }
+
         .logo-title {
             color: var(--gold-primary);
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             letter-spacing: 2px;
-            text-decoration: none;
         }
 
         nav a {
             color: var(--text-main);
             text-decoration: none;
-            margin-left: 2rem;
+            margin-left: 1.5rem;
             font-weight: 600;
+            font-size: 0.95rem;
             transition: color 0.3s ease;
         }
 
@@ -95,7 +109,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 6rem 2rem 2rem 2rem;
+            padding: 7rem 2rem 3rem 2rem;
             background: linear-gradient(to bottom, rgba(10, 11, 14, 0.4), var(--bg-dark)), url('ravenmere-castle.jpg') center/cover no-repeat;
         }
 
@@ -131,6 +145,15 @@
             position: relative;
             border: 1px solid #d4c3b3;
             font-family: 'Cinzel', serif;
+        }
+
+        .letter-header-crest {
+            display: block;
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 1rem auto;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
         }
 
         .admission-letter h3 {
@@ -191,6 +214,92 @@
             color: var(--text-muted);
             margin-bottom: 3rem;
             font-size: 1.1rem;
+        }
+
+        /* Recruitment Section */
+        .recruitment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .recruitment-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .recruitment-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-primary);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
+        }
+
+        .recruitment-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            padding-bottom: 0.8rem;
+        }
+
+        .recruitment-icon {
+            font-size: 1.8rem;
+            color: var(--gold-primary);
+        }
+
+        .recruitment-card h3 {
+            color: var(--gold-light);
+            font-size: 1.3rem;
+        }
+
+        .recruitment-list {
+            list-style: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .recruitment-list li {
+            margin-bottom: 0.6rem;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+
+        .recruitment-list li::before {
+            content: "•";
+            color: var(--gold-primary);
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .recruitment-callout {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(10, 11, 14, 0.8));
+            border: 1px solid var(--gold-primary);
+            border-radius: 12px;
+            padding: 2.5rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .recruitment-callout h3 {
+            color: var(--gold-light);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .recruitment-callout p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Houses Grid */
@@ -328,7 +437,7 @@
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
-            header { flex-direction: column; gap: 1rem; }
+            header { flex-direction: column; gap: 1rem; text-align: center; }
             nav a { margin: 0 0.5rem; }
         }
     </style>
@@ -336,10 +445,14 @@
 <body>
 
     <header>
-        <a href="#" class="logo-title">RAVENMERE CASTLE</a>
+        <a href="#" class="header-brand">
+            <img src="Escudo mágico de RavenmereOficial.png" alt="Escudo Oficial Ravenmere" class="header-logo">
+            <span class="logo-title">RAVENMERE CASTLE</span>
+        </a>
         <nav>
             <a href="#historia">El Castillo</a>
             <a href="#casas">Las 4 Casas</a>
+            <a href="#reclutamiento">Equipo Fundador</a>
             <a href="#whitelist">Whitelist</a>
             <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3801927211" target="_blank">Steam Workshop</a>
             <a href="https://discord.gg/CdFW8DRc" target="_blank" class="btn-discord">Entrar al Discord</a>
@@ -352,12 +465,110 @@
             <p>Adéntrate en los secretos de Ravenmere Castle. Un servidor de Garry's Mod Roleplay Serio con Whitelist.</p>
 
             <div class="admission-letter" id="whitelist">
+                <img src="Escudo mágico de RavenmereOficial.png" alt="Escudo Oficial de Ravenmere" class="letter-header-crest">
                 <h3>CARTA DE ADMISIÓN OFICIAL</h3>
                 <p>Estimado/a mago o bruja,</p>
                 <p>Nos complace informarle de que ha sido aceptado/a en el <strong>Colegio Ravenmere de Magia y Hechicería</strong>. Para formalizar su matrícula y cruzar el Velo Mágico, debe completar su proceso de <strong>Whitelist</strong> en nuestra comunidad.</p>
                 <p>Haga clic en el sello de lacre inferior para acceder directamente a las dependencias de Discord y presentar su solicitud.</p>
                 <a href="https://discord.gg/CdFW8DRc" target="_blank" class="wax-seal" title="Solicitar Whitelist en Discord">R</a>
             </div>
+        </div>
+    </section>
+
+    <section class="section" id="reclutamiento">
+        <h2 class="section-title">BUSCAMOS MIEMBROS FUNDADORES</h2>
+        <p class="section-subtitle">Únete al proyecto de Ravenmere RP. Estamos formando el equipo para crear una experiencia única de Roleplay y necesitamos gente con ganas, compromiso y pasión.</p>
+
+        <div class="recruitment-grid">
+            <!-- Programadores -->
+            <div class="recruitment-card">
+                <div class="recruitment-card-header">
+                    <span class="recruitment-icon">&lt;/&gt;</span>
+                    <h3>PROGRAMADORES</h3>
+                </div>
+                <ul class="recruitment-list">
+                    <li>Desarrollo y scripts</li>
+                    <li>Optimización del servidor</li>
+                    <li>Sistemas personalizados</li>
+                    <li>Ideas y mejoras técnicas</li>
+                </ul>
+            </div>
+
+            <!-- Equipo de Staff -->
+            <div class="recruitment-card">
+                <div class="recruitment-card-header">
+                    <span class="recruitment-icon">🛡️</span>
+                    <h3>EQUIPO DE STAFF</h3>
+                </div>
+                <ul class="recruitment-list">
+                    <li>Moderadores</li>
+                    <li>Administradores</li>
+                    <li>Helpers</li>
+                    <li>Soporte a la comunidad</li>
+                </ul>
+            </div>
+
+            <!-- Diseñadores -->
+            <div class="recruitment-card">
+                <div class="recruitment-card-header">
+                    <span class="recruitment-icon">🎨</span>
+                    <h3>DISEÑADORES</h3>
+                </div>
+                <ul class="recruitment-list">
+                    <li>Diseño gráfico</li>
+                    <li>Creación de assets</li>
+                    <li>RRSS y contenido visual</li>
+                    <li>Imagen del servidor</li>
+                </ul>
+            </div>
+
+            <!-- Scripters -->
+            <div class="recruitment-card">
+                <div class="recruitment-card-header">
+                    <span class="recruitment-icon">📜</span>
+                    <h3>SCRIPTERS / LORE</h3>
+                </div>
+                <ul class="recruitment-list">
+                    <li>Sistemas de rol</li>
+                    <li>Mecánicas personalizadas</li>
+                    <li>Integraciones</li>
+                    <li>Desarrollo de experiencias</li>
+                </ul>
+            </div>
+
+            <!-- Marketing -->
+            <div class="recruitment-card">
+                <div class="recruitment-card-header">
+                    <span class="recruitment-icon">📢</span>
+                    <h3>MARKETING</h3>
+                </div>
+                <ul class="recruitment-list">
+                    <li>Redes sociales</li>
+                    <li>Creación de contenido</li>
+                    <li>Estrategias de crecimiento</li>
+                    <li>Gestión de comunidad</li>
+                </ul>
+            </div>
+
+            <!-- Y Mucho Más -->
+            <div class="recruitment-card">
+                <div class="recruitment-card-header">
+                    <span class="recruitment-icon">👥</span>
+                    <h3>Y MUCHO MÁS...</h3>
+                </div>
+                <ul class="recruitment-list">
+                    <li>Streamers / Creadores de contenido</li>
+                    <li>Aportación de ideas</li>
+                    <li>Cualquier talento que sume</li>
+                    <li>Personas con ganas de construir</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="recruitment-callout">
+            <h3>¿Te unes a la aventura?</h3>
+            <p>Si crees que puedes aportar algo y quieres ser parte de Ravenmere RP, no lo dudes. ¡Escríbenos directamente!</p>
+            <a href="https://discord.gg/CdFW8DRc" target="_blank" class="btn-primary">CONTÁCTANOS EN DISCORD</a>
         </div>
     </section>
 
@@ -436,7 +647,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 Ravenmere RP — Servidor de Garry's Mod Magic Roleplay. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Ravenmere RP — Más que un servidor, una familia. Todos los derechos reservados.</p>
     </footer>
 
 </body>
