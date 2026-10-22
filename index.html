@@ -10,7 +10,7 @@
     <style>
         :root {
             --bg-dark: #0a0b0e;
-            --bg-card: rgba(18, 20, 29, 0.9);
+            --bg-card: rgba(15, 17, 25, 0.92);
             --gold-primary: #d4af37;
             --gold-light: #f3e5ab;
             --text-main: #e2e8f0;
@@ -48,7 +48,7 @@
             background: rgba(10, 11, 14, 0.95);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 0.6rem 2rem;
+            padding: 0.5rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -62,8 +62,8 @@
         }
 
         .header-logo {
-            width: 80px;
-            height: 80px;
+            width: 95px;
+            height: 95px;
             object-fit: contain;
             filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
             transition: transform 0.3s ease;
@@ -114,7 +114,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 8rem 2rem 3rem 2rem;
+            padding: 9rem 2rem 3rem 2rem;
             background: linear-gradient(to bottom, rgba(10, 11, 14, 0.4), var(--bg-dark)), url('ravenmere-castle.jpg') center/cover no-repeat;
         }
 
@@ -145,7 +145,7 @@
             border-radius: 4px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8), inset 0 0 100px rgba(139, 90, 43, 0.15);
             margin: 2rem auto;
-            max-width: 650px;
+            max-width: 700px;
             text-align: left;
             position: relative;
             border: 1px solid #d4c3b3;
@@ -154,18 +154,23 @@
 
         .letter-header-crest {
             display: block;
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 1.2rem auto;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 1.5rem auto;
             object-fit: contain;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.35));
+            transition: transform 0.3s ease;
+        }
+
+        .letter-header-crest:hover {
+            transform: scale(1.03);
         }
 
         .admission-letter h3 {
             text-align: center;
             color: #5c1d1d;
             margin-bottom: 1rem;
-            font-size: 1.6rem;
+            font-size: 1.7rem;
             border-bottom: 2px solid #5c1d1d;
             padding-bottom: 0.5rem;
         }
@@ -199,12 +204,13 @@
             transform: scale(1.1) rotate(5deg);
         }
 
-        /* Interactive Minigames Section */
+        /* Interactive Minigames Section con FONDO MÁGICO */
         .minigames-section {
-            background: linear-gradient(180deg, var(--bg-dark), #121520, var(--bg-dark));
-            padding: 5rem 2rem;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            position: relative;
+            background: linear-gradient(to bottom, rgba(10, 11, 14, 0.85), rgba(10, 11, 14, 0.95)), url('magic-table-bg.jpg') center/cover no-repeat fixed;
+            padding: 6rem 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
         }
 
         .minigame-container {
@@ -214,7 +220,8 @@
             padding: 2.5rem;
             max-width: 850px;
             margin: 0 auto 3rem auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
         }
 
         .minigame-header {
@@ -255,8 +262,8 @@
         }
 
         .result-crest {
-            width: 180px;
-            height: 180px;
+            width: 200px;
+            height: 200px;
             margin: 1.5rem auto;
             display: block;
             object-fit: contain;
@@ -266,7 +273,7 @@
         .result-box {
             text-align: center;
             padding: 1.5rem;
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.5);
             border-radius: 8px;
             border: 1px solid var(--gold-primary);
         }
@@ -310,11 +317,18 @@
             font-size: 1rem;
         }
 
-        /* Section Layouts */
+        /* Section Layouts con FONDO PARA RECLUTAMIENTO */
         .section {
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+        }
+
+        .section-recruitment-bg {
+            position: relative;
+            background: linear-gradient(to bottom, rgba(10, 11, 14, 0.9), rgba(10, 11, 14, 0.95)), url('office-desk-bg.jpg') center/cover no-repeat fixed;
+            padding: 6rem 2rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .section-title {
@@ -338,6 +352,9 @@
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .recruitment-card {
@@ -347,6 +364,7 @@
             padding: 2rem;
             transition: all 0.3s ease;
             position: relative;
+            backdrop-filter: blur(10px);
         }
 
         .recruitment-card:hover {
@@ -396,12 +414,16 @@
         }
 
         .recruitment-callout {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(10, 11, 14, 0.8));
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(10, 11, 14, 0.9));
             border: 1px solid var(--gold-primary);
             border-radius: 12px;
             padding: 2.5rem;
             text-align: center;
             margin-top: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            backdrop-filter: blur(10px);
         }
 
         .recruitment-callout h3 {
@@ -555,9 +577,10 @@
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
-            header { flex-direction: column; gap: 1rem; text-align: center; }
-            nav a { margin: 0 0.5rem; }
-            .header-logo { width: 60px; height: 60px; }
+            header { flex-direction: column; gap: 0.5rem; text-align: center; }
+            nav a { margin: 0 0.4rem; font-size: 0.85rem; }
+            .header-logo { width: 70px; height: 70px; }
+            .letter-header-crest { width: 160px; height: 160px; }
         }
     </style>
 </head>
@@ -595,16 +618,16 @@
         </div>
     </section>
 
-    <!-- Interactive Minigames Section -->
+    <!-- Interactive Minigames Section con Fondo Mágico -->
     <section class="minigames-section" id="minigames">
         <h2 class="section-title">EXPERIENCIAS INTERACTIVAS</h2>
-        <p class="section-subtitle">Descubre a qué Casa perteneces y qué Varita Ancestral responde a tu afinidad mágica.</p>
+        <p class="section-subtitle">Descubre a qué Casa perteneces y qué Varita Ancestral responde a tu afinidad psicológica y astral.</p>
 
         <!-- Sorting Quiz -->
         <div class="minigame-container">
             <div class="minigame-header">
                 <h3 class="minigame-title">🔮 EL RITUAL DEL DESTINO (TEST DE CASA)</h3>
-                <p style="color: var(--text-muted)">Responde a 10 dilemas psicológicos y mágicos para revelar tu linaje y tus rasgos de personalidad.</p>
+                <p style="color: var(--text-muted)">Responde a 10 dilemas psicológicos y mágicos para revelar tu linaje y desbloquear tu Varita.</p>
             </div>
 
             <div id="quiz-body">
@@ -626,19 +649,23 @@
                     <p id="result-style" style="color: var(--text-muted); font-size: 0.95rem;"></p>
                 </div>
 
-                <a href="https://discord.gg/CdFW8DRc" target="_blank" class="btn-primary">UNIRME A DISCORD CON MI CASA</a>
+                <a href="#wand-section" class="btn-primary" onclick="scrollToWand()">AVANZAR A LA ARTESANÍA DE VARITAS 🪄</a>
                 <button onclick="resetQuiz()" class="btn-secondary" style="margin-top: 0.5rem;">Repetir Test</button>
             </div>
         </div>
 
         <!-- Wand Generator -->
-        <div class="minigame-container">
+        <div class="minigame-container" id="wand-section">
             <div class="minigame-header">
                 <h3 class="minigame-title">🪄 ALARIC & VANE (ARTESANOS DE VARITAS)</h3>
-                <p style="color: var(--text-muted)">Ingresa tu fecha de nacimiento para vincular tu Horóscopo Mágico y descubrir la varita que te ha elegido.</p>
+                <p style="color: var(--text-muted)" id="wand-subtitle">Ingresa tu fecha de nacimiento para vincular tu Horóscopo Mágico con la Casa asignada por el Ritual del Destino.</p>
             </div>
 
             <div id="wand-form">
+                <div id="wand-alert-quiz" style="text-align: center; color: var(--gold-primary); margin-bottom: 1rem; font-style: italic;">
+                    ⚠️ Te recomendamos completar primero el Test de Casa superior para que tu varita absorba tu núcleo mágico real.
+                </div>
+
                 <div class="wand-input-group">
                     <label for="wand-day">Día de nacimiento:</label>
                     <input type="number" id="wand-day" min="1" max="31" placeholder="Ej: 15">
@@ -662,18 +689,8 @@
                     </select>
                 </div>
 
-                <div class="wand-input-group">
-                    <label for="wand-style">Tu mayor cualidad en combate/magia:</label>
-                    <select id="wand-style">
-                        <option value="1">Estrategia y Precisión</option>
-                        <option value="2">Fuerza y Protección de Aliados</option>
-                        <option value="3">Creatividad e Invención de Hechizos</option>
-                        <option value="4">Astucia y Dominio de la Sombras</option>
-                    </select>
-                </div>
-
                 <div style="text-align: center; margin-top: 1.5rem;">
-                    <button onclick="generateWand()" class="btn-primary">REVELAR MI VARITA Y HORÓSCOPO</button>
+                    <button onclick="generateWand()" class="btn-primary">FORJAR MI VARITA UNIFICADA</button>
                 </div>
             </div>
 
@@ -684,19 +701,20 @@
 
                 <div style="text-align: left; background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; line-height: 1.8;">
                     <p><strong>🌳 Madera:</strong> <span id="wand-wood"></span></p>
-                    <p><strong>✨ Núcleo:</strong> <span id="wand-core"></span></p>
+                    <p><strong>✨ Núcleo Mágico:</strong> <span id="wand-core"></span></p>
                     <p><strong>📏 Longitud:</strong> <span id="wand-length"></span></p>
                     <p><strong>➰ Flexibilidad:</strong> <span id="wand-flexibility"></span></p>
-                    <p><strong>🔮 Resonancia Mágica:</strong> <span id="wand-desc"></span></p>
+                    <p><strong>🔮 Resonancia de Casa y Alma:</strong> <span id="wand-desc"></span></p>
                 </div>
 
-                <a href="https://discord.gg/CdFW8DRc" target="_blank" class="btn-primary">REGISTRAR EN DISCORD</a>
-                <button onclick="resetWand()" class="btn-secondary" style="margin-top: 0.5rem;">Probar Otra Fecha</button>
+                <a href="https://discord.gg/CdFW8DRc" target="_blank" class="btn-primary">REGISTRAR MI CASA Y VARITA EN DISCORD</a>
+                <button onclick="resetWand()" class="btn-secondary" style="margin-top: 0.5rem;">Modificar Fecha</button>
             </div>
         </div>
     </section>
 
-    <section class="section" id="reclutamiento">
+    <!-- Recruitment Section con Fondo de Despacho -->
+    <section class="section-recruitment-bg" id="reclutamiento">
         <h2 class="section-title">BUSCAMOS MIEMBROS FUNDADORES</h2>
         <p class="section-subtitle">Únete al proyecto de Ravenmere RP. Estamos formando el equipo para crear una experiencia única de Roleplay y necesitamos gente con ganas, compromiso y pasión.</p>
 
@@ -871,9 +889,8 @@
         <p>&copy; 2026 Ravenmere RP — Más que un servidor, una familia. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- JavaScript para Minijuegos Interactivos -->
+    <!-- JavaScript para Minijuegos Interactivos Unificados -->
     <script>
-        // --- QUIZ DE SELECCIÓN (10 PREGUNTAS) ---
         const questions = [
             {
                 q: "1. Descubres que un rival ha encontrado un libro prohibido que le da ventaja unfairly. ¿Qué haces?",
@@ -944,7 +961,7 @@
                     { text: "Me levanto de inmediato con más ganas de pelear.", house: "valerius" },
                     { text: "Analizo friamente mis errores y preparo mi venganza/recompensa.", house: "vipera" },
                     { text: "Investigo durante horas qué falló en mi teoría o técnica.", house: "corvus" },
-                    { text: "Busco apoyo en mis amigos y acepto la lección con humildad.", house: "silvan" }
+                    { text: "Buscos apoyo en mis amigos y acepto la lección con humildad.", house: "silvan" }
                 ]
             },
             {
@@ -969,6 +986,7 @@
 
         let currentQuestion = 0;
         let houseScores = { valerius: 0, vipera: 0, corvus: 0, silvan: 0 };
+        let assignedHouse = null;
 
         function loadQuestion() {
             document.getElementById('quiz-progress').innerText = `Pregunta ${currentQuestion + 1} de ${questions.length}`;
@@ -1001,7 +1019,7 @@
             document.getElementById('quiz-body').style.display = 'none';
             document.getElementById('quiz-result').style.display = 'block';
 
-            let winningHouse = Object.keys(houseScores).reduce((a, b) => houseScores[a] > houseScores[b] ? a : b);
+            assignedHouse = Object.keys(houseScores).reduce((a, b) => houseScores[a] > houseScores[b] ? a : b);
 
             const houseData = {
                 valerius: {
@@ -1038,7 +1056,7 @@
                 }
             };
 
-            const data = houseData[winningHouse];
+            const data = houseData[assignedHouse];
             document.getElementById('result-house-title').innerText = data.title;
             document.getElementById('result-house-crest').src = data.crest;
             document.getElementById('result-house-desc').innerText = data.desc;
@@ -1053,28 +1071,35 @@
                 span.innerText = t;
                 traitsDiv.appendChild(span);
             });
+
+            // Ocultar la alerta en el formulario de varitas
+            const alertDiv = document.getElementById('wand-alert-quiz');
+            if (alertDiv) alertDiv.style.display = 'none';
         }
 
         function resetQuiz() {
             currentQuestion = 0;
             houseScores = { valerius: 0, vipera: 0, corvus: 0, silvan: 0 };
+            assignedHouse = null;
             document.getElementById('quiz-body').style.display = 'block';
             document.getElementById('quiz-result').style.display = 'none';
             loadQuestion();
         }
 
-        // --- GENERADOR DE VARITAS Y HORÓSCOPO ---
+        function scrollToWand() {
+            document.getElementById('wand-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // --- GENERADOR DE VARITAS VINCULADO CON CASA Y HORÓSCOPO ---
         function generateWand() {
             const day = parseInt(document.getElementById('wand-day').value);
             const month = parseInt(document.getElementById('wand-month').value);
-            const style = document.getElementById('wand-style').value;
 
             if (!day || day < 1 || day > 31) {
                 alert("Por favor, ingresa un día de nacimiento válido (1-31).");
                 return;
             }
 
-            // Cálculo simplificado de Horóscopo / Signo Zodiacal
             let zodiac = "";
             let wood = "";
 
@@ -1116,12 +1141,26 @@
                 wood = "Sauce Llorón Mágico y Ámbar Místico";
             }
 
-            const cores = [
-                "Pluma de Fénix Dorado (Extremadamente rara y de gran alcance mágico)",
-                "Fibra de Corazón de Dragón (Produce hechizos de gran poder y brillantez)",
-                "Pelo de Unicornio de la Niebla (Asegura la magia más pura y consistente)",
-                "Escama de Basilisco Ancestral (Potencia encantamientos de control y duelo)"
-            ];
+            // Selección de Núcleo según la Casa asignada o aleatoria si no hizo el test
+            let core = "";
+            let houseName = "";
+
+            if (assignedHouse === "valerius") {
+                core = "Fibra de Corazón de Dragón (Desata hechizos de máximo poder y duelos defensivos)";
+                houseName = "Casa Valerius";
+            } else if (assignedHouse === "vipera") {
+                core = "Escama de Basilisco Ancestral / Pelo de Thestral (Afinidad con magia de sombras y ambición)";
+                houseName = "Casa Vipera";
+            } else if (assignedHouse === "corvus") {
+                core = "Pluma de Fénix Dorado (Extremadamente rara, reservada para mentes inquisitivas y eruditas)";
+                houseName = "Casa Corvus";
+            } else if (assignedHouse === "silvan") {
+                core = "Pelo de Unicornio de la Niebla (Asegura la magia más pura, leal y conectada con la naturaleza)";
+                houseName = "Casa Silvan";
+            } else {
+                core = "Fibra de Corazón de Dragón Silvestre (Afinidad neutra no seleccionada)";
+                houseName = "Ravenmere General";
+            }
 
             const flexibilities = [
                 "Ligeramente flexible y leal",
@@ -1130,17 +1169,16 @@
                 "Levemente maleable en manos expertas"
             ];
 
-            const length = (26 + (day % 9)) + " cm (" + (10 + (day % 4)) + " pulgadas)";
-            const chosenCore = cores[(day + month) % cores.length];
+            const length = (24 + ((day + month) % 11)) + " cm (" + (9 + (day % 5)) + " pulgadas)";
             const chosenFlex = flexibilities[(day * month) % flexibilities.length];
 
             document.getElementById('wand-title').innerText = "VARITA DE " + wood.toUpperCase();
-            document.getElementById('wand-zodiac').innerText = "Signo Astral: " + zodiac;
+            document.getElementById('wand-zodiac').innerText = "Afinidad Astral: " + zodiac + " | Linaje: " + houseName;
             document.getElementById('wand-wood').innerText = wood;
-            document.getElementById('wand-core').innerText = chosenCore;
+            document.getElementById('wand-core').innerText = core;
             document.getElementById('wand-length').innerText = length;
             document.getElementById('wand-flexibility').innerText = chosenFlex;
-            document.getElementById('wand-desc').innerText = "Esta varita responde con especial fuerza a magos guiados por " + (style == "1" ? "la estrategia" : style == "2" ? "la valentía" : style == "3" ? "la invención" : "la astucia") + ". Su afinidad astral canaliza tu energía de nacimiento perfectamente.";
+            document.getElementById('wand-desc').innerText = "Esta varita ha sido forjada equilibrando la energía de tu signo (" + zodiac + ") con el linaje de tu casa (" + houseName + "). Su flexión y longitud reflejan el equilibrio perfecto entre tu determinación psicológica y tu día de nacimiento.";
 
             document.getElementById('wand-form').style.display = 'none';
             document.getElementById('wand-result').style.display = 'block';
@@ -1151,7 +1189,6 @@
             document.getElementById('wand-result').style.display = 'none';
         }
 
-        // Inicializar la primera pregunta al cargar
         window.onload = () => {
             loadQuestion();
         };
