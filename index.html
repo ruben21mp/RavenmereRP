@@ -145,7 +145,7 @@
             border-radius: 4px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8), inset 0 0 100px rgba(139, 90, 43, 0.15);
             margin: 2rem auto;
-            max-width: 700px;
+            max-width: 750px;
             text-align: left;
             position: relative;
             border: 1px solid #d4c3b3;
@@ -154,23 +154,23 @@
 
         .letter-header-crest {
             display: block;
-            width: 220px;
-            height: 220px;
+            width: 280px;
+            height: 280px;
             margin: 0 auto 1.5rem auto;
             object-fit: contain;
-            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.35));
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
             transition: transform 0.3s ease;
         }
 
         .letter-header-crest:hover {
-            transform: scale(1.03);
+            transform: scale(1.04);
         }
 
         .admission-letter h3 {
             text-align: center;
             color: #5c1d1d;
             margin-bottom: 1rem;
-            font-size: 1.7rem;
+            font-size: 1.8rem;
             border-bottom: 2px solid #5c1d1d;
             padding-bottom: 0.5rem;
         }
@@ -178,13 +178,13 @@
         .admission-letter p {
             color: #3d261d;
             margin-bottom: 1rem;
-            font-size: 1rem;
+            font-size: 1.05rem;
             line-height: 1.8;
         }
 
         .wax-seal {
-            width: 80px;
-            height: 80px;
+            width: 85px;
+            height: 85px;
             background: radial-gradient(circle, #a81c1c 0%, #5c0a0a 100%);
             border-radius: 50%;
             display: flex;
@@ -193,7 +193,7 @@
             margin: 1.5rem auto 0 auto;
             color: var(--gold-light);
             font-weight: bold;
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             box-shadow: 0 4px 10px rgba(0,0,0,0.5);
             cursor: pointer;
             transition: transform 0.3s ease;
@@ -580,7 +580,7 @@
             header { flex-direction: column; gap: 0.5rem; text-align: center; }
             nav a { margin: 0 0.4rem; font-size: 0.85rem; }
             .header-logo { width: 70px; height: 70px; }
-            .letter-header-crest { width: 160px; height: 160px; }
+            .letter-header-crest { width: 200px; height: 200px; }
         }
     </style>
 </head>
@@ -597,7 +597,6 @@
             <a href="#minigames">Probar Varita / Casa</a>
             <a href="#reclutamiento">Equipo Fundador</a>
             <a href="#whitelist">Whitelist</a>
-            <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3801927211" target="_blank">Steam Workshop</a>
             <a href="https://discord.gg/CdFW8DRc" target="_blank" class="btn-discord">Entrar al Discord</a>
         </nav>
     </header>
@@ -716,7 +715,7 @@
     <!-- Recruitment Section con Fondo de Despacho -->
     <section class="section-recruitment-bg" id="reclutamiento">
         <h2 class="section-title">BUSCAMOS MIEMBROS FUNDADORES</h2>
-        <p class="section-subtitle">Únete al proyecto de Ravenmere RP. Estamos formando el equipo para crear una experiencia única de Roleplay y necesitamos gente con ganas, compromiso y pasión.</p>
+        <p class="section-subtitle">Únete al proyecto de Ravenmere RP. Estamos forming el equipo para crear una experiencia única de Roleplay y necesitamos gente con ganas, compromiso y pasión.</p>
 
         <div class="recruitment-grid">
             <!-- Programadores -->
@@ -879,9 +878,8 @@
     <section class="section">
         <div class="cta-container">
             <h2 class="section-title">¿PREPARADO PARA CRUZAR EL VELO?</h2>
-            <p style="color: var(--text-muted); margin-bottom: 2rem;">Únete a nuestra comunidad en Discord para solicitar tu Whitelist y suscríbete al contenido oficial de la Workshop.</p>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Únete a nuestra comunidad en Discord para solicitar tu Whitelist.</p>
             <a href="https://discord.gg/CdFW8DRc" target="_blank" class="btn-primary">Solicitar Whitelist en Discord</a>
-            <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3801927211" target="_blank" class="btn-secondary">Colección de Steam Workshop</a>
         </div>
     </section>
 
@@ -961,7 +959,7 @@
                     { text: "Me levanto de inmediato con más ganas de pelear.", house: "valerius" },
                     { text: "Analizo friamente mis errores y preparo mi venganza/recompensa.", house: "vipera" },
                     { text: "Investigo durante horas qué falló en mi teoría o técnica.", house: "corvus" },
-                    { text: "Buscos apoyo en mis amigos y acepto la lección con humildad.", house: "silvan" }
+                    { text: "Busco apoyo en mis amigos y acepto la lección con humildad.", house: "silvan" }
                 ]
             },
             {
@@ -1072,7 +1070,6 @@
                 traitsDiv.appendChild(span);
             });
 
-            // Ocultar la alerta en el formulario de varitas
             const alertDiv = document.getElementById('wand-alert-quiz');
             if (alertDiv) alertDiv.style.display = 'none';
         }
@@ -1141,7 +1138,6 @@
                 wood = "Sauce Llorón Mágico y Ámbar Místico";
             }
 
-            // Selección de Núcleo según la Casa asignada o aleatoria si no hizo el test
             let core = "";
             let houseName = "";
 
