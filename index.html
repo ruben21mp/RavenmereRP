@@ -229,7 +229,7 @@
             width: 105px;
             height: 105px;
             background: radial-gradient(circle at 35% 35%, #bf1b1b 0%, #800a0a 55%, #420202 100%);
-            border-radius: 50% 45% 52% 48% / 48% 52% 45% 55%; /* Forma irregular de cera real */
+            border-radius: 50% 45% 52% 48% / 48% 52% 45% 55%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -243,7 +243,6 @@
             border: 3px solid #6b0707;
         }
 
-        /* Borde troquelado interior de cera */
         .wax-seal-btn::before {
             content: '';
             position: absolute;
@@ -254,7 +253,6 @@
             box-shadow: inset 0 0 8px rgba(0,0,0,0.8);
         }
 
-        /* Emblema en relieve dentro de la cera */
         .wax-seal-inner {
             font-family: 'UnifrakturMaguntia', serif;
             font-size: 2.8rem;
@@ -932,7 +930,7 @@
             <h1>COLEGIO DE MAGIA Y HECHICERÍA</h1>
             <p>Adéntrate en los secretos de Ravenmere Castle. Un servidor de Garry's Mod Roleplay Serio con Whitelist.</p>
 
-            <!-- CARTA PRINCIPAL TIPO RELEQUIA TRIDIMENSIONAL CON SELLO DE LACRE Y LETRAS CALIGRÁFICAS -->
+            <!-- CARTA PRINCIPAL TIPO RELIQUIA TRIDIMENSIONAL CON SELLO DE LACRE Y LETRAS CALIGRÁFICAS -->
             <div class="admission-letter-wrapper" id="whitelist">
                 <div class="admission-letter">
                     <img src="Escudo mágico de RavenmereOficial.png" alt="Escudo Oficial de Ravenmere" class="letter-header-crest">
@@ -1086,14 +1084,14 @@
                     </div>
                 </div>
 
-                <!-- VALIDACIÓN DE CLAVES ÚNICAS (300 CUPOS) -->
+                <!-- VALIDACIÓN DE CLAVES ÚNICAS (EJEMPLO ACTUALIZADO) -->
                 <div style="background: rgba(0,0,0,0.6); border: 1px solid var(--gold-primary); border-radius: 8px; padding: 1.2rem; max-width: 500px; margin: 1.5rem auto 1rem auto;">
                     <label for="whitelist-code-input" style="color: var(--gold-light); font-weight: bold; font-size: 0.95rem; display: block; margin-bottom: 0.5rem;">
-                        🔑 Introduce tu Clave Única de Whitelist (Cupo de 300)
+                        🔑 Introduce tu Clave Única de Whitelist
                     </label>
-                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.8rem;">Ej: <code>RAVENMERE2026001</code>. (Solo funciona una vez por clave).</p>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.8rem;">Ej: <code>RAVENMERE2027S10</code>. (Solo funciona una vez por clave).</p>
                     <div style="display: flex; gap: 8px; justify-content: center;">
-                        <input type="text" id="whitelist-code-input" placeholder="RAVENMERE2026001" style="padding: 0.6rem; background: #0a0b0e; border: 1px solid var(--gold-primary); color: #fff; border-radius: 6px; font-family: monospace; text-transform: uppercase; width: 220px;">
+                        <input type="text" id="whitelist-code-input" placeholder="RAVENMERE2027S10" style="padding: 0.6rem; background: #0a0b0e; border: 1px solid var(--gold-primary); color: #fff; border-radius: 6px; font-family: monospace; text-transform: uppercase; width: 220px;">
                         <button onclick="verifyUniqueCode()" class="btn-primary" style="padding: 0.6rem 1.2rem; margin: 0; font-size: 0.9rem;">VALIDAR</button>
                     </div>
                     <p id="code-error-msg" style="color: #e74c3c; font-size: 0.85rem; margin-top: 0.5rem; display: none;">⚠️ Clave inválida o ya utilizada por otro mago.</p>
@@ -1277,7 +1275,7 @@
         <p>&copy; 2026 Ravenmere RP — Más que un servidor, una familia. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- JavaScript para Minijuegos e Validación de los 300 Códigos Únicos -->
+    <!-- JavaScript para Minijuegos e Validación de Claves -->
     <script>
         const questions = [
             {
@@ -1516,7 +1514,7 @@
             const regex = /^RAVENMERE2026(0[0-9]{2}|1[0-9]{2}|2[0-9]{2}|300)$/;
 
             if (!regex.test(inputCode)) {
-                errorMsg.innerText = "⚠️ Formato inválido. Debe ser de RAVENMERE2026001 a RAVENMERE2026300.";
+                errorMsg.innerText = "⚠️ Formato inválido. Debe ser una clave válida de Whitelist.";
                 errorMsg.style.display = 'block';
                 return;
             }
