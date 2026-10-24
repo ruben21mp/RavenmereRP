@@ -317,6 +317,20 @@
             font-size: 1rem;
         }
 
+        .discord-card-preview {
+            background: #1e1f29;
+            border: 1px solid var(--gold-primary);
+            border-left: 5px solid var(--gold-primary);
+            border-radius: 8px;
+            padding: 1.5rem;
+            font-family: monospace;
+            text-align: left;
+            color: #2ecc71;
+            white-space: pre-wrap;
+            margin: 1.5rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
         /* Section Layouts con FONDO PARA RECLUTAMIENTO */
         .section {
             padding: 5rem 2rem;
@@ -708,8 +722,20 @@
                     <p><strong>📜 Resonancia de Casa y Alma:</strong> <span id="wand-desc"></span></p>
                 </div>
 
-                <a href="https://discord.gg/CdFW8DRc" target="_blank" class="btn-primary">REGISTRAR MI CASA Y VARITA EN DISCORD</a>
-                <button onclick="resetWand()" class="btn-secondary" style="margin-top: 0.5rem;">Modificar Fecha</button>
+                <!-- FICHA OFICIAL PARA DISCORD -->
+                <div style="margin-top: 2rem; border-top: 1px dashed var(--gold-primary); padding-top: 1.5rem;">
+                    <h4 style="color: var(--gold-light); margin-bottom: 0.5rem;">📋 TU FICHA OFICIAL PARA DISCORD</h4>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Copia este bloque formateado para presentarte en la comunidad de Ravenmere Castle:</p>
+                    
+                    <div id="discord-card-text" class="discord-card-preview"></div>
+                    
+                    <button onclick="copyDiscordCard()" class="btn-primary" id="btn-copy-card">📋 COPIAR FICHA AL PORTAPAPELES</button>
+                    <a href="https://discord.gg/CdFW8DRc" target="_blank" class="btn-primary">UNIRME A DISCORD CON MI FICHA</a>
+                </div>
+
+                <div style="margin-top: 1rem;">
+                    <button onclick="resetWand()" class="btn-secondary">Modificar Fecha</button>
+                </div>
             </div>
         </div>
     </section>
@@ -889,7 +915,7 @@
         <p>&copy; 2026 Ravenmere RP — Más que un servidor, una familia. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- JavaScript para Minijuegos Interactivos Unificados y Sistema Extendido de Varitas (Más de 40 Maderas y Combinaciones Únicas) -->
+    <!-- JavaScript para Minijuegos Interactivos Unificados y Ficha de Discord -->
     <script>
         const questions = [
             {
@@ -988,6 +1014,7 @@
         let houseScores = { valerius: 0, vipera: 0, corvus: 0, silvan: 0 };
         let assignedHouse = null;
         let userChoicesHash = 0;
+        let generatedCardText = "";
 
         function loadQuestion() {
             document.getElementById('quiz-progress').innerText = `Pregunta ${currentQuestion + 1} de ${questions.length}`;
@@ -1092,59 +1119,18 @@
             document.getElementById('wand-section').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // --- GENERADOR AVANZADO DE VARITAS (MÁS DE 40 MADERAS Y COMBINACIONES ÚNICAS) ---
+        // --- GENERADOR DE VARITAS Y FICHA DISCORD ---
         const woodsPool = [
             "Acacia del Nilo", "Acebo Imperial", "Abedul Blanco", "Álamo Estelar", "Avellano Ancestral",
             "Cerezo Silvestre", "Ciprés de Niebla", "Ébano de la Noche", "Espino Blanco", "Fresno de Montaña",
             "Haya Dorada", "Manzano Místico", "Nogal de las Nieblas", "Olmo Sagrado", "Pino de los Fiordos",
-            "Roble de Dragón", "Saúco Sombrío", "Sauce Llorón", "Tejo Antiguo", "Vid Mágica",
-            "Aliso Plateado", "Castaño Silvestre", "Tilo Encantado", "Moral de la Bruma", "Caoba Imperial",
-            "Peral Salvaje", "Arce Celestial", "Cerezo Negro", "Nogal Negro", "Tejo de las Sombras",
-            "Bambú Místico", "Cedro Ancestral", "Secuoya de las Alturas", "Olivo Sagrado", "Eucalipto Astral",
-            "Brezo Mágico", "Pícea del Norte", "Llantén Ancestral", "Abedul Rojo", "Pino Silvestre"
+            "Roble de Dragón", "Saúco Sombrío", "Sauce Llorón", "Tejo Antiguo", "Vid Mágica"
         ];
 
         const coresPool = [
-            "Fibra de Corazón de Dragón Carmesí (Poder y duelos excepcionales)",
-            "Pluma de Fénix Celestial (Versatilidad y magia luminosa)",
-            "Pelo de Unicornio de la Niebla (Pureza y consistencia inquebrantable)",
-            "Escama de Serpentina del Lago (Astucia y control sobre los elementos)",
-            "Pelo de Thestral Oscuro (Afinidad con encantamientos ocultos y percepción)",
-            "Espina de Kelpie Abisal (Dominio sobre fluidos y magia acuática)",
-            "Polvo de Cuerno de Horned Serpent (Intuición y clarividencia aguda)",
-            "Ceniza de Árbol Fundador (Resonancia directa con los orígenes de Ravenmere)"
-        ];
-
-        const flexibilitiesPool = [
-            "Rigidez absoluta e inquebrantable",
-            "Ligeramente flexible y leal al portador",
-            "Elástica y de rápida adaptación",
-            "Levemente maleable en manos expertas",
-            "Templada con núcleo de acero mágico",
-            "Flexible como un sauce al viento",
-            "Sólida, firme y de respuesta directa"
-        ];
-
-        const handlesPool = [
-            "Empuñadura de espiral gótica con incrustaciones de plata",
-            "Mango tallado con runas protectoras de los fundadores",
-            "Acabado de bronce antiguo pulido a mano",
-            "Empuñadura revestida en cuero de dragón con hilo de oro",
-            "Hueso de bestia ancestral tallado sin costuras",
-            "Madera expuesta sin pulir con nudos naturales",
-            "Culata geométrica con núcleo de obsidiana incrustada",
-            "Mango anatómico forrado en seda mágica oscura"
-        ];
-
-        const aurasPool = [
-            "Chispas de luz azul cobalto al canalizar",
-            "Sutil bruma verde esmeralda con aroma a petricor",
-            "Destellos dorados que parpadean levemente con la emoción",
-            "Ráfagas de sombras púrpuras que desvanecen el frío",
-            "Calor radiante similar a las ascuas de una chimenea",
-            "Escarcha brillante que congela el aire circundante al lanzar hechizos",
-            "Vibración sónica imperceptible que resuena con el metal",
-            "Luminosidad estelar constante que imita la vía láctea"
+            "Fibra de Corazón de Dragón Carmesí", "Pluma de Fénix Celestial", 
+            "Pelo de Unicornio de la Niebla", "Escama de Serpentina del Lago", 
+            "Pelo de Thestral Oscuro", "Polvo de Cuerno de Horned Serpent"
         ];
 
         function generateWand() {
@@ -1156,26 +1142,13 @@
                 return;
             }
 
-            // Clave única combinando fecha y hash del test para evitar repeticiones
             const seed = (day * 31) + (month * 12) + userChoicesHash;
 
-            const woodIndex = seed % woodsPool.length;
-            const coreIndex = (seed * 3) % coresPool.length;
-            const flexIndex = (seed * 7) % flexibilitiesPool.length;
-            const handleIndex = (seed * 11) % handlesPool.length;
-            const auraIndex = (seed * 13) % aurasPool.length;
-
-            const wood = woodsPool[woodIndex];
-            const core = coresPool[coreIndex];
-            const flexibility = flexibilitiesPool[flexIndex];
-            const handle = handlesPool[handleIndex];
-            const aura = aurasPool[auraIndex];
-
+            const wood = woodsPool[seed % woodsPool.length];
+            const core = coresPool[(seed * 3) % coresPool.length];
             const lengthNum = (24 + (seed % 12));
-            const lengthInches = (9 + ((seed % 6) * 0.5)).toFixed(1);
-            const lengthStr = `${lengthNum} cm (${lengthInches} pulgadas)`;
+            const lengthStr = `${lengthNum} cm`;
 
-            // Horóscopo básico para acompañar
             let zodiac = "";
             if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) zodiac = "Aries ♈";
             else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) zodiac = "Tauro ♉";
@@ -1190,20 +1163,43 @@
             else if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) zodiac = "Acuario ♒";
             else zodiac = "Piscis ♓";
 
-            let houseText = assignedHouse ? `Linaje: Casa ${assignedHouse.toUpperCase()}` : "Afinidad Neutral de Ravenmere";
+            let houseName = assignedHouse ? assignedHouse.toUpperCase() : "RAVENMERE GENERAL";
 
             document.getElementById('wand-title').innerText = "VARITA DE " + wood.toUpperCase();
-            document.getElementById('wand-zodiac').innerText = `Signo Astral: ${zodiac} | ${houseText}`;
+            document.getElementById('wand-zodiac').innerText = `Signo Astral: ${zodiac} | Linaje: Casa ${houseName}`;
             document.getElementById('wand-wood').innerText = wood;
             document.getElementById('wand-core').innerText = core;
             document.getElementById('wand-length').innerText = lengthStr;
-            document.getElementById('wand-flexibility').innerText = flexibility;
-            document.getElementById('wand-handle').innerText = handle;
-            document.getElementById('wand-aura').innerText = aura;
-            document.getElementById('wand-desc').innerText = `Esta pieza única ha sido seleccionada por los artesanos basándose en tu perfil psicológico y tu firma astral. Su resonancia con tu energía asegura que ninguna otra varita en el mundo mágico posea idéntica combinación de madera y núcleo.`;
+            document.getElementById('wand-flexibility').innerText = "Ligeramente flexible y leal";
+            document.getElementById('wand-handle').innerText = "Empuñadura de espiral gótica con incrustaciones de plata";
+            document.getElementById('wand-aura').innerText = "Destellos dorados que parpadean levemente";
+            document.getElementById('wand-desc').innerText = `Varita forjada con equilibrio ancestral para el linaje de ${houseName}.`;
+
+            // Construcción del texto formateado para Discord
+            generatedCardText = `📜 ─── FICHA OFICIAL DE ESTUDIANTE: RAVENMERE CASTLE ───\n` +
+                `🏰 Casa Asignada: ${houseName}\n` +
+                `🪄 Varita Ancestral: Madera de ${wood} (${lengthStr})\n` +
+                `✨ Núcleo Mágico: ${core}\n` +
+                `🔮 Signo Astral: ${zodiac}\n` +
+                `🛡️ Estado de Whitelist: Pendiente de aprobación\n` +
+                `────────────────────────────────────────────────────────`;
+
+            document.getElementById('discord-card-text').innerText = generatedCardText;
 
             document.getElementById('wand-form').style.display = 'none';
             document.getElementById('wand-result').style.display = 'block';
+        }
+
+        function copyDiscordCard() {
+            navigator.clipboard.writeText(generatedCardText).then(() => {
+                const btn = document.getElementById('btn-copy-card');
+                btn.innerText = "¡FICHA COPIADA CON ÉXITO! ✅";
+                btn.style.background = "#27ae60";
+                setTimeout(() => {
+                    btn.innerText = "📋 COPIAR FICHA AL PORTAPAPELES";
+                    btn.style.background = "linear-gradient(135deg, var(--gold-primary), #b38f2a)";
+                }, 3000);
+            });
         }
 
         function resetWand() {
