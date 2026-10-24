@@ -6,7 +6,8 @@
     <title>Ravenmere Castle - Colegio de Magia y Hechicería | Garry's Mod RP</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Fuentes caligráficas estilo manuscrito clásico y pergamino -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&family=UnifrakturMaguntia&family=Pinyon+Script&display=swap" rel="stylesheet">
     <!-- Librería html2canvas para descargar la tarjeta como imagen PNG -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
@@ -116,12 +117,12 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 9rem 2rem 3rem 2rem;
+            padding: 9rem 2rem 4rem 2rem;
             background: linear-gradient(to bottom, rgba(10, 11, 14, 0.4), var(--bg-dark)), url('ravenmere-castle.jpg') center/cover no-repeat;
         }
 
         .hero-overlay {
-            max-width: 900px;
+            max-width: 950px;
             z-index: 10;
         }
 
@@ -129,84 +130,161 @@
             font-size: 3.5rem;
             color: var(--gold-light);
             text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             letter-spacing: 3px;
         }
 
         .hero p {
             font-size: 1.25rem;
             color: var(--text-muted);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
-        /* Letter Container */
-        .admission-letter {
-            background: #f4eae1;
-            color: #2c1810;
-            padding: 2.5rem;
-            border-radius: 4px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8), inset 0 0 100px rgba(139, 90, 43, 0.15);
+        /* --- CARTA DE ADMISIÓN PRINCIPAL (PERGAMINO REALISTA Y SELLO DE LACRE 3D) --- */
+        .admission-letter-wrapper {
+            perspective: 1000px;
             margin: 2rem auto;
-            max-width: 750px;
-            text-align: left;
+            max-width: 820px;
+        }
+
+        .admission-letter {
+            background: radial-gradient(circle, #f7ebd7 0%, #e2cdab 70%, #b89868 100%);
+            color: #2b180d;
+            padding: 3.5rem 3.5rem 4.5rem 3.5rem;
+            border-radius: 6px;
+            box-shadow: 
+                0 25px 60px rgba(0,0,0,0.95), 
+                inset 0 0 100px rgba(70, 40, 15, 0.8),
+                inset 0 0 15px rgba(0,0,0,0.6);
+            border: 2px solid #6b4d2b;
             position: relative;
-            border: 1px solid #d4c3b3;
-            font-family: 'Cinzel', serif;
+            text-align: left;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            overflow: hidden;
+        }
+
+        .admission-letter:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 30px 70px rgba(0,0,0,0.98), 
+                0 0 25px rgba(212, 175, 55, 0.3),
+                inset 0 0 100px rgba(70, 40, 15, 0.8);
         }
 
         .letter-header-crest {
             display: block;
-            width: 280px;
-            height: 280px;
-            margin: 0 auto 1.5rem auto;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 1rem auto;
             object-fit: contain;
-            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.4));
+            filter: drop-shadow(0 10px 18px rgba(0,0,0,0.6));
             transition: transform 0.3s ease;
         }
 
         .letter-header-crest:hover {
-            transform: scale(1.04);
+            transform: scale(1.05);
         }
 
         .admission-letter h3 {
             text-align: center;
-            color: #5c1d1d;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-            border-bottom: 2px solid #5c1d1d;
-            padding-bottom: 0.5rem;
+            color: #5c0f0f;
+            margin-bottom: 1.8rem;
+            font-size: 2.4rem;
+            font-family: 'UnifrakturMaguntia', serif;
+            letter-spacing: 2px;
+            border-bottom: 2px dashed rgba(92, 15, 15, 0.4);
+            padding-bottom: 0.8rem;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.4);
         }
 
         .admission-letter p {
-            color: #3d261d;
-            margin-bottom: 1rem;
-            font-size: 1.05rem;
-            line-height: 1.8;
+            color: #2a150a;
+            margin-bottom: 1.2rem;
+            font-size: 1.2rem;
+            line-height: 1.9;
+            font-family: 'Cinzel', serif;
+            text-align: justify;
         }
 
-        .wax-seal {
-            width: 85px;
-            height: 85px;
-            background: radial-gradient(circle, #a81c1c 0%, #5c0a0a 100%);
-            border-radius: 50%;
+        .admission-letter p.letter-salutation {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 2.2rem;
+            color: #4a0c0c;
+            margin-bottom: 1.5rem;
+            line-height: 1;
+        }
+
+        /* --- SELLO DE LACRE DE CERA REALISTA 3D CON EMBLEMA --- */
+        .wax-seal-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2.5rem;
+            position: relative;
+        }
+
+        .wax-seal-btn {
+            position: relative;
+            width: 105px;
+            height: 105px;
+            background: radial-gradient(circle at 35% 35%, #bf1b1b 0%, #800a0a 55%, #420202 100%);
+            border-radius: 50% 45% 52% 48% / 48% 52% 45% 55%; /* Forma irregular de cera real */
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 1.5rem auto 0 auto;
-            color: var(--gold-light);
-            font-weight: bold;
-            font-size: 1.9rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            box-shadow: 
+                0 8px 20px rgba(0,0,0,0.8),
+                inset -4px -4px 10px rgba(0,0,0,0.7),
+                inset 4px 4px 10px rgba(255,255,255,0.3);
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none;
+            border: 3px solid #6b0707;
         }
 
-        .wax-seal:hover {
-            transform: scale(1.1) rotate(5deg);
+        /* Borde troquelado interior de cera */
+        .wax-seal-btn::before {
+            content: '';
+            position: absolute;
+            width: 78px;
+            height: 78px;
+            border-radius: 50%;
+            border: 2px dashed rgba(212, 175, 55, 0.6);
+            box-shadow: inset 0 0 8px rgba(0,0,0,0.8);
         }
 
-        /* Interactive Minigames Section con FONDO MÁGICO */
+        /* Emblema en relieve dentro de la cera */
+        .wax-seal-inner {
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 2.8rem;
+            color: var(--gold-light);
+            text-shadow: 
+                2px 2px 3px rgba(0,0,0,0.9),
+                -1px -1px 1px rgba(255,255,255,0.4);
+            z-index: 2;
+            margin-top: -4px;
+        }
+
+        .wax-seal-btn:hover {
+            transform: scale(1.12) rotate(4deg);
+            box-shadow: 
+                0 12px 28px rgba(191, 27, 27, 0.6),
+                0 0 20px rgba(212, 175, 55, 0.4),
+                inset -4px -4px 10px rgba(0,0,0,0.7);
+        }
+
+        .wax-seal-label {
+            margin-top: 0.8rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #5c0f0f;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Minigames Section con FONDO MÁGICO */
         .minigames-section {
             position: relative;
             background: linear-gradient(to bottom, rgba(10, 11, 14, 0.85), rgba(10, 11, 14, 0.95)), url('magic-table-bg.jpg') center/cover no-repeat fixed;
@@ -516,7 +594,7 @@
             text-shadow: 0 0 10px rgba(46, 204, 113, 0.8);
         }
 
-        /* SECCIÓN DE HISTORIA CON FONDO DE PERGAMINO QUEMADO EN LOS BORDES */
+        /* SECCIÓN DE HISTORIA CON FONDO ESTILO PERGAMINO QUEMADO */
         .section-history-bg {
             position: relative;
             background: #0a0b0e;
@@ -540,7 +618,6 @@
             line-height: 2;
         }
 
-        /* Primera Letra Capitular Medieval */
         .parchment-scroll p::first-letter {
             font-size: 3.2rem;
             float: left;
@@ -822,7 +899,9 @@
             header { flex-direction: column; gap: 0.5rem; text-align: center; }
             nav a { margin: 0 0.4rem; font-size: 0.85rem; }
             .header-logo { width: 70px; height: 70px; }
-            .letter-header-crest { width: 200px; height: 200px; }
+            .letter-header-crest { width: 170px; height: 170px; }
+            .admission-letter { padding: 2rem 1.5rem; }
+            .admission-letter h3 { font-size: 1.8rem; }
             .student-id-card-real { min-height: auto; padding: 1.2rem; }
             .card-body-real { flex-direction: column; text-align: center; }
             .wand-input-grid { grid-template-columns: 1fr; }
@@ -853,13 +932,25 @@
             <h1>COLEGIO DE MAGIA Y HECHICERÍA</h1>
             <p>Adéntrate en los secretos de Ravenmere Castle. Un servidor de Garry's Mod Roleplay Serio con Whitelist.</p>
 
-            <div class="admission-letter" id="whitelist">
-                <img src="Escudo mágico de RavenmereOficial.png" alt="Escudo Oficial de Ravenmere" class="letter-header-crest">
-                <h3>CARTA DE ADMISIÓN OFICIAL</h3>
-                <p>Estimado/a mago o bruja,</p>
-                <p>Nos complace informarle de que ha sido aceptado/a en el <strong>Colegio Ravenmere de Magia y Hechicería</strong>. Para formalizar su matrícula y cruzar el Velo Mágico, debe completar su proceso de <strong>Whitelist</strong> en nuestra comunidad.</p>
-                <p>Haga clic en el sello de lacre inferior para acceder directamente a las dependencias de Discord y presentar su solicitud.</p>
-                <a href="https://discord.gg/CdFW8DRc" target="_blank" class="wax-seal" title="Solicitar Whitelist en Discord">R</a>
+            <!-- CARTA PRINCIPAL TIPO RELEQUIA TRIDIMENSIONAL CON SELLO DE LACRE Y LETRAS CALIGRÁFICAS -->
+            <div class="admission-letter-wrapper" id="whitelist">
+                <div class="admission-letter">
+                    <img src="Escudo mágico de RavenmereOficial.png" alt="Escudo Oficial de Ravenmere" class="letter-header-crest">
+                    <h3>Carta de Admisión Oficial</h3>
+                    
+                    <p class="letter-salutation">Estimado/a mago o bruja,</p>
+                    <p>Nos complace enormemente informarle de que ha sido formalmente aceptado/a para cursar sus estudios superiores en el <strong>Colegio Ravenmere de Magia y Hechicería</strong>.</p>
+                    <p>Para formalizar su expediente de matrícula y cruzar el Velo Mágico hacia nuestras instalaciones, debe someterse al proceso de selección de <strong>Whitelist</strong> en nuestro santuario de Discord.</p>
+                    <p>Presione el sello de lacre oficial inferior para romper el pergamino y presentarse ante el Consejo Evaluador.</p>
+                    
+                    <!-- SELLO DE CERA DE LACRE 3D INTERACTIVO -->
+                    <div class="wax-seal-container">
+                        <a href="https://discord.gg/CdFW8DRc" target="_blank" class="wax-seal-btn" title="Romper el Sello e Ingresar a Discord">
+                            <span class="wax-seal-inner">R</span>
+                        </a>
+                        <span class="wax-seal-label">Pulsar para solicitar Whitelist</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -912,7 +1003,6 @@
                     ⚠️ Te recomendamos completar primero el Test de Casa superior para que tu varita absorba tu núcleo mágico real.
                 </div>
 
-                <!-- FORMULARIO DE NOMBRE, APELLIDO, FOTO Y FECHA -->
                 <div class="wand-input-grid">
                     <div class="wand-input-group">
                         <label for="student-first-name">Nombre Mágico / RP:</label>
@@ -963,7 +1053,6 @@
                 <h3 style="color: var(--gold-light); margin-bottom: 0.5rem;">TARJETA DE ESTUDIANTE MÁGICA</h3>
                 <p style="color: var(--text-muted); font-size: 0.9rem;">Aquí tienes tu carnet oficial listo para descargar o copiar en Discord:</p>
 
-                <!-- TARJETA REAL MÁGICA CON COLOR DINÁMICO Y CASTILLO DE FONDO -->
                 <div class="card-container-wrapper">
                     <div class="student-id-card-real card-house-default" id="student-card-real">
                         <img id="card-bg-crest-img" class="card-house-watermark" src="valerius-crest.png" alt="Blasón Mágico">
@@ -1111,7 +1200,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE HISTORIA CON FONDO ESTILO PERGAMINO QUEMADO Y EMBLEMA AL FINAL -->
+    <!-- SECCIÓN DE HISTORIA CON FONDO ESTILO PERGAMINO QUEMADO -->
     <section class="section-history-bg" id="historia">
         <h2 class="section-title">LA CRÓNICA DE RAVENMERE</h2>
         <p class="section-subtitle">El bastión ancestral oculta secretos que solo los magos más dignos podrán desvelar.</p>
@@ -1120,7 +1209,6 @@
             <p>Fundado en los albores del siglo X por cuatro de los hechiceros más influyentes de la época, el <strong>Castillo de Ravenmere</strong> se erige sobre un valle envuelto en brumas perpetuas en lo más profundo de las montañas. Oculto a los ojos de los muggles mediante ancestrales encantamientos reguladores del espacio y la bruma, el colegio ha servido durante generaciones como el refugio supremo para la enseñanza de las artes mágicas.</p>
             <p>Cada rincón de Ravenmere respira historia: desde las torres elevadas donde el viento susurra profecías, hasta las mazmorras inundadas por las aguas mágicas del lago. La vida en el colegio exige disciplina, honor y el dominio de la varita, pues las fuerzas oscuras que habitan más allá del Velo siempre aguardan la menor muestra de debilidad.</p>
             
-            <!-- Emblema en la parte inferior del pergamino -->
             <img src="Escudo mágico de RavenmereOficial.png" alt="Emblema Oficial Ravenmere" class="parchment-bottom-crest">
         </div>
     </section>
@@ -1131,7 +1219,6 @@
         <p class="section-subtitle">Descubre el linaje, los valores y las reliquias de los fundadores de Ravenmere.</p>
 
         <div class="houses-grid">
-            <!-- Valerius -->
             <div class="house-card valerius">
                 <img src="valerius-crest.png" alt="Blasón de la Casa Valerius" class="house-crest">
                 <h3 class="house-title">🔴 VALERIUS</h3>
@@ -1143,7 +1230,6 @@
                 </ul>
             </div>
 
-            <!-- Vipera -->
             <div class="house-card vipera">
                 <img src="vipera-crest.png" alt="Blasón de la Casa Vipera" class="house-crest">
                 <h3 class="house-title">🟢 VIPERA</h3>
@@ -1155,7 +1241,6 @@
                 </ul>
             </div>
 
-            <!-- Corvus -->
             <div class="house-card corvus">
                 <img src="corvus-crest.png" alt="Blasón de la Casa Corvus" class="house-crest">
                 <h3 class="house-title">🔵 CORVUS</h3>
@@ -1167,7 +1252,6 @@
                 </ul>
             </div>
 
-            <!-- Silvan -->
             <div class="house-card silvan">
                 <img src="silvan-crest.png" alt="Blasón de la Casa Silvan" class="house-crest">
                 <h3 class="house-title">🟡 SILVAN</h3>
