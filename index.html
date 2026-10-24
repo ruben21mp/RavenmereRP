@@ -507,6 +507,17 @@
             letter-spacing: 1px;
         }
 
+        .status-badge-pending {
+            color: #f1c40f;
+            text-shadow: 0 0 8px rgba(241, 196, 15, 0.5);
+        }
+
+        .status-badge-approved {
+            color: #2ecc71 !important;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(46, 204, 113, 0.8);
+        }
+
         /* Section Layouts con FONDO PARA RECLUTAMIENTO */
         .section {
             padding: 5rem 2rem;
@@ -940,10 +951,23 @@
                         </div>
 
                         <div class="card-footer-real">
-                            <span>MATRÍCULA: WHITELIST PENDIENTE</span>
+                            <span>MATRÍCULA: <strong id="card-status-text" class="status-badge-pending">WHITELIST PENDIENTE</strong></span>
                             <span>AÑO LECTIVO 2026</span>
                         </div>
                     </div>
+                </div>
+
+                <!-- VALIDACIÓN DE CLAVES ÚNICAS (300 CUPOS) -->
+                <div style="background: rgba(0,0,0,0.6); border: 1px solid var(--gold-primary); border-radius: 8px; padding: 1.2rem; max-width: 500px; margin: 1.5rem auto 1rem auto;">
+                    <label for="whitelist-code-input" style="color: var(--gold-light); font-weight: bold; font-size: 0.95rem; display: block; margin-bottom: 0.5rem;">
+                        🔑 Introduce tu Clave Única de Whitelist (Cupo de 300)
+                    </label>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.8rem;">Ej: <code>RAVENMERE2026001</code>. (Solo funciona una vez por clave).</p>
+                    <div style="display: flex; gap: 8px; justify-content: center;">
+                        <input type="text" id="whitelist-code-input" placeholder="RAVENMERE2026001" style="padding: 0.6rem; background: #0a0b0e; border: 1px solid var(--gold-primary); color: #fff; border-radius: 6px; font-family: monospace; text-transform: uppercase; width: 220px;">
+                        <button onclick="verifyUniqueCode()" class="btn-primary" style="padding: 0.6rem 1.2rem; margin: 0; font-size: 0.9rem;">VALIDAR</button>
+                    </div>
+                    <p id="code-error-msg" style="color: #e74c3c; font-size: 0.85rem; margin-top: 0.5rem; display: none;">⚠️ Clave inválida o ya utilizada por otro mago.</p>
                 </div>
 
                 <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
@@ -1130,7 +1154,7 @@
         <p>&copy; 2026 Ravenmere RP — Más que un servidor, una familia. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- JavaScript para Minijuegos e Carga de Foto -->
+    <!-- JavaScript para Minijuegos e Validación de los 300 Códigos Únicos -->
     <script>
         const questions = [
             {
@@ -1231,6 +1255,23 @@
         let userChoicesHash = 0;
         let globalWandData = {};
         let uploadedPhotoSrc = null;
+        let isApproved = false;
+        let usedUniqueCode = "";
+
+        // Generar automáticamente las 300 claves oficiales: RAVENMERE2026001 hasta RAVENMERE2026300
+        // (Guardamos en localStorage cuáles ya han sido usadas en este navegador para simular el uso único)
+        function getUsedCodesStore() {
+            let stored = localStorage.getItem('ravenmere_used_codes');
+            return stored ? JSON.parse(stored) : [];
+        }
+
+        function markCodeAsUsed(code) {
+            let usedList = getUsedCodesStore();
+            if (!usedList.includes(code)) {
+                usedList.push(code);
+                localStorage.setItem('ravenmere_used_codes', JSON.stringify(usedList));
+            }
+        }
 
         function loadQuestion() {
             document.getElementById('quiz-progress').innerText = `Pregunta ${currentQuestion + 1} de ${questions.length}`;
@@ -1335,7 +1376,6 @@
             document.getElementById('wand-section').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // PREVISUALIZAR FOTO SUBIDA POR EL USUARIO
         function previewStudentPhoto(event) {
             const file = event.target.files[0];
             if (file) {
@@ -1347,7 +1387,39 @@
             }
         }
 
-        // --- GENERADOR DE VARITAS Y TARJETA MÁGICA ---
+        // VALIDACIÓN DE LAS 300 CLAVES ÚNICAS (RAVENMERE2026001 AL 300)
+        function verifyUniqueCode() {
+            const inputCode = document.getElementById('whitelist-code-input').value.trim().toUpperCase();
+            const errorMsg = document.getElementById('code-error-msg');
+            const statusElem = document.getElementById('card-status-text');
+
+            // Comprobar formato correcto: RAVENMERE2026 seguido de 3 dígitos (001 a 300)
+            const regex = /^RAVENMERE2026(0[0-9]{2}|1[0-9]{2}|2[0-9]{2}|300)$/;
+
+            if (!regex.test(inputCode)) {
+                errorMsg.innerText = "⚠️ Formato inválido. Debe ser de RAVENMERE2026001 a RAVENMERE2026300.";
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            // Comprobar si ya fue usada
+            let usedCodes = getUsedCodesStore();
+            if (usedCodes.includes(inputCode)) {
+                errorMsg.innerText = "⚠️ Esta clave ya ha sido utilizada y ya no es válida.";
+                errorMsg.style.display = 'block';
+                return;
+            }
+
+            // Si pasa las comprobaciones: ¡Clave válida y única!
+            markCodeAsUsed(inputCode);
+            isApproved = true;
+            usedUniqueCode = inputCode;
+            errorMsg.style.display = 'none';
+            statusElem.innerText = `MATRÍCULA: OFICIAL (${inputCode}) ✅`;
+            statusElem.className = "status-badge-approved";
+            alert(`✨ ¡Sello Mágico ${inputCode} validado con éxito! Tu carnet ya es Oficial.`);
+        }
+
         const woodsPool = [
             "Acacia del Nilo", "Acebo Imperial", "Abedul Blanco", "Álamo Estelar", "Avellano Ancestral",
             "Cerezo Silvestre", "Ciprés de Niebla", "Ébano de la Noche", "Espino Blanco", "Fresno de Montaña",
@@ -1410,7 +1482,6 @@
                 house: houseName
             };
 
-            // Estilo dinámico a la tarjeta según la Casa
             const cardElem = document.getElementById('student-card-real');
             cardElem.className = 'student-id-card-real';
             if (assignedHouse) {
@@ -1419,7 +1490,6 @@
                 cardElem.classList.add('card-house-default');
             }
 
-            // Gestionar foto o icono fallback
             const avatarImg = document.getElementById('card-avatar-img');
             const avatarFallback = document.getElementById('card-avatar-fallback');
 
@@ -1432,7 +1502,6 @@
                 avatarFallback.style.display = 'inline';
             }
 
-            // Asignar datos e imágenes
             document.getElementById('card-bg-crest-img').src = crestImg;
             document.getElementById('card-full-name-val').innerText = fullName;
             document.getElementById('card-house-val').innerText = houseName;
@@ -1448,25 +1517,27 @@
             const cardElem = document.getElementById('student-card-real');
             
             html2canvas(cardElem, {
-                scale: 3, // Alta resolución
+                scale: 3,
                 useCORS: true,
                 backgroundColor: null
             }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = `Carnet_Ravenmere_${globalWandData.fullName.replace(/\s+/g, '_')}.png`;
+                const statusTag = isApproved ? `OFICIAL_${usedUniqueCode}` : "PENDIENTE";
+                link.download = `Carnet_Ravenmere_${globalWandData.fullName.replace(/\s+/g, '_')}_${statusTag}.png`;
                 link.href = canvas.toDataURL('image/png');
                 link.click();
             });
         }
 
         function copyDiscordCardText() {
+            const statusStr = isApproved ? `Aprobada y Oficial (${usedUniqueCode}) ✅` : "Pendiente de Whitelist ⏳";
             const cardText = `📜 ─── FICHA OFICIAL DE ESTUDIANTE: RAVENMERE CASTLE ───\n` +
                 `🧙‍♂️ Estudiante: ${globalWandData.fullName}\n` +
                 `🏰 Casa Asignada: ${globalWandData.house}\n` +
                 `🪄 Varita Ancestral: ${globalWandData.wood} (${globalWandData.length})\n` +
                 `✨ Núcleo Mágico: ${globalWandData.core}\n` +
                 `🔮 Signo Astral: ${globalWandData.zodiac}\n` +
-                `🛡️ Estado: Pendiente de Whitelist\n` +
+                `🛡️ Estado de Matrícula: ${statusStr}\n` +
                 `────────────────────────────────────────────────────────`;
 
             navigator.clipboard.writeText(cardText).then(() => {
