@@ -36,22 +36,10 @@
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
-            position: relative;
         }
 
         h1, h2, h3, h4, .font-serif {
             font-family: 'Cinzel', serif;
-        }
-
-        /* Canvas de Partículas Mágicas */
-        #magic-particles-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 1;
         }
 
         /* Navbar */
@@ -77,8 +65,8 @@
         }
 
         .header-logo {
-            width: 85px;
-            height: 85px;
+            width: 95px;
+            height: 95px;
             object-fit: contain;
             filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
             transition: transform 0.3s ease;
@@ -90,22 +78,17 @@
 
         .logo-title {
             color: var(--gold-primary);
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 700;
             letter-spacing: 2px;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
         }
 
         nav a {
             color: var(--text-main);
             text-decoration: none;
+            margin-left: 1.5rem;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             transition: color 0.3s ease;
         }
 
@@ -134,9 +117,8 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 8rem 2rem 4rem 2rem;
+            padding: 9rem 2rem 4rem 2rem;
             background: linear-gradient(to bottom, rgba(10, 11, 14, 0.4), var(--bg-dark)), url('ravenmere-castle.jpg') center/cover no-repeat;
-            z-index: 2;
         }
 
         .hero-overlay {
@@ -155,74 +137,10 @@
         .hero p {
             font-size: 1.25rem;
             color: var(--text-muted);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
-        /* WIDGET CONTRARRELOJ DE APERTURA Y CUPOS */
-        .countdown-widget {
-            background: rgba(15, 17, 25, 0.88);
-            border: 1px solid var(--gold-primary);
-            border-radius: 12px;
-            padding: 1.5rem 2rem;
-            margin: 0 auto 2.5rem auto;
-            max-width: 700px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            backdrop-filter: blur(10px);
-        }
-
-        .countdown-title {
-            color: var(--gold-light);
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-        }
-
-        .timer-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-            margin-bottom: 1.2rem;
-        }
-
-        .timer-block {
-            background: rgba(0,0,0,0.6);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 8px;
-            padding: 0.6rem;
-        }
-
-        .timer-num {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
-            color: var(--gold-primary);
-            font-weight: 700;
-        }
-
-        .timer-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-        }
-
-        .capacity-bar-container {
-            width: 100%;
-            background: rgba(0,0,0,0.6);
-            border-radius: 20px;
-            height: 14px;
-            border: 1px solid var(--gold-primary);
-            overflow: hidden;
-            margin-top: 0.5rem;
-        }
-
-        .capacity-bar-fill {
-            width: 82%; /* 247/300 ocupados como ejemplo */
-            height: 100%;
-            background: linear-gradient(90deg, #d4af37, #f3e5ab);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
-        }
-
-        /* Carta Principal */
+        /* --- CARTA DE ADMISIÓN PRINCIPAL (PERGAMINO REALISTA Y SELLO DE LACRE 3D) --- */
         .admission-letter-wrapper {
             perspective: 1000px;
             margin: 2rem auto;
@@ -234,24 +152,37 @@
             color: #2b180d;
             padding: 3.5rem 3.5rem 4.5rem 3.5rem;
             border-radius: 6px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.95), inset 0 0 100px rgba(70, 40, 15, 0.8);
+            box-shadow: 
+                0 25px 60px rgba(0,0,0,0.95), 
+                inset 0 0 100px rgba(70, 40, 15, 0.8),
+                inset 0 0 15px rgba(0,0,0,0.6);
             border: 2px solid #6b4d2b;
             position: relative;
             text-align: left;
-            transition: transform 0.4s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            overflow: hidden;
         }
 
         .admission-letter:hover {
             transform: translateY(-5px);
+            box-shadow: 
+                0 30px 70px rgba(0,0,0,0.98), 
+                0 0 25px rgba(212, 175, 55, 0.3),
+                inset 0 0 100px rgba(70, 40, 15, 0.8);
         }
 
         .letter-header-crest {
             display: block;
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 220px;
             margin: 0 auto 1rem auto;
             object-fit: contain;
             filter: drop-shadow(0 10px 18px rgba(0,0,0,0.6));
+            transition: transform 0.3s ease;
+        }
+
+        .letter-header-crest:hover {
+            transform: scale(1.05);
         }
 
         .admission-letter h3 {
@@ -263,6 +194,7 @@
             letter-spacing: 2px;
             border-bottom: 2px dashed rgba(92, 15, 15, 0.4);
             padding-bottom: 0.8rem;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.4);
         }
 
         .admission-letter p {
@@ -282,40 +214,62 @@
             line-height: 1;
         }
 
+        /* --- SELLO DE LACRE DE CERA REALISTA 3D CON EMBLEMA --- */
         .wax-seal-container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             margin-top: 2.5rem;
+            position: relative;
         }
 
         .wax-seal-btn {
             position: relative;
-            width: 100px;
-            height: 100px;
+            width: 105px;
+            height: 105px;
             background: radial-gradient(circle at 35% 35%, #bf1b1b 0%, #800a0a 55%, #420202 100%);
             border-radius: 50% 45% 52% 48% / 48% 52% 45% 55%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.8), inset -4px -4px 10px rgba(0,0,0,0.7);
+            box-shadow: 
+                0 8px 20px rgba(0,0,0,0.8),
+                inset -4px -4px 10px rgba(0,0,0,0.7),
+                inset 4px 4px 10px rgba(255,255,255,0.3);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none;
             border: 3px solid #6b0707;
+        }
+
+        .wax-seal-btn::before {
+            content: '';
+            position: absolute;
+            width: 78px;
+            height: 78px;
+            border-radius: 50%;
+            border: 2px dashed rgba(212, 175, 55, 0.6);
+            box-shadow: inset 0 0 8px rgba(0,0,0,0.8);
         }
 
         .wax-seal-inner {
             font-family: 'UnifrakturMaguntia', serif;
             font-size: 2.8rem;
             color: var(--gold-light);
-            text-shadow: 2px 2px 3px rgba(0,0,0,0.9);
+            text-shadow: 
+                2px 2px 3px rgba(0,0,0,0.9),
+                -1px -1px 1px rgba(255,255,255,0.4);
+            z-index: 2;
+            margin-top: -4px;
         }
 
         .wax-seal-btn:hover {
             transform: scale(1.12) rotate(4deg);
-            box-shadow: 0 12px 28px rgba(191, 27, 27, 0.6);
+            box-shadow: 
+                0 12px 28px rgba(191, 27, 27, 0.6),
+                0 0 20px rgba(212, 175, 55, 0.4),
+                inset -4px -4px 10px rgba(0,0,0,0.7);
         }
 
         .wax-seal-label {
@@ -328,175 +282,13 @@
             text-transform: uppercase;
         }
 
-        /* CARTOGRAFÍA DEL CASTILLO */
-        .map-section {
-            background: linear-gradient(to bottom, rgba(10, 11, 14, 0.9), rgba(10, 11, 14, 0.98)), url('magic-table-bg.jpg') center/cover no-repeat fixed;
-            padding: 6rem 2rem;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            position: relative;
-            z-index: 2;
-        }
-
-        .map-selector {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 2.5rem;
-        }
-
-        .map-btn {
-            background: rgba(15, 17, 25, 0.8);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            color: var(--text-main);
-            padding: 0.8rem 1.4rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-family: 'Cinzel', serif;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .map-btn:hover, .map-btn.active {
-            background: var(--gold-primary);
-            color: #000;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
-        }
-
-        .map-display-card {
-            background: var(--bg-card);
-            border: 1px solid var(--gold-primary);
-            border-radius: 12px;
-            padding: 3rem;
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.8);
-        }
-
-        .map-icon-large {
-            font-size: 5rem;
-            color: var(--gold-primary);
-            flex-shrink: 0;
-            text-align: center;
-            width: 120px;
-        }
-
-        .map-info h3 {
-            color: var(--gold-light);
-            font-size: 1.8rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .map-info p {
-            color: var(--text-main);
-            font-size: 1.05rem;
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .map-badge {
-            display: inline-block;
-            background: rgba(212, 175, 55, 0.15);
-            border: 1px solid var(--gold-primary);
-            color: var(--gold-light);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-right: 0.5rem;
-        }
-
-        /* DISCIPLINAS MÍSTICAS DE APRENDIZAJE */
-        .disciplines-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .discipline-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            border-radius: 10px;
-            padding: 1.8rem;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .discipline-card:hover {
-            border-color: var(--gold-primary);
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
-        }
-
-        .discipline-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .discipline-card h4 {
-            color: var(--gold-light);
-            font-size: 1.2rem;
-            margin-bottom: 0.6rem;
-        }
-
-        .discipline-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-        }
-
-        /* ESTATUTOS Y CÓDIGO DE HONOR */
-        .statutes-container {
-            max-width: 900px;
-            margin: 2rem auto 0 auto;
-        }
-
-        .statute-item {
-            background: var(--bg-card);
-            border: 1px solid rgba(212, 175, 55, 0.25);
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            overflow: hidden;
-        }
-
-        .statute-header {
-            padding: 1.2rem 1.8rem;
-            background: rgba(255,255,255,0.03);
-            color: var(--gold-light);
-            font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s ease;
-        }
-
-        .statute-header:hover {
-            background: rgba(212, 175, 55, 0.1);
-        }
-
-        .statute-content {
-            padding: 1.5rem 1.8rem;
-            color: var(--text-main);
-            font-size: 0.98rem;
-            line-height: 1.8;
-            border-top: 1px solid rgba(212, 175, 55, 0.15);
-            display: none;
-        }
-
-        /* Minigames Section */
+        /* Minigames Section con FONDO MÁGICO */
         .minigames-section {
             position: relative;
             background: linear-gradient(to bottom, rgba(10, 11, 14, 0.85), rgba(10, 11, 14, 0.95)), url('magic-table-bg.jpg') center/cover no-repeat fixed;
             padding: 6rem 2rem;
             border-top: 1px solid rgba(212, 175, 55, 0.3);
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            z-index: 2;
         }
 
         .minigame-container {
@@ -611,7 +403,7 @@
             font-size: 0.95rem;
         }
 
-        /* CARNET REAL */
+        /* DISEÑO DE TARJETA REAL MÁGICA CON FONDO DEL CASTILLO */
         .card-container-wrapper {
             perspective: 1000px;
             margin: 2rem auto;
@@ -637,24 +429,29 @@
             background-position: center;
         }
 
+        /* Estilos de Color Dinámico según la Casa */
         .card-house-valerius {
             background: linear-gradient(135deg, rgba(139, 0, 0, 0.85), rgba(40, 0, 0, 0.95)), url('ravenmere-castle.jpg') center/cover no-repeat;
             border-color: #ff4d4d;
+            box-shadow: 0 0 35px rgba(139, 0, 0, 0.6);
         }
 
         .card-house-vipera {
             background: linear-gradient(135deg, rgba(0, 100, 0, 0.85), rgba(0, 30, 0, 0.95)), url('ravenmere-castle.jpg') center/cover no-repeat;
             border-color: #2ecc71;
+            box-shadow: 0 0 35px rgba(0, 100, 0, 0.6);
         }
 
         .card-house-corvus {
             background: linear-gradient(135deg, rgba(0, 30, 120, 0.85), rgba(0, 10, 40, 0.95)), url('ravenmere-castle.jpg') center/cover no-repeat;
             border-color: #3498db;
+            box-shadow: 0 0 35px rgba(0, 0, 139, 0.6);
         }
 
         .card-house-silvan {
             background: linear-gradient(135deg, rgba(139, 90, 43, 0.85), rgba(40, 25, 10, 0.95)), url('ravenmere-castle.jpg') center/cover no-repeat;
             border-color: #f1c40f;
+            box-shadow: 0 0 35px rgba(139, 90, 43, 0.6);
         }
 
         .card-house-default {
@@ -662,6 +459,7 @@
             border-color: var(--gold-primary);
         }
 
+        /* Marca de Agua de la Casa en la derecha */
         .card-house-watermark {
             position: absolute;
             right: -15px;
@@ -671,6 +469,7 @@
             object-fit: contain;
             opacity: 0.28;
             pointer-events: none;
+            filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.5));
         }
 
         .card-header-real {
@@ -687,6 +486,7 @@
             font-weight: 900;
             color: var(--gold-light);
             letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
             text-align: left;
         }
 
@@ -702,6 +502,7 @@
             width: 130px;
             height: 130px;
             object-fit: contain;
+            filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.7));
             margin-top: -10px;
         }
 
@@ -724,6 +525,7 @@
             align-items: center;
             justify-content: center;
             font-size: 3.2rem;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.9), 0 0 15px rgba(212, 175, 55, 0.3);
             flex-shrink: 0;
             overflow: hidden;
             position: relative;
@@ -747,15 +549,18 @@
             font-size: 1.45rem;
             color: #ffffff;
             font-weight: 700;
+            text-shadow: 2px 2px 4px #000;
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
             padding-bottom: 0.2rem;
             margin-bottom: 0.5rem;
+            letter-spacing: 1px;
         }
 
         .card-info-row-real {
             font-size: 0.9rem;
             margin-bottom: 0.3rem;
             color: #e2e8f0;
+            text-shadow: 1px 1px 2px #000;
         }
 
         .card-info-row-real strong {
@@ -773,25 +578,27 @@
             color: var(--gold-light);
             z-index: 2;
             font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
         }
 
         .status-badge-pending {
             color: #f1c40f;
+            text-shadow: 0 0 8px rgba(241, 196, 15, 0.5);
         }
 
         .status-badge-approved {
             color: #2ecc71 !important;
             font-weight: bold;
+            text-shadow: 0 0 10px rgba(46, 204, 113, 0.8);
         }
 
-        /* HISTORIA PERGAMINO */
+        /* SECCIÓN DE HISTORIA CON FONDO ESTILO PERGAMINO QUEMADO */
         .section-history-bg {
             position: relative;
             background: #0a0b0e;
             padding: 6rem 2rem;
             border-top: 1px solid rgba(212, 175, 55, 0.3);
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            z-index: 2;
         }
 
         .parchment-scroll {
@@ -830,23 +637,22 @@
             height: 180px;
             margin: 2rem auto 0 auto;
             object-fit: contain;
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6));
         }
 
-        /* SECCIÓN DE CASAS */
+        /* SECCIÓN DE CASAS CON EL CASTILLO DE FONDO */
         .section-houses-bg {
             position: relative;
             background: linear-gradient(to bottom, rgba(10, 11, 14, 0.85), rgba(10, 11, 14, 0.92)), url('ravenmere-castle.jpg') center/cover no-repeat fixed;
             padding: 6rem 2rem;
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            z-index: 2;
         }
 
+        /* Section Layouts */
         .section {
             padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
-            position: relative;
-            z-index: 2;
         }
 
         .section-recruitment-bg {
@@ -854,7 +660,6 @@
             background: linear-gradient(to bottom, rgba(10, 11, 14, 0.9), rgba(10, 11, 14, 0.95)), url('office-desk-bg.jpg') center/cover no-repeat fixed;
             padding: 6rem 2rem;
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            z-index: 2;
         }
 
         .section-title {
@@ -862,6 +667,7 @@
             font-size: 2.5rem;
             color: var(--gold-primary);
             margin-bottom: 1rem;
+            position: relative;
         }
 
         .section-subtitle {
@@ -888,11 +694,14 @@
             border-radius: 12px;
             padding: 2rem;
             transition: all 0.3s ease;
+            position: relative;
+            backdrop-filter: blur(10px);
         }
 
         .recruitment-card:hover {
             transform: translateY(-5px);
             border-color: var(--gold-primary);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
         }
 
         .recruitment-card-header {
@@ -932,6 +741,7 @@
             position: absolute;
             left: 0;
             font-size: 1.2rem;
+            line-height: 1;
         }
 
         .recruitment-callout {
@@ -942,6 +752,21 @@
             text-align: center;
             margin-top: 3rem;
             max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .recruitment-callout h3 {
+            color: var(--gold-light);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .recruitment-callout p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -960,16 +785,20 @@
             padding: 2rem;
             text-align: center;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
         }
 
         .house-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .house-card.valerius:hover { border-color: var(--valerius-color); }
-        .house-card.vipera:hover { border-color: var(--vipera-color); }
-        .house-card.corvus:hover { border-color: var(--corvus-color); }
-        .house-card.silvan:hover { border-color: var(--silvan-color); }
+        .house-card.valerius:hover { border-color: var(--valerius-color); box-shadow: 0 0 25px rgba(139, 0, 0, 0.4); }
+        .house-card.vipera:hover { border-color: var(--vipera-color); box-shadow: 0 0 25px rgba(0, 100, 0, 0.4); }
+        .house-card.corvus:hover { border-color: var(--corvus-color); box-shadow: 0 0 25px rgba(0, 0, 139, 0.4); }
+        .house-card.silvan:hover { border-color: var(--silvan-color); box-shadow: 0 0 25px rgba(139, 90, 43, 0.4); }
 
         .house-crest {
             width: 150px;
@@ -1007,6 +836,12 @@
             color: var(--text-main);
         }
 
+        /* Buttons & Footer */
+        .cta-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
         .btn-primary {
             display: inline-block;
             background: linear-gradient(135deg, var(--gold-primary), #b38f2a);
@@ -1025,6 +860,7 @@
 
         .btn-primary:hover {
             transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
         }
 
         .btn-secondary {
@@ -1054,28 +890,25 @@
             border-top: 1px solid rgba(212, 175, 55, 0.1);
             color: var(--text-muted);
             font-size: 0.9rem;
-            position: relative;
-            z-index: 2;
         }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
             header { flex-direction: column; gap: 0.5rem; text-align: center; }
             nav a { margin: 0 0.4rem; font-size: 0.85rem; }
-            .header-logo { width: 65px; height: 65px; }
-            .letter-header-crest { width: 160px; height: 160px; }
+            .header-logo { width: 70px; height: 70px; }
+            .letter-header-crest { width: 170px; height: 170px; }
             .admission-letter { padding: 2rem 1.5rem; }
             .admission-letter h3 { font-size: 1.8rem; }
-            .map-display-card { flex-direction: column; text-align: center; }
-            .map-icon-large { width: auto; }
-            .timer-grid { grid-template-columns: repeat(2, 1fr); }
+            .student-id-card-real { min-height: auto; padding: 1.2rem; }
+            .card-body-real { flex-direction: column; text-align: center; }
+            .wand-input-grid { grid-template-columns: 1fr; }
+            .card-header-logo-real { width: 90px; height: 90px; }
+            .parchment-scroll { padding: 2rem 1.5rem; }
         }
     </style>
 </head>
 <body>
-
-    <!-- Canvas de Partículas Flotantes Mágicas -->
-    <canvas id="magic-particles-canvas"></canvas>
 
     <header>
         <a href="#" class="header-brand">
@@ -1083,12 +916,11 @@
             <span class="logo-title">RAVENMERE CASTLE</span>
         </a>
         <nav>
-            <a href="#mapa">Dominios</a>
-            <a href="#disciplinas">Disciplinas</a>
-            <a href="#estatutos">Estatutos</a>
             <a href="#historia">El Castillo</a>
             <a href="#casas">Las 4 Casas</a>
-            <a href="#minigames">Carnet RP</a>
+            <a href="#minigames">Probar Varita / Casa</a>
+            <a href="#reclutamiento">Equipo Fundador</a>
+            <a href="#whitelist">Whitelist</a>
             <a href="https://discord.gg/CdFW8DRc" target="_blank" class="btn-discord">Entrar al Discord</a>
         </nav>
     </header>
@@ -1098,25 +930,7 @@
             <h1>COLEGIO DE MAGIA Y HECHICERÍA</h1>
             <p>Adéntrate en los secretos de Ravenmere Castle. Un servidor de Garry's Mod Roleplay Serio con Whitelist.</p>
 
-            <!-- WIDGET DE CONTRARRELOJ Y BARRA DE MATRÍCULAS -->
-            <div class="countdown-widget">
-                <div class="countdown-title">⏳ CUENTA ATRÁS PARA LA PRÓXIMA APERTURA DE VETAS</div>
-                <div class="timer-grid">
-                    <div class="timer-block"><div class="timer-num" id="days-val">04</div><div class="timer-label">Días</div></div>
-                    <div class="timer-block"><div class="timer-num" id="hours-val">12</div><div class="timer-label">Horas</div></div>
-                    <div class="timer-block"><div class="timer-num" id="mins-val">35</div><div class="timer-label">Minutos</div></div>
-                    <div class="timer-block"><div class="timer-num" id="secs-val">48</div><div class="timer-label">Segundos</div></div>
-                </div>
-                <div style="font-size: 0.85rem; color: var(--gold-light); display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
-                    <span>MATRÍCULAS ASIGNADAS DE PRIMER AÑO</span>
-                    <strong>247 / 300 CUPOS OFICIALES</strong>
-                </div>
-                <div class="capacity-bar-container">
-                    <div class="capacity-bar-fill"></div>
-                </div>
-            </div>
-
-            <!-- CARTA PRINCIPAL TRIDIMENSIONAL CON SELLO DE LACRE -->
+            <!-- CARTA PRINCIPAL TIPO RELIQUIA TRIDIMENSIONAL CON SELLO DE LACRE Y LETRAS CALIGRÁFICAS -->
             <div class="admission-letter-wrapper" id="whitelist">
                 <div class="admission-letter">
                     <img src="Escudo mágico de RavenmereOficial.png" alt="Escudo Oficial de Ravenmere" class="letter-header-crest">
@@ -1127,6 +941,7 @@
                     <p>Para formalizar su expediente de matrícula y cruzar el Velo Mágico hacia nuestras instalaciones, debe someterse al proceso de selección de <strong>Whitelist</strong> en nuestro santuario de Discord.</p>
                     <p>Presione el sello de lacre oficial inferior para romper el pergamino y presentarse ante el Consejo Evaluador.</p>
                     
+                    <!-- SELLO DE CERA DE LACRE 3D INTERACTIVO -->
                     <div class="wax-seal-container">
                         <a href="https://discord.gg/CdFW8DRc" target="_blank" class="wax-seal-btn" title="Romper el Sello e Ingresar a Discord">
                             <span class="wax-seal-inner">R</span>
@@ -1138,92 +953,7 @@
         </div>
     </section>
 
-    <!-- CARTOGRAFÍA E INSTALACIONES INTERACTIVAS -->
-    <section class="map-section" id="mapa">
-        <h2 class="section-title">CARTOGRAFÍA DE LOS DOMINIOS ANCESTRALES</h2>
-        <p class="section-subtitle">Explora los rincones donde forjarás tu leyenda en el servidor. Presiona en cada zona para consultar sus detalles de rol.</p>
-
-        <div class="map-selector">
-            <button class="map-btn active" onclick="showMapLocation('refectorio')">👑 Gran Refectorio</button>
-            <button class="map-btn" onclick="showMapLocation('observatorio')">🌌 Observatorio de Corvus</button>
-            <button class="map-btn" onclick="showMapLocation('mazmorras')">🐍 Mazmorras Inundadas</button>
-            <button class="map-btn" onclick="showMapLocation('invernaderos')">🌿 Invernaderos de Silvan</button>
-            <button class="map-btn" onclick="showMapLocation('baluarte')">⚔️ Baluarte de Valerius</button>
-        </div>
-
-        <div class="map-display-card" id="map-card-content">
-            <!-- Contenido dinámico mediante JavaScript -->
-        </div>
-    </section>
-
-    <!-- DISCIPLINAS MÍSTICAS DE APRENDIZAJE -->
-    <section class="section" id="disciplinas">
-        <h2 class="section-title">DISCIPLINAS MÍSTICAS DE ENSEÑANZA</h2>
-        <p class="section-subtitle">Los cuatro pilares de las Artes Mágicas que dominarás bajo la tutela de nuestro claustro docente.</p>
-
-        <div class="disciplines-grid">
-            <div class="discipline-card">
-                <span class="discipline-icon">🔮</span>
-                <h4>Astromancia & Geometría</h4>
-                <p>Lectura de las alineaciones estelares, símbolos antiguos y trazado de círculos de protección ancestrales.</p>
-            </div>
-            <div class="discipline-card">
-                <span class="discipline-icon">🧪</span>
-                <h4>Alquimia de Elixires</h4>
-                <p>Destilación de brebajes de alta complejidad, elixires de percepción y transmutación de materias primas.</p>
-            </div>
-            <div class="discipline-card">
-                <span class="discipline-icon">⚔️</span>
-                <h4>Taumaturgia Táctica</h4>
-                <p>Dominio del duelo mágico, encantamientos de contención de área y barreras de fuerza defensivas.</p>
-            </div>
-            <div class="discipline-card">
-                <span class="discipline-icon">📜</span>
-                <h4>Esnosis & Canto Encantado</h4>
-                <p>Canalización no verbal mediante la varita y dominio de la resonancia mística del entorno.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ESTATUTOS Y CÓDIGO DE HONOR DE RAVENMERE (NORMAS DE ROLEPLAY) -->
-    <section class="section" id="estatutos" style="background: rgba(0,0,0,0.4); border-top: 1px solid rgba(212, 175, 55, 0.15);">
-        <h2 class="section-title">ESTATUTOS DEL COLEGIO & CÓDIGO DE HONOR</h2>
-        <p class="section-subtitle">Normas fundamentales de Roleplay Serio que rigen el comportamiento de todo mago o bruja en el castillo.</p>
-
-        <div class="statutes-container">
-            <div class="statute-item">
-                <div class="statute-header" onclick="toggleStatute(this)">
-                    <span>📜 I. INVIOLABILIDAD DEL VELO MÁGICO (Inmersión RP & Interpretación)</span>
-                    <span>▼</span>
-                </div>
-                <div class="statute-content">
-                    Todo alumno debe mantener una interpretación coherente y seria de su personaje en todo momento (NoRP prohibido). Está estrictamente prohibido utilizar conocimiento que tu personaje no haya descubierto en el juego (Metagaming).
-                </div>
-            </div>
-
-            <div class="statute-item">
-                <div class="statute-header" onclick="toggleStatute(this)">
-                    <span>⚔️ II. DUELOS HONORABLES Y COMBATE (Uso Razonado de Hechizos)</span>
-                    <span>▼</span>
-                </div>
-                <div class="statute-content">
-                    Las agresiones o duelos mágicos requieren una justificación de rol válida previa. Queda prohibido atacar o hechizar de forma indiscriminada o irrazonada a otros estudiantes (Powergaming / RDM).
-                </div>
-            </div>
-
-            <div class="statute-item">
-                <div class="statute-header" onclick="toggleStatute(this)">
-                    <span>🎓 III. JERARQUÍA Y RESPETO AL CLAUSTRO</span>
-                    <span>▼</span>
-                </div>
-                <div class="statute-content">
-                    Las autoridades del castillo (Prefectos, Profesores y el Consejo Superior) poseen la potestad de imponer disciplina, retener puntos de casa o iniciar expedientes de expulsión por conductas antideportivas o faltas graves.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Minigames Section -->
+    <!-- Interactive Minigames Section con FONDO MÁGICO -->
     <section class="minigames-section" id="minigames">
         <h2 class="section-title">EXPERIENCIAS INTERACTIVAS</h2>
         <p class="section-subtitle">Descubre a qué Casa perteneces y qué Varita Ancestral responde a tu afinidad psicológica y astral.</p>
@@ -1354,7 +1084,7 @@
                     </div>
                 </div>
 
-                <!-- VALIDACIÓN DE CLAVES ÚNICAS -->
+                <!-- VALIDACIÓN DE CLAVES ÚNICAS (EJEMPLO ACTUALIZADO) -->
                 <div style="background: rgba(0,0,0,0.6); border: 1px solid var(--gold-primary); border-radius: 8px; padding: 1.2rem; max-width: 500px; margin: 1.5rem auto 1rem auto;">
                     <label for="whitelist-code-input" style="color: var(--gold-light); font-weight: bold; font-size: 0.95rem; display: block; margin-bottom: 0.5rem;">
                         🔑 Introduce tu Clave Única de Whitelist
@@ -1379,7 +1109,7 @@
     <!-- Recruitment Section con Fondo de Despacho -->
     <section class="section-recruitment-bg" id="reclutamiento">
         <h2 class="section-title">BUSCAMOS MIEMBROS FUNDADORES</h2>
-        <p class="section-subtitle">Únete al proyecto de Ravenmere RP. Estamos forming el equipo para crear una experiencia única de Roleplay y necesitamos gente con ganas, compromiso y pasión.</p>
+        <p class="section-subtitle">Únete al proyecto de Ravenmere RP. Estamos formando el equipo para crear una experiencia única de Roleplay y necesitamos gente con ganas, compromiso y pasión.</p>
 
         <div class="recruitment-grid">
             <div class="recruitment-card">
@@ -1474,7 +1204,7 @@
         <p class="section-subtitle">El bastión ancestral oculta secretos que solo los magos más dignos podrán desvelar.</p>
         
         <div class="parchment-scroll">
-            <p>Fundado en los诞生 del siglo X por cuatro de los hechiceros más influyentes de la época, el <strong>Castillo de Ravenmere</strong> se erige sobre un valle envuelto en brumas perpetuas en lo más profundo de las montañas. Oculto a los ojos de los muggles mediante ancestrales encantamientos reguladores del espacio y la bruma, el colegio ha servido durante generaciones como el refugio supremo para la enseñanza de las artes mágicas.</p>
+            <p>Fundado en los albores del siglo X por cuatro de los hechiceros más influyentes de la época, el <strong>Castillo de Ravenmere</strong> se erige sobre un valle envuelto en brumas perpetuas en lo más profundo de las montañas. Oculto a los ojos de los muggles mediante ancestrales encantamientos reguladores del espacio y la bruma, el colegio ha servido durante generaciones como el refugio supremo para la enseñanza de las artes mágicas.</p>
             <p>Cada rincón de Ravenmere respira historia: desde las torres elevadas donde el viento susurra profecías, hasta las mazmorras inundadas por las aguas mágicas del lago. La vida en el colegio exige disciplina, honor y el dominio de la varita, pues las fuerzas oscuras que habitan más allá del Velo siempre aguardan la menor muestra de debilidad.</p>
             
             <img src="Escudo mágico de RavenmereOficial.png" alt="Emblema Oficial Ravenmere" class="parchment-bottom-crest">
@@ -1545,133 +1275,8 @@
         <p>&copy; 2026 Ravenmere RP — Más que un servidor, una familia. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- JavaScript para Efectos, Cartografía y Minijuegos -->
+    <!-- JavaScript para Minijuegos e Validación de Claves -->
     <script>
-        // 1. SISTEMA DE CARTOGRAFÍA DE DOMINIOS
-        const mapLocations = {
-            refectorio: {
-                title: "👑 El Gran Refectorio de los Fundadores",
-                icon: "🏛️",
-                desc: "Corazón del castillo donde se celebran las asambleas solemnly, banquetes de apertura y juicios del Consejo. Un espacio rodeado de grandes ventanales y los estandartes dorados de las cuatro casas.",
-                roleType: "Zona Segura / Eventos / Asambleas",
-                danger: "Nivel de Peligro: Muy Bajo 🟢"
-            },
-            observatorio: {
-                title: "🌌 El Observatorio Estelar de Corvus",
-                icon: "🔭",
-                desc: "Ubicado en la torre más alta del ala norte. Equipado con astrolabios antiguos, globos celestes y cartas astrales. Aquí los eruditos descifran las profecías escritas en las constelaciones.",
-                roleType: "Astromancia / Investigación / Secretos Astrales",
-                danger: "Nivel de Peligro: Bajo 🟢"
-            },
-            mazmorras: {
-                title: "🐍 Las Mazmorras Inundadas de Vipera",
-                icon: "🕯️",
-                desc: "Pasillos de piedra antigua situados bajo las aguas del lago. Susurro de corrientes de aire y antorchas de llama verde. Punto de reunión habitual para los hechiceros orientados al sigilo.",
-                roleType: "Alquimia Oscura / Tratados Ocultos",
-                danger: "Nivel de Peligro: Moderado 🟡"
-            },
-            invernaderos: {
-                title: "🌿 Los Invernaderos Alquímicos de Silvan",
-                icon: "🌱",
-                desc: "Estructuras de cristal que resguardan especímenes botánicos raros, plantas que susurran y flora mística traída de las profundidades del Bosque Antiguo.",
-                roleType: "Botánica Mística / Recolección",
-                danger: "Nivel de Peligro: Bajo 🟢"
-            },
-            baluarte: {
-                title: "⚔️ El Baluarte de Valerius",
-                icon: "🛡️",
-                desc: "Patio de armas y recinto fortificado diseñado para la práctica del combate mágico, duelos de honor y adiestramiento de tácticas de contención.",
-                roleType: "Duelos Regulados / Entrenamiento de Duelos",
-                danger: "Nivel de Peligro: Controlado 🟡"
-            }
-        };
-
-        function showMapLocation(key) {
-            const loc = mapLocations[key];
-            const display = document.getElementById('map-card-content');
-            
-            // Actualizar botones
-            document.querySelectorAll('.map-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            display.innerHTML = `
-                <div class="map-icon-large">${loc.icon}</div>
-                <div class="map-info">
-                    <h3>${loc.title}</h3>
-                    <p>${loc.desc}</p>
-                    <div>
-                        <span class="map-badge">🎭 ${loc.roleType}</span>
-                        <span class="map-badge">${loc.danger}</span>
-                    </div>
-                </div>
-            `;
-        }
-
-        // 2. DESPLEGABLE DE ESTATUTOS DE ROLEPLAY
-        function toggleStatute(elem) {
-            const content = elem.nextElementSibling;
-            const arrow = elem.querySelector('span:last-child');
-            if (content.style.display === "block") {
-                content.style.display = "none";
-                arrow.innerText = "▼";
-            } else {
-                content.style.display = "block";
-                arrow.innerText = "▲";
-            }
-        }
-
-        // 3. CANVAS DE PARTÍCULAS MÁGICAS FLOTANTES
-        const canvas = document.getElementById('magic-particles-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2.5 + 0.5;
-                this.speedX = Math.random() * 0.4 - 0.2;
-                this.speedY = Math.random() * -0.5 - 0.1;
-                this.alpha = Math.random() * 0.7 + 0.3;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.y < 0) {
-                    this.y = canvas.height;
-                    this.x = Math.random() * canvas.width;
-                }
-            }
-            draw() {
-                ctx.fillStyle = `rgba(212, 175, 55, ${this.alpha})`;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-
-        for (let i = 0; i < 45; i++) {
-            particles.push(new Particle());
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
-
-        // 4. TEST DE CASA Y ARTESANÍA DE VARITAS
         const questions = [
             {
                 q: "1. Caminas solo por un callejón de noche y presencias a un mago acorralando a alguien indefenso. ¿Cuál es tu reacción instintiva?",
@@ -2068,7 +1673,6 @@
 
         window.onload = () => {
             loadQuestion();
-            showMapLocation('refectorio');
         };
     </script>
 </body>
