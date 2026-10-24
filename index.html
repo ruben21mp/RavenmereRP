@@ -422,7 +422,6 @@
             font-weight: 600;
         }
 
-        /* ESCUDO DEL COLEGIO AL DOBLE DE TAMAÑO (130px) */
         .card-header-logo-real {
             width: 130px;
             height: 130px;
@@ -440,7 +439,6 @@
             text-align: left;
         }
 
-        /* RECUADRO DE AVATAR CON SOPORTE PARA IMAGEN COMPLETA */
         .card-avatar-real {
             width: 110px;
             height: 135px;
@@ -518,7 +516,64 @@
             text-shadow: 0 0 10px rgba(46, 204, 113, 0.8);
         }
 
-        /* Section Layouts con FONDO PARA RECLUTAMIENTO */
+        /* SECCIÓN DE HISTORIA CON FONDO DE PERGAMINO QUEMADO EN LOS BORDES */
+        .section-history-bg {
+            position: relative;
+            background: #0a0b0e;
+            padding: 6rem 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .parchment-scroll {
+            background: radial-gradient(circle, #f3e5ab 0%, #d4b886 60%, #8c6738 100%);
+            color: #2a1808;
+            padding: 3.5rem 3rem;
+            border-radius: 8px;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            border: 2px solid #5a3c18;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9), inset 0 0 90px rgba(20, 10, 0, 0.85);
+            font-family: 'Cinzel', serif;
+            text-align: justify;
+            line-height: 2;
+        }
+
+        /* Primera Letra Capitular Medieval */
+        .parchment-scroll p::first-letter {
+            font-size: 3.2rem;
+            float: left;
+            margin-right: 10px;
+            line-height: 0.8;
+            color: #7a1c1c;
+            font-weight: 900;
+        }
+
+        .parchment-scroll p {
+            margin-bottom: 1.8rem;
+            font-size: 1.1rem;
+            color: #2c1a0e;
+        }
+
+        .parchment-bottom-crest {
+            display: block;
+            width: 180px;
+            height: 180px;
+            margin: 2rem auto 0 auto;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6));
+        }
+
+        /* SECCIÓN DE CASAS CON EL CASTILLO DE FONDO */
+        .section-houses-bg {
+            position: relative;
+            background: linear-gradient(to bottom, rgba(10, 11, 14, 0.85), rgba(10, 11, 14, 0.92)), url('ravenmere-castle.jpg') center/cover no-repeat fixed;
+            padding: 6rem 2rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        /* Section Layouts */
         .section {
             padding: 5rem 2rem;
             max-width: 1200px;
@@ -657,6 +712,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(8px);
         }
 
         .house-card:hover {
@@ -703,22 +759,6 @@
 
         .house-details strong {
             color: var(--text-main);
-        }
-
-        /* Lore Section */
-        .lore-container {
-            background: var(--bg-card);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 12px;
-            padding: 3rem;
-            margin-top: 2rem;
-            line-height: 1.8;
-        }
-
-        .lore-container p {
-            margin-bottom: 1.5rem;
-            color: var(--text-main);
-            font-size: 1.05rem;
         }
 
         /* Buttons & Footer */
@@ -787,6 +827,7 @@
             .card-body-real { flex-direction: column; text-align: center; }
             .wand-input-grid { grid-template-columns: 1fr; }
             .card-header-logo-real { width: 90px; height: 90px; }
+            .parchment-scroll { padding: 2rem 1.5rem; }
         }
     </style>
 </head>
@@ -932,7 +973,6 @@
                                 <div class="card-school-title-real">RAVENMERE CASTLE</div>
                                 <div class="card-school-sub-real">COLEGIO DE MAGIA Y HECHICERÍA</div>
                             </div>
-                            <!-- ESCUDO AL DOBLE DE TAMAÑO -->
                             <img src="Escudo mágico de RavenmereOficial.png" alt="Escudo Oficial Ravenmere" class="card-header-logo-real">
                         </div>
 
@@ -985,7 +1025,6 @@
         <p class="section-subtitle">Únete al proyecto de Ravenmere RP. Estamos formando el equipo para crear una experiencia única de Roleplay y necesitamos gente con ganas, compromiso y pasión.</p>
 
         <div class="recruitment-grid">
-            <!-- Programadores -->
             <div class="recruitment-card">
                 <div class="recruitment-card-header">
                     <span class="recruitment-icon">&lt;/&gt;</span>
@@ -999,7 +1038,6 @@
                 </ul>
             </div>
 
-            <!-- Equipo de Staff -->
             <div class="recruitment-card">
                 <div class="recruitment-card-header">
                     <span class="recruitment-icon">🛡️</span>
@@ -1013,7 +1051,6 @@
                 </ul>
             </div>
 
-            <!-- Diseñadores -->
             <div class="recruitment-card">
                 <div class="recruitment-card-header">
                     <span class="recruitment-icon">🎨</span>
@@ -1027,7 +1064,6 @@
                 </ul>
             </div>
 
-            <!-- Scripters -->
             <div class="recruitment-card">
                 <div class="recruitment-card-header">
                     <span class="recruitment-icon">📜</span>
@@ -1041,7 +1077,6 @@
                 </ul>
             </div>
 
-            <!-- Marketing -->
             <div class="recruitment-card">
                 <div class="recruitment-card-header">
                     <span class="recruitment-icon">📢</span>
@@ -1055,7 +1090,6 @@
                 </ul>
             </div>
 
-            <!-- Y Mucho Más -->
             <div class="recruitment-card">
                 <div class="recruitment-card-header">
                     <span class="recruitment-icon">👥</span>
@@ -1077,17 +1111,22 @@
         </div>
     </section>
 
-    <section class="section" id="historia">
+    <!-- SECCIÓN DE HISTORIA CON FONDO ESTILO PERGAMINO QUEMADO Y EMBLEMA AL FINAL -->
+    <section class="section-history-bg" id="historia">
         <h2 class="section-title">LA CRÓNICA DE RAVENMERE</h2>
         <p class="section-subtitle">El bastión ancestral oculta secretos que solo los magos más dignos podrán desvelar.</p>
         
-        <div class="lore-container">
+        <div class="parchment-scroll">
             <p>Fundado en los albores del siglo X por cuatro de los hechiceros más influyentes de la época, el <strong>Castillo de Ravenmere</strong> se erige sobre un valle envuelto en brumas perpetuas en lo más profundo de las montañas. Oculto a los ojos de los muggles mediante ancestrales encantamientos reguladores del espacio y la bruma, el colegio ha servido durante generaciones como el refugio supremo para la enseñanza de las artes mágicas.</p>
             <p>Cada rincón de Ravenmere respira historia: desde las torres elevadas donde el viento susurra profecías, hasta las mazmorras inundadas por las aguas mágicas del lago. La vida en el colegio exige disciplina, honor y el dominio de la varita, pues las fuerzas oscuras que habitan más allá del Velo siempre aguardan la menor muestra de debilidad.</p>
+            
+            <!-- Emblema en la parte inferior del pergamino -->
+            <img src="Escudo mágico de RavenmereOficial.png" alt="Emblema Oficial Ravenmere" class="parchment-bottom-crest">
         </div>
     </section>
 
-    <section class="section" id="casas">
+    <!-- SECCIÓN DE CASAS CON EL CASTILLO DE FONDO -->
+    <section class="section-houses-bg" id="casas">
         <h2 class="section-title">LAS CUATRO CASAS ANCESTRALES</h2>
         <p class="section-subtitle">Descubre el linaje, los valores y las reliquias de los fundadores de Ravenmere.</p>
 
@@ -1258,8 +1297,6 @@
         let isApproved = false;
         let usedUniqueCode = "";
 
-        // Generar automáticamente las 300 claves oficiales: RAVENMERE2026001 hasta RAVENMERE2026300
-        // (Guardamos en localStorage cuáles ya han sido usadas en este navegador para simular el uso único)
         function getUsedCodesStore() {
             let stored = localStorage.getItem('ravenmere_used_codes');
             return stored ? JSON.parse(stored) : [];
@@ -1387,13 +1424,11 @@
             }
         }
 
-        // VALIDACIÓN DE LAS 300 CLAVES ÚNICAS (RAVENMERE2026001 AL 300)
         function verifyUniqueCode() {
             const inputCode = document.getElementById('whitelist-code-input').value.trim().toUpperCase();
             const errorMsg = document.getElementById('code-error-msg');
             const statusElem = document.getElementById('card-status-text');
 
-            // Comprobar formato correcto: RAVENMERE2026 seguido de 3 dígitos (001 a 300)
             const regex = /^RAVENMERE2026(0[0-9]{2}|1[0-9]{2}|2[0-9]{2}|300)$/;
 
             if (!regex.test(inputCode)) {
@@ -1402,7 +1437,6 @@
                 return;
             }
 
-            // Comprobar si ya fue usada
             let usedCodes = getUsedCodesStore();
             if (usedCodes.includes(inputCode)) {
                 errorMsg.innerText = "⚠️ Esta clave ya ha sido utilizada y ya no es válida.";
@@ -1410,7 +1444,6 @@
                 return;
             }
 
-            // Si pasa las comprobaciones: ¡Clave válida y única!
             markCodeAsUsed(inputCode);
             isApproved = true;
             usedUniqueCode = inputCode;
