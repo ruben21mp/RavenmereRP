@@ -301,7 +301,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 1rem;
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto 1.5rem auto;
             text-align: left;
         }
@@ -331,13 +331,13 @@
         .card-container-wrapper {
             perspective: 1000px;
             margin: 2rem auto;
-            max-width: 620px;
+            max-width: 680px;
         }
 
         .student-id-card-real {
             position: relative;
             width: 100%;
-            height: 360px;
+            min-height: 380px;
             border-radius: 18px;
             border: 3px solid var(--gold-primary);
             padding: 1.8rem;
@@ -388,8 +388,8 @@
             position: absolute;
             right: -15px;
             bottom: -15px;
-            width: 260px;
-            height: 260px;
+            width: 280px;
+            height: 280px;
             object-fit: contain;
             opacity: 0.28;
             pointer-events: none;
@@ -406,7 +406,7 @@
         }
 
         .card-school-title-real {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 900;
             color: var(--gold-light);
             letter-spacing: 2px;
@@ -415,41 +415,54 @@
         }
 
         .card-school-sub-real {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--gold-primary);
             letter-spacing: 1px;
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-weight: 600;
         }
 
+        /* ESCUDO DEL COLEGIO AL DOBLE DE TAMAÑO (130px) */
         .card-header-logo-real {
-            width: 65px;
-            height: 65px;
+            width: 130px;
+            height: 130px;
             object-fit: contain;
-            filter: drop-shadow(0 0 8px rgba(0,0,0,0.8));
+            filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.7));
+            margin-top: -10px;
         }
 
         .card-body-real {
             display: flex;
             gap: 20px;
-            margin: 1rem 0;
+            margin: 1.2rem 0;
             align-items: center;
             z-index: 2;
             text-align: left;
         }
 
+        /* RECUADRO DE AVATAR CON SOPORTE PARA IMAGEN COMPLETA */
         .card-avatar-real {
-            width: 100px;
-            height: 120px;
+            width: 110px;
+            height: 135px;
             border: 2px solid var(--gold-primary);
             border-radius: 10px;
             background: rgba(0,0,0,0.6);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.9);
+            font-size: 3.2rem;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.9), 0 0 15px rgba(212, 175, 55, 0.3);
             flex-shrink: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
         }
 
         .card-info-real {
@@ -459,7 +472,7 @@
 
         .card-info-name {
             font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
+            font-size: 1.45rem;
             color: #ffffff;
             font-weight: 700;
             text-shadow: 2px 2px 4px #000;
@@ -759,9 +772,10 @@
             nav a { margin: 0 0.4rem; font-size: 0.85rem; }
             .header-logo { width: 70px; height: 70px; }
             .letter-header-crest { width: 200px; height: 200px; }
-            .student-id-card-real { height: auto; padding: 1.2rem; }
+            .student-id-card-real { min-height: auto; padding: 1.2rem; }
             .card-body-real { flex-direction: column; text-align: center; }
             .wand-input-grid { grid-template-columns: 1fr; }
+            .card-header-logo-real { width: 90px; height: 90px; }
         }
     </style>
 </head>
@@ -838,7 +852,7 @@
         <div class="minigame-container" id="wand-section">
             <div class="minigame-header">
                 <h3 class="minigame-title">🪄 ALARIC & VANE (ARTESANOS DE VARITAS)</h3>
-                <p style="color: var(--text-muted)" id="wand-subtitle">Ingresa tus datos de estudiante para forjar tu carnet oficial de Ravenmere.</p>
+                <p style="color: var(--text-muted)" id="wand-subtitle">Ingresa tus datos de estudiante y foto de retrato para forjar tu carnet oficial de Ravenmere.</p>
             </div>
 
             <div id="wand-form">
@@ -846,7 +860,7 @@
                     ⚠️ Te recomendamos completar primero el Test de Casa superior para que tu varita absorba tu núcleo mágico real.
                 </div>
 
-                <!-- FORMULARIO DE NOMBRE, APELLIDO Y FECHA DE NACIMIENTO -->
+                <!-- FORMULARIO DE NOMBRE, APELLIDO, FOTO Y FECHA -->
                 <div class="wand-input-grid">
                     <div class="wand-input-group">
                         <label for="student-first-name">Nombre Mágico / RP:</label>
@@ -859,11 +873,16 @@
                     </div>
 
                     <div class="wand-input-group">
+                        <label for="student-photo">Foto de Estudiante / Avatar:</label>
+                        <input type="file" id="student-photo" accept="image/*" onchange="previewStudentPhoto(event)">
+                    </div>
+
+                    <div class="wand-input-group">
                         <label for="wand-day">Día de nacimiento:</label>
                         <input type="number" id="wand-day" min="1" max="31" placeholder="Ej: 15">
                     </div>
 
-                    <div class="wand-input-group">
+                    <div class="wand-input-group" style="grid-column: span 2;">
                         <label for="wand-month">Mes de nacimiento:</label>
                         <select id="wand-month">
                             <option value="1">Enero</option>
@@ -902,11 +921,15 @@
                                 <div class="card-school-title-real">RAVENMERE CASTLE</div>
                                 <div class="card-school-sub-real">COLEGIO DE MAGIA Y HECHICERÍA</div>
                             </div>
+                            <!-- ESCUDO AL DOBLE DE TAMAÑO -->
                             <img src="Escudo mágico de RavenmereOficial.png" alt="Escudo Oficial Ravenmere" class="card-header-logo-real">
                         </div>
 
                         <div class="card-body-real">
-                            <div class="card-avatar-real">🧙‍♂️</div>
+                            <div class="card-avatar-real" id="card-avatar-container">
+                                <span id="card-avatar-fallback">🧙‍♂️</span>
+                                <img id="card-avatar-img" class="card-avatar-img" src="" alt="Foto de Estudiante" style="display: none;">
+                            </div>
                             <div class="card-info-real">
                                 <div class="card-info-name" id="card-full-name-val">Alistair Blackwood</div>
                                 <div class="card-info-row-real"><strong>CASA:</strong> <span id="card-house-val" style="color: var(--gold-light); font-weight: bold;"></span></div>
@@ -1035,7 +1058,7 @@
         <p class="section-subtitle">El bastión ancestral oculta secretos que solo los magos más dignos podrán desvelar.</p>
         
         <div class="lore-container">
-            <p>Fundado en los誕生 del siglo X por cuatro de los hechiceros más influyentes de la época, el <strong>Castillo de Ravenmere</strong> se erige sobre un valle envuelto en brumas perpetuas en lo más profundo de las montañas. Oculto a los ojos de los muggles mediante ancestrales encantamientos reguladores del espacio y la bruma, el colegio ha servido durante generaciones como el refugio supremo para la enseñanza de las artes mágicas.</p>
+            <p>Fundado en los albores del siglo X por cuatro de los hechiceros más influyentes de la época, el <strong>Castillo de Ravenmere</strong> se erige sobre un valle envuelto en brumas perpetuas en lo más profundo de las montañas. Oculto a los ojos de los muggles mediante ancestrales encantamientos reguladores del espacio y la bruma, el colegio ha servido durante generaciones como el refugio supremo para la enseñanza de las artes mágicas.</p>
             <p>Cada rincón de Ravenmere respira historia: desde las torres elevadas donde el viento susurra profecías, hasta las mazmorras inundadas por las aguas mágicas del lago. La vida en el colegio exige disciplina, honor y el dominio de la varita, pues las fuerzas oscuras que habitan más allá del Velo siempre aguardan la menor muestra de debilidad.</p>
         </div>
     </section>
@@ -1107,7 +1130,7 @@
         <p>&copy; 2026 Ravenmere RP — Más que un servidor, una familia. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- JavaScript para Minijuegos e Integración de Tarjeta Mágica Descargable -->
+    <!-- JavaScript para Minijuegos e Carga de Foto -->
     <script>
         const questions = [
             {
@@ -1207,6 +1230,7 @@
         let assignedHouse = null;
         let userChoicesHash = 0;
         let globalWandData = {};
+        let uploadedPhotoSrc = null;
 
         function loadQuestion() {
             document.getElementById('quiz-progress').innerText = `Pregunta ${currentQuestion + 1} de ${questions.length}`;
@@ -1311,6 +1335,18 @@
             document.getElementById('wand-section').scrollIntoView({ behavior: 'smooth' });
         }
 
+        // PREVISUALIZAR FOTO SUBIDA POR EL USUARIO
+        function previewStudentPhoto(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedPhotoSrc = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
         // --- GENERADOR DE VARITAS Y TARJETA MÁGICA ---
         const woodsPool = [
             "Acacia del Nilo", "Acebo Imperial", "Abedul Blanco", "Álamo Estelar", "Avellano Ancestral",
@@ -1374,13 +1410,26 @@
                 house: houseName
             };
 
-            // Aplicar estilo dinámico a la tarjeta según la Casa
+            // Estilo dinámico a la tarjeta según la Casa
             const cardElem = document.getElementById('student-card-real');
-            cardElem.className = 'student-id-card-real'; // Reset
+            cardElem.className = 'student-id-card-real';
             if (assignedHouse) {
                 cardElem.classList.add(`card-house-${assignedHouse}`);
             } else {
                 cardElem.classList.add('card-house-default');
+            }
+
+            // Gestionar foto o icono fallback
+            const avatarImg = document.getElementById('card-avatar-img');
+            const avatarFallback = document.getElementById('card-avatar-fallback');
+
+            if (uploadedPhotoSrc) {
+                avatarImg.src = uploadedPhotoSrc;
+                avatarImg.style.display = 'block';
+                avatarFallback.style.display = 'none';
+            } else {
+                avatarImg.style.display = 'none';
+                avatarFallback.style.display = 'inline';
             }
 
             // Asignar datos e imágenes
