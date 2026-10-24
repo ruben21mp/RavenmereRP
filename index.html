@@ -7,6 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Librería html2canvas para descargar la tarjeta como imagen PNG -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         :root {
             --bg-dark: #0a0b0e;
@@ -295,17 +297,25 @@
             margin: 0.2rem;
         }
 
+        .wand-input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto 1.5rem auto;
+            text-align: left;
+        }
+
         .wand-input-group {
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            max-width: 400px;
-            margin: 0 auto 1.5rem auto;
+            gap: 0.4rem;
         }
 
         .wand-input-group label {
             color: var(--gold-light);
             font-weight: 600;
+            font-size: 0.9rem;
         }
 
         .wand-input-group input, .wand-input-group select {
@@ -314,21 +324,174 @@
             border: 1px solid var(--gold-primary);
             color: #fff;
             border-radius: 6px;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
-        .discord-card-preview {
-            background: #1e1f29;
-            border: 1px solid var(--gold-primary);
-            border-left: 5px solid var(--gold-primary);
-            border-radius: 8px;
-            padding: 1.5rem;
-            font-family: monospace;
+        /* DISEÑO DE TARJETA REAL MÁGICA CON FONDO DEL CASTILLO */
+        .card-container-wrapper {
+            perspective: 1000px;
+            margin: 2rem auto;
+            max-width: 620px;
+        }
+
+        .student-id-card-real {
+            position: relative;
+            width: 100%;
+            height: 360px;
+            border-radius: 18px;
+            border: 3px solid var(--gold-primary);
+            padding: 1.8rem;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.9), inset 0 0 30px rgba(0,0,0,0.7);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: #fff;
+            font-family: 'Cinzel', serif;
+            transition: all 0.5s ease;
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Estilos de Color Dinámico según la Casa */
+        .card-house-valerius {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.85), rgba(40, 0, 0, 0.95)), url('ravenmere-castle.jpg') center/cover no-repeat;
+            border-color: #ff4d4d;
+            box-shadow: 0 0 35px rgba(139, 0, 0, 0.6);
+        }
+
+        .card-house-vipera {
+            background: linear-gradient(135deg, rgba(0, 100, 0, 0.85), rgba(0, 30, 0, 0.95)), url('ravenmere-castle.jpg') center/cover no-repeat;
+            border-color: #2ecc71;
+            box-shadow: 0 0 35px rgba(0, 100, 0, 0.6);
+        }
+
+        .card-house-corvus {
+            background: linear-gradient(135deg, rgba(0, 30, 120, 0.85), rgba(0, 10, 40, 0.95)), url('ravenmere-castle.jpg') center/cover no-repeat;
+            border-color: #3498db;
+            box-shadow: 0 0 35px rgba(0, 0, 139, 0.6);
+        }
+
+        .card-house-silvan {
+            background: linear-gradient(135deg, rgba(139, 90, 43, 0.85), rgba(40, 25, 10, 0.95)), url('ravenmere-castle.jpg') center/cover no-repeat;
+            border-color: #f1c40f;
+            box-shadow: 0 0 35px rgba(139, 90, 43, 0.6);
+        }
+
+        .card-house-default {
+            background: linear-gradient(135deg, rgba(20, 22, 30, 0.88), rgba(5, 6, 10, 0.96)), url('ravenmere-castle.jpg') center/cover no-repeat;
+            border-color: var(--gold-primary);
+        }
+
+        /* Marca de Agua de la Casa en la derecha */
+        .card-house-watermark {
+            position: absolute;
+            right: -15px;
+            bottom: -15px;
+            width: 260px;
+            height: 260px;
+            object-fit: contain;
+            opacity: 0.28;
+            pointer-events: none;
+            filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.5));
+        }
+
+        .card-header-real {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+            padding-bottom: 0.8rem;
+            z-index: 2;
+        }
+
+        .card-school-title-real {
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: var(--gold-light);
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
             text-align: left;
-            color: #2ecc71;
-            white-space: pre-wrap;
-            margin: 1.5rem 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .card-school-sub-real {
+            font-size: 0.75rem;
+            color: var(--gold-primary);
+            letter-spacing: 1px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+        }
+
+        .card-header-logo-real {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(0,0,0,0.8));
+        }
+
+        .card-body-real {
+            display: flex;
+            gap: 20px;
+            margin: 1rem 0;
+            align-items: center;
+            z-index: 2;
+            text-align: left;
+        }
+
+        .card-avatar-real {
+            width: 100px;
+            height: 120px;
+            border: 2px solid var(--gold-primary);
+            border-radius: 10px;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.9);
+            flex-shrink: 0;
+        }
+
+        .card-info-real {
+            flex-grow: 1;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .card-info-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: #ffffff;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px #000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 0.2rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+
+        .card-info-row-real {
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+            color: #e2e8f0;
+            text-shadow: 1px 1px 2px #000;
+        }
+
+        .card-info-row-real strong {
+            color: var(--gold-light);
+            font-family: 'Cinzel', serif;
+        }
+
+        .card-footer-real {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.4);
+            padding-top: 0.6rem;
+            font-size: 0.8rem;
+            color: var(--gold-light);
+            z-index: 2;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 1px;
         }
 
         /* Section Layouts con FONDO PARA RECLUTAMIENTO */
@@ -573,6 +736,7 @@
             font-size: 1.1rem;
             transition: all 0.3s ease;
             margin: 0.5rem;
+            cursor: pointer;
         }
 
         .btn-secondary:hover {
@@ -595,6 +759,9 @@
             nav a { margin: 0 0.4rem; font-size: 0.85rem; }
             .header-logo { width: 70px; height: 70px; }
             .letter-header-crest { width: 200px; height: 200px; }
+            .student-id-card-real { height: auto; padding: 1.2rem; }
+            .card-body-real { flex-direction: column; text-align: center; }
+            .wand-input-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -667,11 +834,11 @@
             </div>
         </div>
 
-        <!-- Wand Generator -->
+        <!-- Wand Generator & Real Student Card -->
         <div class="minigame-container" id="wand-section">
             <div class="minigame-header">
                 <h3 class="minigame-title">🪄 ALARIC & VANE (ARTESANOS DE VARITAS)</h3>
-                <p style="color: var(--text-muted)" id="wand-subtitle">Ingresa tu fecha de nacimiento para vincular tu Horóscopo Mágico con la Casa asignada por el Ritual del Destino.</p>
+                <p style="color: var(--text-muted)" id="wand-subtitle">Ingresa tus datos de estudiante para forjar tu carnet oficial de Ravenmere.</p>
             </div>
 
             <div id="wand-form">
@@ -679,62 +846,87 @@
                     ⚠️ Te recomendamos completar primero el Test de Casa superior para que tu varita absorba tu núcleo mágico real.
                 </div>
 
-                <div class="wand-input-group">
-                    <label for="wand-day">Día de nacimiento:</label>
-                    <input type="number" id="wand-day" min="1" max="31" placeholder="Ej: 15">
-                </div>
+                <!-- FORMULARIO DE NOMBRE, APELLIDO Y FECHA DE NACIMIENTO -->
+                <div class="wand-input-grid">
+                    <div class="wand-input-group">
+                        <label for="student-first-name">Nombre Mágico / RP:</label>
+                        <input type="text" id="student-first-name" placeholder="Ej: Alistair" required>
+                    </div>
 
-                <div class="wand-input-group">
-                    <label for="wand-month">Mes de nacimiento:</label>
-                    <select id="wand-month">
-                        <option value="1">Enero</option>
-                        <option value="2">Febrero</option>
-                        <option value="3">Marzo</option>
-                        <option value="4">Abril</option>
-                        <option value="5">Mayo</option>
-                        <option value="6">Junio</option>
-                        <option value="7">Julio</option>
-                        <option value="8">Agosto</option>
-                        <option value="9">Septiembre</option>
-                        <option value="10">Octubre</option>
-                        <option value="11">Noviembre</option>
-                        <option value="12">Diciembre</option>
-                    </select>
+                    <div class="wand-input-group">
+                        <label for="student-last-name">Apellido Mágico / RP:</label>
+                        <input type="text" id="student-last-name" placeholder="Ej: Blackwood" required>
+                    </div>
+
+                    <div class="wand-input-group">
+                        <label for="wand-day">Día de nacimiento:</label>
+                        <input type="number" id="wand-day" min="1" max="31" placeholder="Ej: 15">
+                    </div>
+
+                    <div class="wand-input-group">
+                        <label for="wand-month">Mes de nacimiento:</label>
+                        <select id="wand-month">
+                            <option value="1">Enero</option>
+                            <option value="2">Febrero</option>
+                            <option value="3">Marzo</option>
+                            <option value="4">Abril</option>
+                            <option value="5">Mayo</option>
+                            <option value="6">Junio</option>
+                            <option value="7">Julio</option>
+                            <option value="8">Agosto</option>
+                            <option value="9">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
+                        </select>
+                    </div>
                 </div>
 
                 <div style="text-align: center; margin-top: 1.5rem;">
-                    <button onclick="generateWand()" class="btn-primary">FORJAR MI VARITA UNIFICADA</button>
+                    <button onclick="generateWand()" class="btn-primary">FORJAR MI CARNET DE ESTUDIANTE 🔮</button>
                 </div>
             </div>
 
             <div id="wand-result" style="display: none;" class="result-box">
-                <p style="color: var(--gold-primary); letter-spacing: 2px;">FICHA DE ARTESANÍA ANCESTRAL</p>
-                <h3 id="wand-title" style="color: var(--gold-light); margin-bottom: 0.5rem;"></h3>
-                <p id="wand-zodiac" style="color: var(--gold-primary); font-style: italic; margin-bottom: 1.5rem;"></p>
+                <p style="color: var(--gold-primary); letter-spacing: 2px;">DOCUMENTO OFICIAL DE MATRÍCULA</p>
+                <h3 style="color: var(--gold-light); margin-bottom: 0.5rem;">TARJETA DE ESTUDIANTE MÁGICA</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Aquí tienes tu carnet oficial listo para descargar o copiar en Discord:</p>
 
-                <div style="text-align: left; background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; line-height: 1.8;">
-                    <p><strong>🌳 Madera:</strong> <span id="wand-wood"></span></p>
-                    <p><strong>✨ Núcleo Mágico:</strong> <span id="wand-core"></span></p>
-                    <p><strong>📏 Longitud y Grosor:</strong> <span id="wand-length"></span></p>
-                    <p><strong>➰ Flexibilidad:</strong> <span id="wand-flexibility"></span></p>
-                    <p><strong>🪵 Empuñadura y Acabado:</strong> <span id="wand-handle"></span></p>
-                    <p><strong>🔮 Aura Mágica Resonante:</strong> <span id="wand-aura"></span></p>
-                    <p><strong>📜 Resonancia de Casa y Alma:</strong> <span id="wand-desc"></span></p>
+                <!-- TARJETA REAL MÁGICA CON COLOR DINÁMICO Y CASTILLO DE FONDO -->
+                <div class="card-container-wrapper">
+                    <div class="student-id-card-real card-house-default" id="student-card-real">
+                        <img id="card-bg-crest-img" class="card-house-watermark" src="valerius-crest.png" alt="Blasón Mágico">
+                        
+                        <div class="card-header-real">
+                            <div>
+                                <div class="card-school-title-real">RAVENMERE CASTLE</div>
+                                <div class="card-school-sub-real">COLEGIO DE MAGIA Y HECHICERÍA</div>
+                            </div>
+                            <img src="Escudo mágico de RavenmereOficial.png" alt="Escudo Oficial Ravenmere" class="card-header-logo-real">
+                        </div>
+
+                        <div class="card-body-real">
+                            <div class="card-avatar-real">🧙‍♂️</div>
+                            <div class="card-info-real">
+                                <div class="card-info-name" id="card-full-name-val">Alistair Blackwood</div>
+                                <div class="card-info-row-real"><strong>CASA:</strong> <span id="card-house-val" style="color: var(--gold-light); font-weight: bold;"></span></div>
+                                <div class="card-info-row-real"><strong>VARITA:</strong> <span id="card-wand-val"></span></div>
+                                <div class="card-info-row-real"><strong>NÚCLEO:</strong> <span id="card-core-val"></span></div>
+                                <div class="card-info-row-real"><strong>SIGNO ASTRAL:</strong> <span id="card-zodiac-val"></span></div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer-real">
+                            <span>MATRÍCULA: WHITELIST PENDIENTE</span>
+                            <span>AÑO LECTIVO 2026</span>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- FICHA OFICIAL PARA DISCORD -->
-                <div style="margin-top: 2rem; border-top: 1px dashed var(--gold-primary); padding-top: 1.5rem;">
-                    <h4 style="color: var(--gold-light); margin-bottom: 0.5rem;">📋 TU FICHA OFICIAL PARA DISCORD</h4>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">Copia este bloque formateado para presentarte en la comunidad de Ravenmere Castle:</p>
-                    
-                    <div id="discord-card-text" class="discord-card-preview"></div>
-                    
-                    <button onclick="copyDiscordCard()" class="btn-primary" id="btn-copy-card">📋 COPIAR FICHA AL PORTAPAPELES</button>
-                    <a href="https://discord.gg/CdFW8DRc" target="_blank" class="btn-primary">UNIRME A DISCORD CON MI FICHA</a>
-                </div>
-
-                <div style="margin-top: 1rem;">
-                    <button onclick="resetWand()" class="btn-secondary">Modificar Fecha</button>
+                <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+                    <button onclick="downloadCardImage()" class="btn-primary">📸 DESCARGAR CARNET (IMAGEN PNG)</button>
+                    <button onclick="copyDiscordCardText()" class="btn-primary" id="btn-copy-card">📋 COPIAR FICHA DISCORD</button>
+                    <button onclick="resetWand()" class="btn-secondary">Modificar Datos</button>
                 </div>
             </div>
         </div>
@@ -843,7 +1035,7 @@
         <p class="section-subtitle">El bastión ancestral oculta secretos que solo los magos más dignos podrán desvelar.</p>
         
         <div class="lore-container">
-            <p>Fundado en los albores del siglo X por cuatro de los hechiceros más influyentes de la época, el <strong>Castillo de Ravenmere</strong> se erige sobre un valle envuelto en brumas perpetuas en lo más profundo de las montañas. Oculto a los ojos de los muggles mediante ancestrales encantamientos reguladores del espacio y la bruma, el colegio ha servido durante generaciones como el refugio supremo para la enseñanza de las artes mágicas.</p>
+            <p>Fundado en los誕生 del siglo X por cuatro de los hechiceros más influyentes de la época, el <strong>Castillo de Ravenmere</strong> se erige sobre un valle envuelto en brumas perpetuas en lo más profundo de las montañas. Oculto a los ojos de los muggles mediante ancestrales encantamientos reguladores del espacio y la bruma, el colegio ha servido durante generaciones como el refugio supremo para la enseñanza de las artes mágicas.</p>
             <p>Cada rincón de Ravenmere respira historia: desde las torres elevadas donde el viento susurra profecías, hasta las mazmorras inundadas por las aguas mágicas del lago. La vida en el colegio exige disciplina, honor y el dominio de la varita, pues las fuerzas oscuras que habitan más allá del Velo siempre aguardan la menor muestra de debilidad.</p>
         </div>
     </section>
@@ -915,7 +1107,7 @@
         <p>&copy; 2026 Ravenmere RP — Más que un servidor, una familia. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- JavaScript para Minijuegos Interactivos Unificados y Ficha de Discord -->
+    <!-- JavaScript para Minijuegos e Integración de Tarjeta Mágica Descargable -->
     <script>
         const questions = [
             {
@@ -1014,7 +1206,7 @@
         let houseScores = { valerius: 0, vipera: 0, corvus: 0, silvan: 0 };
         let assignedHouse = null;
         let userChoicesHash = 0;
-        let generatedCardText = "";
+        let globalWandData = {};
 
         function loadQuestion() {
             document.getElementById('quiz-progress').innerText = `Pregunta ${currentQuestion + 1} de ${questions.length}`;
@@ -1119,7 +1311,7 @@
             document.getElementById('wand-section').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // --- GENERADOR DE VARITAS Y FICHA DISCORD ---
+        // --- GENERADOR DE VARITAS Y TARJETA MÁGICA ---
         const woodsPool = [
             "Acacia del Nilo", "Acebo Imperial", "Abedul Blanco", "Álamo Estelar", "Avellano Ancestral",
             "Cerezo Silvestre", "Ciprés de Niebla", "Ébano de la Noche", "Espino Blanco", "Fresno de Montaña",
@@ -1128,26 +1320,33 @@
         ];
 
         const coresPool = [
-            "Fibra de Corazón de Dragón Carmesí", "Pluma de Fénix Celestial", 
-            "Pelo de Unicornio de la Niebla", "Escama de Serpentina del Lago", 
-            "Pelo de Thestral Oscuro", "Polvo de Cuerno de Horned Serpent"
+            "Fibra de Corazón de Dragón", "Pluma de Fénix Celestial", 
+            "Pelo de Unicornio", "Escama de Serpentina", 
+            "Pelo de Thestral Oscuro", "Polvo de Cuerno Mágico"
         ];
 
         function generateWand() {
+            const firstName = document.getElementById('student-first-name').value.trim();
+            const lastName = document.getElementById('student-last-name').value.trim();
             const day = parseInt(document.getElementById('wand-day').value);
             const month = parseInt(document.getElementById('wand-month').value);
+
+            if (!firstName || !lastName) {
+                alert("Por favor, ingresa tu Nombre y Apellido Mágico antes de forjar tu carnet.");
+                return;
+            }
 
             if (!day || day < 1 || day > 31) {
                 alert("Por favor, ingresa un día de nacimiento válido (1-31).");
                 return;
             }
 
+            const fullName = `${firstName} ${lastName}`;
             const seed = (day * 31) + (month * 12) + userChoicesHash;
 
             const wood = woodsPool[seed % woodsPool.length];
             const core = coresPool[(seed * 3) % coresPool.length];
-            const lengthNum = (24 + (seed % 12));
-            const lengthStr = `${lengthNum} cm`;
+            const lengthStr = `${(24 + (seed % 12))} cm`;
 
             let zodiac = "";
             if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) zodiac = "Aries ♈";
@@ -1163,40 +1362,70 @@
             else if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) zodiac = "Acuario ♒";
             else zodiac = "Piscis ♓";
 
-            let houseName = assignedHouse ? assignedHouse.toUpperCase() : "RAVENMERE GENERAL";
+            let houseName = assignedHouse ? assignedHouse.toUpperCase() : "RAVENMERE";
+            let crestImg = assignedHouse ? `${assignedHouse}-crest.png` : "Escudo mágico de RavenmereOficial.png";
 
-            document.getElementById('wand-title').innerText = "VARITA DE " + wood.toUpperCase();
-            document.getElementById('wand-zodiac').innerText = `Signo Astral: ${zodiac} | Linaje: Casa ${houseName}`;
-            document.getElementById('wand-wood').innerText = wood;
-            document.getElementById('wand-core').innerText = core;
-            document.getElementById('wand-length').innerText = lengthStr;
-            document.getElementById('wand-flexibility').innerText = "Ligeramente flexible y leal";
-            document.getElementById('wand-handle').innerText = "Empuñadura de espiral gótica con incrustaciones de plata";
-            document.getElementById('wand-aura').innerText = "Destellos dorados que parpadean levemente";
-            document.getElementById('wand-desc').innerText = `Varita forjada con equilibrio ancestral para el linaje de ${houseName}.`;
+            globalWandData = {
+                fullName: fullName,
+                wood: wood,
+                core: core,
+                length: lengthStr,
+                zodiac: zodiac,
+                house: houseName
+            };
 
-            // Construcción del texto formateado para Discord
-            generatedCardText = `📜 ─── FICHA OFICIAL DE ESTUDIANTE: RAVENMERE CASTLE ───\n` +
-                `🏰 Casa Asignada: ${houseName}\n` +
-                `🪄 Varita Ancestral: Madera de ${wood} (${lengthStr})\n` +
-                `✨ Núcleo Mágico: ${core}\n` +
-                `🔮 Signo Astral: ${zodiac}\n` +
-                `🛡️ Estado de Whitelist: Pendiente de aprobación\n` +
-                `────────────────────────────────────────────────────────`;
+            // Aplicar estilo dinámico a la tarjeta según la Casa
+            const cardElem = document.getElementById('student-card-real');
+            cardElem.className = 'student-id-card-real'; // Reset
+            if (assignedHouse) {
+                cardElem.classList.add(`card-house-${assignedHouse}`);
+            } else {
+                cardElem.classList.add('card-house-default');
+            }
 
-            document.getElementById('discord-card-text').innerText = generatedCardText;
+            // Asignar datos e imágenes
+            document.getElementById('card-bg-crest-img').src = crestImg;
+            document.getElementById('card-full-name-val').innerText = fullName;
+            document.getElementById('card-house-val').innerText = houseName;
+            document.getElementById('card-wand-val').innerText = `${wood} (${lengthStr})`;
+            document.getElementById('card-core-val').innerText = core;
+            document.getElementById('card-zodiac-val').innerText = zodiac;
 
             document.getElementById('wand-form').style.display = 'none';
             document.getElementById('wand-result').style.display = 'block';
         }
 
-        function copyDiscordCard() {
-            navigator.clipboard.writeText(generatedCardText).then(() => {
+        function downloadCardImage() {
+            const cardElem = document.getElementById('student-card-real');
+            
+            html2canvas(cardElem, {
+                scale: 3, // Alta resolución
+                useCORS: true,
+                backgroundColor: null
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `Carnet_Ravenmere_${globalWandData.fullName.replace(/\s+/g, '_')}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
+
+        function copyDiscordCardText() {
+            const cardText = `📜 ─── FICHA OFICIAL DE ESTUDIANTE: RAVENMERE CASTLE ───\n` +
+                `🧙‍♂️ Estudiante: ${globalWandData.fullName}\n` +
+                `🏰 Casa Asignada: ${globalWandData.house}\n` +
+                `🪄 Varita Ancestral: ${globalWandData.wood} (${globalWandData.length})\n` +
+                `✨ Núcleo Mágico: ${globalWandData.core}\n` +
+                `🔮 Signo Astral: ${globalWandData.zodiac}\n` +
+                `🛡️ Estado: Pendiente de Whitelist\n` +
+                `────────────────────────────────────────────────────────`;
+
+            navigator.clipboard.writeText(cardText).then(() => {
                 const btn = document.getElementById('btn-copy-card');
-                btn.innerText = "¡FICHA COPIADA CON ÉXITO! ✅";
+                btn.innerText = "¡FICHA COPIADA! ✅";
                 btn.style.background = "#27ae60";
                 setTimeout(() => {
-                    btn.innerText = "📋 COPIAR FICHA AL PORTAPAPELES";
+                    btn.innerText = "📋 COPIAR FICHA DISCORD";
                     btn.style.background = "linear-gradient(135deg, var(--gold-primary), #b38f2a)";
                 }, 3000);
             });
