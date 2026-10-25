@@ -952,13 +952,16 @@
             padding: 2rem;
             text-align: center;
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .house-card:hover { transform: translateY(-10px); }
-        .house-card.valerius:hover { border-color: var(--valerius-color); }
-        .house-card.vipera:hover { border-color: var(--vipera-color); }
-        .house-card.corvus:hover { border-color: var(--corvus-color); }
-        .house-card.silvan:hover { border-color: var(--silvan-color); }
+        .house-card.valerius:hover { border-color: var(--valerius-color); box-shadow: 0 10px 30px rgba(139, 0, 0, 0.3); }
+        .house-card.vipera:hover { border-color: var(--vipera-color); box-shadow: 0 10px 30px rgba(0, 100, 0, 0.3); }
+        .house-card.corvus:hover { border-color: var(--corvus-color); box-shadow: 0 10px 30px rgba(0, 0, 139, 0.3); }
+        .house-card.silvan:hover { border-color: var(--silvan-color); box-shadow: 0 10px 30px rgba(139, 90, 43, 0.3); }
 
         .house-crest {
             width: 150px;
@@ -980,11 +983,24 @@
             margin-bottom: 1rem;
         }
 
+        .founder-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 1.2rem;
+            text-align: justify;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 0.8rem;
+            border-radius: 6px;
+            border-left: 2px solid var(--gold-primary);
+        }
+
         .house-details {
             text-align: left;
             font-size: 0.95rem;
             color: var(--text-muted);
-            margin-top: 1rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+            padding-top: 1.2rem;
         }
 
         .house-details li { list-style: none; margin-bottom: 0.5rem; }
@@ -1061,9 +1077,9 @@
         <nav>
             <a href="#historia">El Castillo</a>
             <a href="#casas">Las 4 Casas</a>
-            <a href="#sombrero">Sombrero</a>
+            <a href="#sombrero">El Ritual</a>
             <a href="#minigames">Carnet & Varita</a>
-            <a href="#ficharp">Ficha de Personaje</a>
+            <a href="#ficharp">Expediente</a>
             <a href="#reclutamiento">Equipo Fundador</a>
             <a href="https://discord.gg/CdFW8DRc" target="_blank" class="btn-discord">Entrar al Discord</a>
         </nav>
@@ -1072,9 +1088,8 @@
     <section class="hero">
         <div class="hero-overlay">
             <h1>COLEGIO DE MAGIA Y HECHICERÍA</h1>
-            <p>Adéntrate en los secretos de Ravenmere Castle. Un servidor de Garry's Mod Roleplay Serio con Whitelist.</p>
+            <p>Adéntrate en los secretos de Ravenmere Castle. Un santuario ancestral reabierto 30 años después de la caída de Malakor.</p>
 
-            <!-- CARTA PRINCIPAL TIPO RELIQUIA TRIDIMENSIONAL CON SELLO DE LACRE -->
             <div class="admission-letter-wrapper" id="whitelist">
                 <div class="admission-letter">
                     <img src="Escudo mágico de RavenmereOficial.png" alt="Escudo Oficial de Ravenmere" class="letter-header-crest">
@@ -1082,30 +1097,30 @@
                     
                     <p class="letter-salutation">Estimado/a mago o bruja,</p>
                     <p>Nos complace enormemente informarle de que ha sido formalmente aceptado/a para cursar sus estudios superiores en el <strong>Colegio Ravenmere de Magia y Hechicería</strong>.</p>
-                    <p>Para formalizar su expediente de matrícula y cruzar el Velo Mágico hacia nuestras instalaciones, debe someterse al proceso de selección de <strong>Whitelist</strong> en nuestro santuario de Discord.</p>
+                    <p>Para formalizar su expediente de matrícula y cruzar el Velo Mágico hacia nuestras instalaciones, debe someterse al proceso de selección en nuestro santuario de Discord.</p>
                     <p>Presione el sello de lacre oficial inferior para romper el pergamino y presentarse ante el Consejo Evaluador.</p>
                     
                     <div class="wax-seal-container">
                         <a href="https://discord.gg/CdFW8DRc" target="_blank" class="wax-seal-btn" title="Romper el Sello e Ingresar a Discord">
                             <span class="wax-seal-inner">R</span>
                         </a>
-                        <span class="wax-seal-label">Pulsar para solicitar Whitelist</span>
+                        <span class="wax-seal-label">Pulsar para solicitar Matrícula</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PASO 1: EL RITUAL DEL SOMBRERO SELECCIONADOR (EL GRAN SALÓN & EL PENSADERO) -->
+    <!-- PASO 1: EL RITUAL DE SELECCIÓN ANCESTRAL -->
     <section class="pensieve-section" id="sombrero">
         <h2 class="section-title">PASO I: EL RITUAL DE SELECCIÓN ANCESTRAL</h2>
-        <p class="section-subtitle">Toma asiento en el Gran Salón. El Sombrero Seleccionador se posará sobre tu mente para dictaminar tu Casa Mágica.</p>
+        <p class="section-subtitle">Toma asiento en el Gran Salón. Las aguas místicas examinarán tus decisiones morales para asignarte tu Casa Mágica.</p>
 
         <div class="pensieve-container">
             <div class="pensieve-header">
                 <span class="pensieve-hat-icon">🧙‍♂️</span>
-                <h3 class="pensieve-title">EL PENSADERO DEL SOMBRERO</h3>
-                <p style="color: #94a3b8; margin-top: 0.3rem;">Sumerge tus pensamientos en las aguas místicas y responde a los 10 dilemas morales.</p>
+                <h3 class="pensieve-title">EL PENSADERO DEL CASTILLO</h3>
+                <p style="color: #94a3b8; margin-top: 0.3rem;">Sumerge tus pensamientos en las aguas místicas y responde a los 10 dilemas del destino.</p>
             </div>
 
             <div id="quiz-body">
@@ -1115,7 +1130,7 @@
             </div>
 
             <div id="quiz-result" style="display: none;" class="result-box">
-                <p style="color: var(--gold-primary); letter-spacing: 2px;">EL SOMBRERO HA DICTAMINADO TU DESTINO</p>
+                <p style="color: var(--gold-primary); letter-spacing: 2px;">EL PENSADERO HAS DICTAMINADO TU DESTINO</p>
                 <h3 id="result-house-title"></h3>
                 <img id="result-house-crest" src="" alt="Blasón de Casa" class="result-crest">
                 <p id="result-house-desc" style="color: var(--text-main); margin-bottom: 1.5rem;"></p>
@@ -1136,7 +1151,7 @@
     <!-- PASO 2: CARNET MÁGICO & VARITA ANCESTRAL -->
     <section class="minigames-section" id="minigames">
         <h2 class="section-title">PASO II: ARTESANÍA DE VARITAS Y CARNET ESCOLAR</h2>
-        <p class="section-subtitle">Forja tu documento de identidad escolar utilizando tu fecha de nacimiento y la Casa revelada por el Sombrero.</p>
+        <p class="section-subtitle">Forja tu documento de identidad escolar utilizando tu fecha de nacimiento y la Casa asignada por el Pensadero.</p>
 
         <div class="minigame-container" id="wand-section">
             <div class="minigame-header">
@@ -1222,16 +1237,15 @@
                         </div>
 
                         <div class="card-footer-real">
-                            <span>MATRÍCULA: <strong id="card-status-text" class="status-badge-pending">WHITELIST PENDIENTE</strong></span>
+                            <span>MATRÍCULA: <strong id="card-status-text" class="status-badge-pending">EVALUACIÓN PENDIENTE</strong></span>
                             <span>AÑO LECTIVO 2026</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- VALIDACIÓN DE CLAVES ÚNICAS (EJEMPLO RAVENMERE2027S10) -->
                 <div style="background: rgba(0,0,0,0.6); border: 1px solid var(--gold-primary); border-radius: 8px; padding: 1.2rem; max-width: 500px; margin: 1.5rem auto 1rem auto;">
                     <label for="whitelist-code-input" style="color: var(--gold-light); font-weight: bold; font-size: 0.95rem; display: block; margin-bottom: 0.5rem;">
-                        🔑 Introduce tu Clave Única de Whitelist
+                        🔑 Introduce tu Clave Única de Matrícula
                     </label>
                     <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.8rem;">Ej: <code>RAVENMERE2027S10</code>. (Solo funciona una vez por clave).</p>
                     <div style="display: flex; gap: 8px; justify-content: center;">
@@ -1255,7 +1269,7 @@
         <div class="parchment-sheet">
             <img src="Escudo mágico de RavenmereOficial.png" alt="Escudo Oficial Ravenmere" style="width: 100px; height: 100px; display: block; margin: 0 auto 0.5rem auto; object-fit: contain;">
             <h3>PASO III: REGISTRO DE EXPEDIENTE MÁGICO</h3>
-            <p class="parchment-subtitle">Manuscrito oficial de presentación para aspirantes a la Whitelist</p>
+            <p class="parchment-subtitle">Manuscrito oficial de presentación para aspirantes al Colegio</p>
 
             <form id="character-submission-form" onsubmit="submitCharacterSheet(event)">
                 <div class="parchment-grid">
@@ -1281,7 +1295,7 @@
                             <option value="Vipera">Vipera (Ambición y Astucia)</option>
                             <option value="Corvus">Corvus (Erudición e Ingenio)</option>
                             <option value="Silvan">Silvan (Lealtad y Magia Natural)</option>
-                            <option value="Indiferente">Sin preferencia (Decisión del Sombrero)</option>
+                            <option value="Indiferente">Sin preferencia (Decisión del Pensadero)</option>
                         </select>
                     </div>
 
@@ -1305,31 +1319,31 @@
     <!-- Recruitment Section -->
     <section class="section-recruitment-bg" id="reclutamiento">
         <h2 class="section-title">BUSCAMOS MIEMBROS FUNDADORES</h2>
-        <p class="section-subtitle">Únete al proyecto de Ravenmere RP. Estamos formando el equipo para crear una experiencia única de Roleplay y necesitamos gente con ganas, compromiso y pasión.</p>
+        <p class="section-subtitle">Únete al equipo creador de Ravenmere. Estamos formando el equipo para dar vida a una experiencia única y necesitamos personas comprometidas con la excelencia.</p>
 
         <div class="recruitment-grid">
             <div class="recruitment-card">
                 <div class="recruitment-card-header">
                     <span class="recruitment-icon">&lt;/&gt;</span>
-                    <h3>PROGRAMADORES</h3>
+                    <h3>DESARROLLADORES</h3>
                 </div>
                 <ul class="recruitment-list">
-                    <li>Desarrollo y scripts</li>
-                    <li>Optimización del servidor</li>
-                    <li>Sistemas personalizados</li>
-                    <li>Ideas y mejoras técnicas</li>
+                    <li>Sistemas de magia y combate</li>
+                    <li>Optimización de la experiencia</li>
+                    <li>Mecánicas dinámicas</li>
+                    <li>Innovación constante</li>
                 </ul>
             </div>
 
             <div class="recruitment-card">
                 <div class="recruitment-card-header">
                     <span class="recruitment-icon">🛡️</span>
-                    <h3>EQUIPO DE STAFF</h3>
+                    <h3>EQUIPO DE CONSEJO</h3>
                 </div>
                 <ul class="recruitment-list">
-                    <li>Moderadores</li>
-                    <li>Administradores</li>
-                    <li>Helpers</li>
+                    <li>Moderación e Inmersión</li>
+                    <li>Supervisión de historias</li>
+                    <li>Guías y Helpers</li>
                     <li>Soporte a la comunidad</li>
                 </ul>
             </div>
@@ -1340,23 +1354,23 @@
                     <h3>DISEÑADORES</h3>
                 </div>
                 <ul class="recruitment-list">
-                    <li>Diseño gráfico</li>
-                    <li>Creación de assets</li>
-                    <li>RRSS y contenido visual</li>
-                    <li>Imagen del servidor</li>
+                    <li>Arte gráfico e ilustración</li>
+                    <li>Modelado y escenarios</li>
+                    <li>Identidad visual</li>
+                    <li>Gestión estética</li>
                 </ul>
             </div>
 
             <div class="recruitment-card">
                 <div class="recruitment-card-header">
                     <span class="recruitment-icon">📜</span>
-                    <h3>SCRIPTERS / LORE</h3>
+                    <h3>ESCRITORES Y LORE</h3>
                 </div>
                 <ul class="recruitment-list">
-                    <li>Sistemas de rol</li>
-                    <li>Mecánicas personalizadas</li>
-                    <li>Integraciones</li>
-                    <li>Desarrollo de experiencias</li>
+                    <li>Tramas e historias vivas</li>
+                    <li>Eventos narrativos</li>
+                    <li>Desarrollo de personajes</li>
+                    <li>Ampliación del universo</li>
                 </ul>
             </div>
 
@@ -1367,56 +1381,66 @@
                 </div>
                 <ul class="recruitment-list">
                     <li>Redes sociales</li>
-                    <li>Creación de contenido</li>
-                    <li>Estrategias de crecimiento</li>
-                    <li>Gestión de comunidad</li>
+                    <li>Contenido cinematográfico</li>
+                    <li>Estrategias de expansión</li>
+                    <li>Comunicación</li>
                 </ul>
             </div>
 
             <div class="recruitment-card">
                 <div class="recruitment-card-header">
                     <span class="recruitment-icon">👥</span>
-                    <h3>Y MUCHO MÁS...</h3>
+                    <h3>CREADORES DE CONTENIDO</h3>
                 </div>
                 <ul class="recruitment-list">
-                    <li>Streamers / Creadores de contenido</li>
-                    <li>Aportación de ideas</li>
-                    <li>Cualquier talento que sume</li>
-                    <li>Personas con ganas de construir</li>
+                    <li>Streamers y creadores</li>
+                    <li>Colaboradores activos</li>
+                    <li>Aportación de talento</li>
+                    <li>Pasión por la fantasía</li>
                 </ul>
             </div>
         </div>
 
         <div class="recruitment-callout">
             <h3>¿Te unes a la aventura?</h3>
-            <p>Si crees que puedes aportar algo y quieres ser parte de Ravenmere RP, no lo dudes. ¡Escríbenos directamente!</p>
+            <p>Si deseas contribuir a la creación de este universo, contáctanos directamente a través de nuestro santuario en Discord.</p>
             <a href="https://discord.gg/CdFW8DRc" target="_blank" class="btn-primary">CONTÁCTANOS EN DISCORD</a>
         </div>
     </section>
 
-    <!-- SECCIÓN DE HISTORIA -->
+    <!-- SECCIÓN DE HISTORIA GENERAL ÉPICA (ACTUALIZADA CON MALAKOR Y LA DESCENDENCIA OCULTA) -->
     <section class="section-history-bg" id="historia">
         <h2 class="section-title">LA CRÓNICA DE RAVENMERE</h2>
-        <p class="section-subtitle">El bastión ancestral oculta secretos que solo los magos más dignos podrán desvelar.</p>
+        <p class="section-subtitle">Mil años de leyendas, guerras místicas y el misterio del legado de Malakor.</p>
         
         <div class="parchment-scroll">
-            <p>Fundado en los albores del siglo X por cuatro de los hechiceros más influyentes de la época, el <strong>Castillo de Ravenmere</strong> se erige sobre un valle envuelto en brumas perpetuas en lo más profundo de las montañas. Oculto a los ojos de los muggles mediante ancestrales encantamientos reguladores del espacio y la bruma, el colegio ha servido durante generaciones como el refugio supremo para la enseñanza de las artes mágicas.</p>
-            <p>Cada rincón de Ravenmere respira historia: desde las torres elevadas donde el viento susurra profecías, hasta las mazmorras inundadas por las aguas mágicas del lago. La vida en el colegio exige disciplina, honor y el dominio de la varita, pues las fuerzas oscuras que habitan más allá del Velo siempre aguardan la menor muestra de debilidad.</p>
+            <p>En el siglo X, durante la brutal Era de la Ceniza, cuatro prodigios de las artes arcanas —<strong>Godofredo Valerius, Isolde Vipera, Cornelius Corvus y Elara Silvan</strong>— unieron sus destinos para desafiar a los inquisidores del mundo antiguo. Juntos no solo alzaron los muros inexpugnables de Ravenmere Castle y tejieron la Gran Bruma Perpetua, sino que sellaron una alianza inquebrantable en defensa del conocimiento libre.</p>
+            
+            <p>Durante siglos, el castillo se mantuvo como un bastión inquebrantable, hasta que el orden se quebró con el ascenso de <strong>Malakor</strong>. Hechicero de linaje aristocrático y talento oscuro sin parangón, Malakor renegó de las leyes del Consejo y congregó a los magos más radicales bajo una sola obsesión: arrebatar las reliquias de los fundadores y romper el Velo místico que separaba el colegio del mundo exterior.</p>
+            
+            <p>La conflagración estalló y culminó en el crudo invierno de <strong>1996</strong>, cuando las reliquias resonaron al unísono en lo alto de las torres de Ravenmere, provocando una explosión mística que desintegró a Malakor. Han pasado exactamente <strong>30 años</strong> desde aquella noche. Hoy, en <strong>2026</strong>, aunque sus acólitos son perseguidos por los aurores y su cuerpo jamás fue hallado, un frío rumor recorre las mazmorras: en los oscuros años previos a su caída, Malakor engendró descendencia. Una línea de sangre oculta que hoy podría estar caminando por los pasillos del castillo, esperando el momento de reclamar su herencia.</p>
             
             <img src="Escudo mágico de RavenmereOficial.png" alt="Emblema Oficial Ravenmere" class="parchment-bottom-crest">
         </div>
     </section>
 
-    <!-- SECCIÓN DE CASAS -->
+    <!-- SECCIÓN DE LAS 4 CASAS Y SUS FUNDADORES (CON LAS DESCRIPCIONES AÑADIDAS) -->
     <section class="section-houses-bg" id="casas">
         <h2 class="section-title">LAS CUATRO CASAS ANCESTRALES</h2>
-        <p class="section-subtitle">Descubre el linaje, los valores y las reliquias de los fundadores de Ravenmere.</p>
+        <p class="section-subtitle">Los pilares fundacionales y la esencia de sus venerados creadores.</p>
 
         <div class="houses-grid">
+            
+            <!-- VALERIUS -->
             <div class="house-card valerius">
-                <img src="valerius-crest.png" alt="Blasón de la Casa Valerius" class="house-crest">
-                <h3 class="house-title">🔴 VALERIUS</h3>
-                <p class="house-founder">Fundador: Godofredo Valerius</p>
+                <div>
+                    <img src="valerius-crest.png" alt="Blasón de la Casa Valerius" class="house-crest">
+                    <h3 class="house-title">🔴 VALERIUS</h3>
+                    <p class="house-founder">Fundador: Godofredo Valerius</p>
+                    <div class="founder-desc">
+                        Conocido como el "León del Norte", Godofredo fue un maestro de la magia defensiva y el combate táctico. Creía que la magia debía usarse únicamente para proteger a los indefensos y combatir la tiranía.
+                    </div>
+                </div>
                 <ul class="house-details">
                     <li><strong>Valores:</strong> Valor, Osadía, Caballería.</li>
                     <li><strong>Sala Común:</strong> Torre elevada, tapices carmesí y gran chimenea.</li>
@@ -1424,10 +1448,16 @@
                 </ul>
             </div>
 
+            <!-- VIPERA -->
             <div class="house-card vipera">
-                <img src="vipera-crest.png" alt="Blasón de la Casa Vipera" class="house-crest">
-                <h3 class="house-title">🟢 VIPERA</h3>
-                <p class="house-founder">Fundadora: Isolde Vipera</p>
+                <div>
+                    <img src="vipera-crest.png" alt="Blasón de la Casa Vipera" class="house-crest">
+                    <h3 class="house-title">🟢 VIPERA</h3>
+                    <p class="house-founder">Fundadora: Isolde Vipera</p>
+                    <div class="founder-desc">
+                        Una virtuosa de la mente y las artes oscuras sutiles. Isolde defendía que solo aquellos con la voluntad implacable de alcanzar la grandeza merecían dominar los secretos más profundos de la magia.
+                    </div>
+                </div>
                 <ul class="house-details">
                     <li><strong>Valores:</strong> Ambición, Talento, Astucia.</li>
                     <li><strong>Sala Común:</strong> Mazmorras, aguas subterráneas e iluminación verde.</li>
@@ -1435,10 +1465,16 @@
                 </ul>
             </div>
 
+            <!-- CORVUS -->
             <div class="house-card corvus">
-                <img src="corvus-crest.png" alt="Blasón de la Casa Corvus" class="house-crest">
-                <h3 class="house-title">🔵 CORVUS</h3>
-                <p class="house-founder">Fundador: Cornelius Corvus</p>
+                <div>
+                    <img src="corvus-crest.png" alt="Blasón de la Casa Corvus" class="house-crest">
+                    <h3 class="house-title">🔵 CORVUS</h3>
+                    <p class="house-founder">Fundador: Cornelius Corvus</p>
+                    <div class="founder-desc">
+                        Erudito, astrónomo y alquimista sin igual. Cornelius dedicó su vida a mapear el cosmos mágico y sostenía que la curiosidad y la sabiduría analítica eran las armas más poderosas de la existencia.
+                    </div>
+                </div>
                 <ul class="house-details">
                     <li><strong>Valores:</strong> Erudición, Ingenio, Inteligencia.</li>
                     <li><strong>Sala Común:</strong> Torre del observatorio, biblioteca circular y constelaciones.</li>
@@ -1446,24 +1482,31 @@
                 </ul>
             </div>
 
+            <!-- SILVAN -->
             <div class="house-card silvan">
-                <img src="silvan-crest.png" alt="Blasón de la Casa Silvan" class="house-crest">
-                <h3 class="house-title">🟡 SILVAN</h3>
-                <p class="house-founder">Fundadora: Elara Silvan</p>
+                <div>
+                    <img src="silvan-crest.png" alt="Blasón de la Casa Silvan" class="house-crest">
+                    <h3 class="house-title">🟡 SILVAN</h3>
+                    <p class="house-founder">Fundadora: Elara Silvan</p>
+                    <div class="founder-desc">
+                        Magizoóloga y sanadora legendaria. Elara poseía un vínculo inquebrantable con la tierra y las criaturas. Creía firmemente en la lealtad absoluta, la humildad y la protección de la vida natural.
+                    </div>
+                </div>
                 <ul class="house-details">
                     <li><strong>Valores:</strong> Lealtad, Trabajo duro, Magia natural.</li>
                     <li><strong>Sala Común:</strong> Bajo tierra, cerca de los invernaderos, tierra fértil y madera antigua.</li>
                     <li><strong>Reliquia:</strong> Cáliz de roble de Silvan.</li>
                 </ul>
             </div>
+
         </div>
     </section>
 
     <section class="section">
-        <div class="cta-container">
+        <div class="cta-container" style="text-align: center;">
             <h2 class="section-title">¿PREPARADO PARA CRUZAR EL VELO?</h2>
-            <p style="color: var(--text-muted); margin-bottom: 2rem;">Únete a nuestra comunidad en Discord para solicitar tu Whitelist.</p>
-            <a href="https://discord.gg/CdFW8DRc" target="_blank" class="btn-primary">Solicitar Whitelist en Discord</a>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">Únete a nuestra comunidad en Discord para iniciar tu matriculación.</p>
+            <a href="https://discord.gg/CdFW8DRc" target="_blank" class="btn-primary">Ingresar a Discord</a>
         </div>
     </section>
 
@@ -1473,15 +1516,13 @@
 
     <!-- JavaScript Principal y Script del Cursor Mágico -->
     <script>
-        // --- SCRIPT DE CURSOR DE VARITA MÁGICA (Estela + Explosión de Clic) ---
         document.addEventListener('mousemove', (e) => {
-            if (Math.random() < 0.4) { // Frecuencia de chispas en movimiento
+            if (Math.random() < 0.4) {
                 createSpark(e.clientX, e.clientY, 6);
             }
         });
 
         document.addEventListener('click', (e) => {
-            // Explosión de estrellas al hacer clic
             for (let i = 0; i < 12; i++) {
                 setTimeout(() => {
                     const angle = Math.random() * Math.PI * 2;
@@ -1525,12 +1566,9 @@
             spark.style.top = `${y + (Math.random() * 10 - 5)}px`;
             document.body.appendChild(spark);
 
-            setTimeout(() => {
-                spark.remove();
-            }, 500);
+            setTimeout(() => { spark.remove(); }, 500);
         }
 
-        // --- ENVÍO DE FICHA DE PERSONAJE A SALA-DE-EQUIPO VIA WEBHOOK ---
         function submitCharacterSheet(event) {
             event.preventDefault();
 
@@ -1548,7 +1586,7 @@
                 content: "🦉 **¡NUEVA FICHA DE PERSONAJE RECIBIDA PARA REVISIÓN!**",
                 embeds: [{
                     title: `Expediente de Matrícula: ${name}`,
-                    color: 13945911, // Color dorado místico
+                    color: 13945911,
                     fields: [
                         { name: "👤 Discord del Usuario", value: discord, inline: true },
                         { name: "⏳ Edad del Personaje", value: age, inline: true },
@@ -1591,7 +1629,6 @@
             }, 5000);
         }
 
-        // --- SISTEMA DE TEST DE CASA (EL PENSADERO) ---
         const questions = [
             {
                 q: "1. Caminas solo por un callejón de noche y presencias a un mago acorralando a alguien indefenso. ¿Cuál es tu reacción instintiva?",
@@ -1796,7 +1833,6 @@
                 traitsDiv.appendChild(span);
             });
 
-            // Sincronizar automáticamente con el formulario del pergamino de ficha
             const houseSelect = document.getElementById('char-house-pref');
             if (houseSelect) {
                 houseSelect.value = data.selectVal;
@@ -1840,14 +1876,14 @@
             const targetExample = "RAVENMERE2027S10";
 
             if (inputCode !== targetExample && inputCode.length < 5) {
-                errorMsg.innerText = "⚠️ Formato inválido. Introduce una clave de Whitelist correcta.";
+                errorMsg.innerText = "⚠️ Formato inválido. Introduce una clave de matrícula correcta.";
                 errorMsg.style.display = 'block';
                 return;
             }
 
             let usedCodes = getUsedCodesStore();
             if (usedCodes.includes(inputCode)) {
-                errorMsg.innerText = "⚠️ Esta clave ya ha sido utilizada y ya no es válida.";
+                errorMsg.innerText = "⚠️ Esta clave ya ha sido utilizada por otro mago.";
                 errorMsg.style.display = 'block';
                 return;
             }
@@ -1971,7 +2007,7 @@
         }
 
         function copyDiscordCardText() {
-            const statusStr = isApproved ? `Aprobada y Oficial (${usedUniqueCode}) ✅` : "Pendiente de Whitelist ⏳";
+            const statusStr = isApproved ? `Aprobada y Oficial (${usedUniqueCode}) ✅` : "Pendiente de Matrícula ⏳";
             const cardText = `📜 ─── FICHA OFICIAL DE ESTUDIANTE: RAVENMERE CASTLE ───\n` +
                 `🧙‍♂️ Estudiante: ${globalWandData.fullName}\n` +
                 `🏰 Casa Asignada: ${globalWandData.house}\n` +
