@@ -140,7 +140,7 @@
             margin-bottom: 2.5rem;
         }
 
-        /* --- CARTA DE ADMISIÓN PRINCIPAL (PERGAMINO REALISTA Y SELLO DE LACRE 3D) --- */
+        /* --- CARTA DE ADMISIÓN PRINCIPAL --- */
         .admission-letter-wrapper {
             perspective: 1000px;
             margin: 2rem auto;
@@ -214,7 +214,7 @@
             line-height: 1;
         }
 
-        /* --- SELLO DE LACRE DE CERA REALISTA 3D CON EMBLEMA --- */
+        /* --- SELLO DE LACRE 3D --- */
         .wax-seal-container {
             display: flex;
             flex-direction: column;
@@ -282,7 +282,7 @@
             text-transform: uppercase;
         }
 
-        /* Minigames Section con FONDO MÁGICO */
+        /* Secciones */
         .minigames-section {
             position: relative;
             background: linear-gradient(to bottom, rgba(10, 11, 14, 0.85), rgba(10, 11, 14, 0.95)), url('magic-table-bg.jpg') center/cover no-repeat fixed;
@@ -394,16 +394,33 @@
             font-size: 0.9rem;
         }
 
-        .wand-input-group input, .wand-input-group select {
+        .wand-input-group input, .wand-input-group select, .wand-input-group textarea {
             padding: 0.8rem;
             background: #0d0f17;
             border: 1px solid var(--gold-primary);
             color: #fff;
             border-radius: 6px;
             font-size: 0.95rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        /* DISEÑO DE TARJETA REAL MÁGICA CON FONDO DEL CASTILLO */
+        .character-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .character-form-grid { grid-template-columns: 1fr; }
+        }
+
+        .form-full-width {
+            grid-column: span 2;
+        }
+
+        /* Carnet Real */
         .card-container-wrapper {
             perspective: 1000px;
             margin: 2rem auto;
@@ -429,7 +446,6 @@
             background-position: center;
         }
 
-        /* Estilos de Color Dinámico según la Casa */
         .card-house-valerius {
             background: linear-gradient(135deg, rgba(139, 0, 0, 0.85), rgba(40, 0, 0, 0.95)), url('ravenmere-castle.jpg') center/cover no-repeat;
             border-color: #ff4d4d;
@@ -459,7 +475,6 @@
             border-color: var(--gold-primary);
         }
 
-        /* Marca de Agua de la Casa en la derecha */
         .card-house-watermark {
             position: absolute;
             right: -15px;
@@ -469,7 +484,6 @@
             object-fit: contain;
             opacity: 0.28;
             pointer-events: none;
-            filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.5));
         }
 
         .card-header-real {
@@ -486,7 +500,6 @@
             font-weight: 900;
             color: var(--gold-light);
             letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
             text-align: left;
         }
 
@@ -502,7 +515,6 @@
             width: 130px;
             height: 130px;
             object-fit: contain;
-            filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.7));
             margin-top: -10px;
         }
 
@@ -525,7 +537,6 @@
             align-items: center;
             justify-content: center;
             font-size: 3.2rem;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.9), 0 0 15px rgba(212, 175, 55, 0.3);
             flex-shrink: 0;
             overflow: hidden;
             position: relative;
@@ -549,18 +560,15 @@
             font-size: 1.45rem;
             color: #ffffff;
             font-weight: 700;
-            text-shadow: 2px 2px 4px #000;
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
             padding-bottom: 0.2rem;
             margin-bottom: 0.5rem;
-            letter-spacing: 1px;
         }
 
         .card-info-row-real {
             font-size: 0.9rem;
             margin-bottom: 0.3rem;
             color: #e2e8f0;
-            text-shadow: 1px 1px 2px #000;
         }
 
         .card-info-row-real strong {
@@ -578,21 +586,12 @@
             color: var(--gold-light);
             z-index: 2;
             font-family: 'Cinzel', serif;
-            letter-spacing: 1px;
         }
 
-        .status-badge-pending {
-            color: #f1c40f;
-            text-shadow: 0 0 8px rgba(241, 196, 15, 0.5);
-        }
+        .status-badge-pending { color: #f1c40f; }
+        .status-badge-approved { color: #2ecc71 !important; font-weight: bold; }
 
-        .status-badge-approved {
-            color: #2ecc71 !important;
-            font-weight: bold;
-            text-shadow: 0 0 10px rgba(46, 204, 113, 0.8);
-        }
-
-        /* SECCIÓN DE HISTORIA CON FONDO ESTILO PERGAMINO QUEMADO */
+        /* Historia & Casas */
         .section-history-bg {
             position: relative;
             background: #0a0b0e;
@@ -637,10 +636,8 @@
             height: 180px;
             margin: 2rem auto 0 auto;
             object-fit: contain;
-            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.6));
         }
 
-        /* SECCIÓN DE CASAS CON EL CASTILLO DE FONDO */
         .section-houses-bg {
             position: relative;
             background: linear-gradient(to bottom, rgba(10, 11, 14, 0.85), rgba(10, 11, 14, 0.92)), url('ravenmere-castle.jpg') center/cover no-repeat fixed;
@@ -648,7 +645,6 @@
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
         }
 
-        /* Section Layouts */
         .section {
             padding: 5rem 2rem;
             max-width: 1200px;
@@ -667,7 +663,6 @@
             font-size: 2.5rem;
             color: var(--gold-primary);
             margin-bottom: 1rem;
-            position: relative;
         }
 
         .section-subtitle {
@@ -677,7 +672,6 @@
             font-size: 1.1rem;
         }
 
-        /* Recruitment Section */
         .recruitment-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -694,14 +688,11 @@
             border-radius: 12px;
             padding: 2rem;
             transition: all 0.3s ease;
-            position: relative;
-            backdrop-filter: blur(10px);
         }
 
         .recruitment-card:hover {
             transform: translateY(-5px);
             border-color: var(--gold-primary);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15);
         }
 
         .recruitment-card-header {
@@ -741,7 +732,6 @@
             position: absolute;
             left: 0;
             font-size: 1.2rem;
-            line-height: 1;
         }
 
         .recruitment-callout {
@@ -754,24 +744,8 @@
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
-            backdrop-filter: blur(10px);
         }
 
-        .recruitment-callout h3 {
-            color: var(--gold-light);
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .recruitment-callout p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Houses Grid */
         .houses-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -785,20 +759,13 @@
             padding: 2rem;
             text-align: center;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(8px);
         }
 
-        .house-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .house-card.valerius:hover { border-color: var(--valerius-color); box-shadow: 0 0 25px rgba(139, 0, 0, 0.4); }
-        .house-card.vipera:hover { border-color: var(--vipera-color); box-shadow: 0 0 25px rgba(0, 100, 0, 0.4); }
-        .house-card.corvus:hover { border-color: var(--corvus-color); box-shadow: 0 0 25px rgba(0, 0, 139, 0.4); }
-        .house-card.silvan:hover { border-color: var(--silvan-color); box-shadow: 0 0 25px rgba(139, 90, 43, 0.4); }
+        .house-card:hover { transform: translateY(-10px); }
+        .house-card.valerius:hover { border-color: var(--valerius-color); }
+        .house-card.vipera:hover { border-color: var(--vipera-color); }
+        .house-card.corvus:hover { border-color: var(--corvus-color); }
+        .house-card.silvan:hover { border-color: var(--silvan-color); }
 
         .house-crest {
             width: 150px;
@@ -827,20 +794,8 @@
             margin-top: 1rem;
         }
 
-        .house-details li {
-            list-style: none;
-            margin-bottom: 0.5rem;
-        }
-
-        .house-details strong {
-            color: var(--text-main);
-        }
-
-        /* Buttons & Footer */
-        .cta-container {
-            text-align: center;
-            margin-top: 3rem;
-        }
+        .house-details li { list-style: none; margin-bottom: 0.5rem; }
+        .house-details strong { color: var(--text-main); }
 
         .btn-primary {
             display: inline-block;
@@ -858,10 +813,7 @@
             border: none;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
-        }
+        .btn-primary:hover { transform: translateY(-3px); }
 
         .btn-secondary {
             display: inline-block;
@@ -903,8 +855,6 @@
             .student-id-card-real { min-height: auto; padding: 1.2rem; }
             .card-body-real { flex-direction: column; text-align: center; }
             .wand-input-grid { grid-template-columns: 1fr; }
-            .card-header-logo-real { width: 90px; height: 90px; }
-            .parchment-scroll { padding: 2rem 1.5rem; }
         }
     </style>
 </head>
@@ -918,9 +868,9 @@
         <nav>
             <a href="#historia">El Castillo</a>
             <a href="#casas">Las 4 Casas</a>
-            <a href="#minigames">Probar Varita / Casa</a>
+            <a href="#ficharp">Ficha de Personaje</a>
+            <a href="#minigames">Carnet / Whitelist</a>
             <a href="#reclutamiento">Equipo Fundador</a>
-            <a href="#whitelist">Whitelist</a>
             <a href="https://discord.gg/CdFW8DRc" target="_blank" class="btn-discord">Entrar al Discord</a>
         </nav>
     </header>
@@ -930,7 +880,7 @@
             <h1>COLEGIO DE MAGIA Y HECHICERÍA</h1>
             <p>Adéntrate en los secretos de Ravenmere Castle. Un servidor de Garry's Mod Roleplay Serio con Whitelist.</p>
 
-            <!-- CARTA PRINCIPAL TIPO RELIQUIA TRIDIMENSIONAL CON SELLO DE LACRE Y LETRAS CALIGRÁFICAS -->
+            <!-- CARTA PRINCIPAL TIPO RELIQUIA TRIDIMENSIONAL CON SELLO DE LACRE -->
             <div class="admission-letter-wrapper" id="whitelist">
                 <div class="admission-letter">
                     <img src="Escudo mágico de RavenmereOficial.png" alt="Escudo Oficial de Ravenmere" class="letter-header-crest">
@@ -941,7 +891,6 @@
                     <p>Para formalizar su expediente de matrícula y cruzar el Velo Mágico hacia nuestras instalaciones, debe someterse al proceso de selección de <strong>Whitelist</strong> en nuestro santuario de Discord.</p>
                     <p>Presione el sello de lacre oficial inferior para romper el pergamino y presentarse ante el Consejo Evaluador.</p>
                     
-                    <!-- SELLO DE CERA DE LACRE 3D INTERACTIVO -->
                     <div class="wax-seal-container">
                         <a href="https://discord.gg/CdFW8DRc" target="_blank" class="wax-seal-btn" title="Romper el Sello e Ingresar a Discord">
                             <span class="wax-seal-inner">R</span>
@@ -953,7 +902,65 @@
         </div>
     </section>
 
-    <!-- Interactive Minigames Section con FONDO MÁGICO -->
+    <!-- FORMULARIO DE FICHA DE PERSONAJE CONECTADO AL WEBHOOK -->
+    <section class="minigames-section" id="ficharp">
+        <h2 class="section-title">REGISTRO DE EXPEDIENTE & FICHA DE PERSONAJE</h2>
+        <p class="section-subtitle">Completa los datos de tu personaje de rol serio. Al enviar la solicitud, el equipo la recibirá directamente en su sala privada de Discord para su revisión.</p>
+
+        <div class="minigame-container">
+            <div class="minigame-header">
+                <h3 class="minigame-title">📜 FORMULARIO DE ADMISIÓN MAGISTRAL</h3>
+                <p style="color: var(--text-muted)">Rellena los campos con el trasfondo de tu personaje para solicitar la aprobación oficial.</p>
+            </div>
+
+            <form id="character-submission-form" onsubmit="submitCharacterSheet(event)">
+                <div class="character-form-grid">
+                    <div class="wand-input-group">
+                        <label for="char-name">Nombre del Personaje:</label>
+                        <input type="text" id="char-name" placeholder="Ej: Alistair Blackwood" required>
+                    </div>
+
+                    <div class="wand-input-group">
+                        <label for="char-discord">Tu Usuario de Discord:</label>
+                        <input type="text" id="char-discord" placeholder="Ej: rubencico#0000" required>
+                    </div>
+
+                    <div class="wand-input-group">
+                        <label for="char-age">Edad del Personaje:</label>
+                        <input type="number" id="char-age" min="11" max="90" placeholder="Ej: 17" required>
+                    </div>
+
+                    <div class="wand-input-group">
+                        <label for="char-house-pref">Casa Preferida / Afinidad:</label>
+                        <select id="char-house-pref">
+                            <option value="Valerius">Valerius (Valor y Osadía)</option>
+                            <option value="Vipera">Vipera (Ambición y Astucia)</option>
+                            <option value="Corvus">Corvus (Erudición e Ingenio)</option>
+                            <option value="Silvan">Silvan (Lealtad y Magia Natural)</option>
+                            <option value="Indiferente">Sin preferencia (Decisión del Sombrero)</option>
+                        </select>
+                    </div>
+
+                    <div class="wand-input-group form-full-width">
+                        <label for="char-appearance">Apariencia Física y Rasgos Distintivos:</label>
+                        <textarea id="char-appearance" rows="3" placeholder="Describe el físico, vestimenta habitual o cicatrices de tu personaje..." required></textarea>
+                    </div>
+
+                    <div class="wand-input-group form-full-width">
+                        <label for="char-history">Historia y Trasfondo (Lore del Personaje):</label>
+                        <textarea id="char-history" rows="5" placeholder="¿De dónde procede? ¿Cómo descubrió su magia? ¿Cuáles son sus ambiciones u objetivos al entrar a Ravenmere Castle?" required></textarea>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <button type="submit" class="btn-primary" id="btn-submit-ficha">ENVIAR FICHA AL EQUIPO 🦉</button>
+                </div>
+                <p id="ficha-success-msg" style="color: #2ecc71; text-align: center; margin-top: 1rem; font-weight: bold; display: none;">✨ ¡Ficha enviada con éxito a sala-de-equipo! El staff la revisará en breve.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Interactive Minigames Section (Test de Casa y Carnet) -->
     <section class="minigames-section" id="minigames">
         <h2 class="section-title">EXPERIENCIAS INTERACTIVAS</h2>
         <p class="section-subtitle">Descubre a qué Casa perteneces y qué Varita Ancestral responde a tu afinidad psicológica y astral.</p>
@@ -1084,7 +1091,7 @@
                     </div>
                 </div>
 
-                <!-- VALIDACIÓN DE CLAVES ÚNICAS (EJEMPLO ACTUALIZADO) -->
+                <!-- VALIDACIÓN DE CLAVES ÚNICAS (EJEMPLO RAVENMERE2027S10) -->
                 <div style="background: rgba(0,0,0,0.6); border: 1px solid var(--gold-primary); border-radius: 8px; padding: 1.2rem; max-width: 500px; margin: 1.5rem auto 1rem auto;">
                     <label for="whitelist-code-input" style="color: var(--gold-light); font-weight: bold; font-size: 0.95rem; display: block; margin-bottom: 0.5rem;">
                         🔑 Introduce tu Clave Única de Whitelist
@@ -1106,7 +1113,7 @@
         </div>
     </section>
 
-    <!-- Recruitment Section con Fondo de Despacho -->
+    <!-- Recruitment Section -->
     <section class="section-recruitment-bg" id="reclutamiento">
         <h2 class="section-title">BUSCAMOS MIEMBROS FUNDADORES</h2>
         <p class="section-subtitle">Únete al proyecto de Ravenmere RP. Estamos formando el equipo para crear una experiencia única de Roleplay y necesitamos gente con ganas, compromiso y pasión.</p>
@@ -1198,7 +1205,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE HISTORIA CON FONDO ESTILO PERGAMINO QUEMADO -->
+    <!-- SECCIÓN DE HISTORIA -->
     <section class="section-history-bg" id="historia">
         <h2 class="section-title">LA CRÓNICA DE RAVENMERE</h2>
         <p class="section-subtitle">El bastión ancestral oculta secretos que solo los magos más dignos podrán desvelar.</p>
@@ -1211,7 +1218,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN DE CASAS CON EL CASTILLO DE FONDO -->
+    <!-- SECCIÓN DE CASAS -->
     <section class="section-houses-bg" id="casas">
         <h2 class="section-title">LAS CUATRO CASAS ANCESTRALES</h2>
         <p class="section-subtitle">Descubre el linaje, los valores y las reliquias de los fundadores de Ravenmere.</p>
@@ -1275,8 +1282,71 @@
         <p>&copy; 2026 Ravenmere RP — Más que un servidor, una familia. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- JavaScript para Minijuegos e Validación de Claves -->
+    <!-- JavaScript Principal y Configuración del Webhook -->
     <script>
+        // --- ENVÍO DE FICHA DE PERSONAJE A SALA-DE-EQUIPO ---
+        function submitCharacterSheet(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('char-name').value.trim();
+            const discord = document.getElementById('char-discord').value.trim();
+            const age = document.getElementById('char-age').value.trim();
+            const house = document.getElementById('char-house-pref').value;
+            const appearance = document.getElementById('char-appearance').value.trim();
+            const history = document.getElementById('char-history').value.trim();
+            const submitBtn = document.getElementById('btn-submit-ficha');
+
+            // URL DE WEBHOOK CONFIGURADA PARA sala-de-equipo
+            const webhookUrl = "https://discord.com/api/webhooks/1563718916134543440/a7hXEwqK6QjhKtMo1_0DCz_Lmhrs13izCgXm0-dxaXbtNHLgyx859czxXTyejSpdgR5M"; 
+
+            const payload = {
+                content: "🦉 **¡NUEVA FICHA DE PERSONAJE RECIBIDA PARA REVISIÓN!**",
+                embeds: [{
+                    title: `Expediente de Matrícula: ${name}`,
+                    color: 13945911, // Color dorado místico
+                    fields: [
+                        { name: "👤 Discord del Usuario", value: discord, inline: true },
+                        { name: "⏳ Edad del Personaje", value: age, inline: true },
+                        { name: "🏰 Casa Preferida", value: house, inline: true },
+                        { name: "👁️ Apariencia", value: appearance },
+                        { name: "📜 Historia y Trasfondo", value: history }
+                    ],
+                    footer: { text: "Canal de Destino: sala-de-equipo • Ravenmere RP" },
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            }).then(response => {
+                if (response.ok) {
+                    showSuccessState();
+                } else {
+                    alert("Hubo un error al enviar la ficha. Comprueba la conexión.");
+                }
+            }).catch(err => {
+                console.error(err);
+                alert("Error de red al conectar con el servidor de Discord.");
+            });
+        }
+
+        function showSuccessState() {
+            const successMsg = document.getElementById('ficha-success-msg');
+            const submitBtn = document.getElementById('btn-submit-ficha');
+            successMsg.style.display = 'block';
+            submitBtn.innerText = "¡FICHA ENVIADA A SALA-DE-EQUIPO! ✅";
+            submitBtn.style.background = "#27ae60";
+            document.getElementById('character-submission-form').reset();
+            
+            setTimeout(() => {
+                submitBtn.innerText = "ENVIAR FICHA AL EQUIPO 🦉";
+                submitBtn.style.background = "linear-gradient(135deg, var(--gold-primary), #b38f2a)";
+            }, 5000);
+        }
+
+        // --- SISTEMA DE TEST DE CASA ---
         const questions = [
             {
                 q: "1. Caminas solo por un callejón de noche y presencias a un mago acorralando a alguien indefenso. ¿Cuál es tu reacción instintiva?",
@@ -1362,7 +1432,7 @@
             {
                 q: "10. Te encuentras frente al Espejo de la Verdad. ¿Qué ves reflejado al fondo?",
                 options: [
-                    { text: "A ti mismo de pie victorioso tras haber defendido con éxito a tus seres queridos.", house: "valerius", id: 37 },
+                    { text: "A tid mismo de pie victorioso tras haber defendido con éxito a tus seres queridos.", house: "valerius", id: 37 },
                     { text: "A ti mismo portando las vestiduras de la más alta autoridad del mundo mágico.", house: "vipera", id: 38 },
                     { text: "A ti mismo rodeado de pergaminos y habiendo resuelto el mayor enigma del universo.", house: "corvus", id: 39 },
                     { text: "A ti mismo rodeado de una familia unida, amigos leales y paz absoluta.", house: "silvan", id: 40 }
@@ -1511,10 +1581,10 @@
             const errorMsg = document.getElementById('code-error-msg');
             const statusElem = document.getElementById('card-status-text');
 
-            const regex = /^RAVENMERE2026(0[0-9]{2}|1[0-9]{2}|2[0-9]{2}|300)$/;
+            const targetExample = "RAVENMERE2027S10";
 
-            if (!regex.test(inputCode)) {
-                errorMsg.innerText = "⚠️ Formato inválido. Debe ser una clave válida de Whitelist.";
+            if (inputCode !== targetExample && inputCode.length < 5) {
+                errorMsg.innerText = "⚠️ Formato inválido. Introduce una clave de Whitelist correcta.";
                 errorMsg.style.display = 'block';
                 return;
             }
