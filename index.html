@@ -282,10 +282,97 @@
             text-transform: uppercase;
         }
 
-        /* --- NUEVO ESTILO: PERGAMINO DE EXPEDIENTE & FICHA DE PERSONAJE --- */
+        /* --- PASO 1: EL PENSADERO & RITUAL DEL SOMBRERO --- */
+        .pensieve-section {
+            position: relative;
+            background: linear-gradient(to bottom, rgba(5, 7, 12, 0.9), rgba(10, 11, 14, 0.95)), url('magic-table-bg.jpg') center/cover no-repeat fixed;
+            padding: 6rem 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .pensieve-container {
+            background: radial-gradient(circle at 50% 20%, rgba(20, 30, 50, 0.95) 0%, rgba(10, 12, 20, 0.98) 100%);
+            border: 2px solid var(--gold-primary);
+            border-radius: 16px;
+            padding: 3rem 2.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 
+                0 0 50px rgba(0, 180, 216, 0.25),
+                0 20px 40px rgba(0,0,0,0.9),
+                inset 0 0 40px rgba(0, 180, 216, 0.15);
+            backdrop-filter: blur(12px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pensieve-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 180, 216, 0.08) 0%, transparent 60%);
+            animation: pulseMist 8s infinite alternate ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes pulseMist {
+            0% { transform: scale(1) translate(0, 0); opacity: 0.5; }
+            100% { transform: scale(1.2) translate(30px, -20px); opacity: 0.9; }
+        }
+
+        .pensieve-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .pensieve-hat-icon {
+            font-size: 3.5rem;
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6));
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .pensieve-title {
+            color: var(--gold-light);
+            font-size: 2.4rem;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .quiz-option-pensieve {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(0, 180, 216, 0.06));
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-main);
+            font-size: 1.05rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .quiz-option-pensieve:hover {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(0, 180, 216, 0.25));
+            border-color: var(--gold-primary);
+            transform: translateX(8px) scale(1.01);
+            box-shadow: 0 0 20px rgba(0, 180, 216, 0.4);
+        }
+
+        /* --- PASO 3: PERGAMINO MÁGICO ANTIGUO (FICHA DE PERSONAJE) --- */
         .parchment-form-section {
             position: relative;
-            background: linear-gradient(to bottom, rgba(10, 11, 14, 0.85), rgba(10, 11, 14, 0.95)), url('magic-table-bg.jpg') center/cover no-repeat fixed;
+            background: linear-gradient(to bottom, rgba(10, 11, 14, 0.95), rgba(5, 7, 12, 0.95)), url('magic-table-bg.jpg') center/cover no-repeat fixed;
             padding: 6rem 2rem;
             border-top: 1px solid rgba(212, 175, 55, 0.3);
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
@@ -361,7 +448,7 @@
             border-radius: 4px;
             padding: 0.9rem;
             color: #2b180d;
-            font-family: 'Pinyon Script', cursive; /* Letra estilo manuscrito clásico antiguo */
+            font-family: 'Pinyon Script', cursive; /* Letra manuscrita antigua */
             font-size: 1.5rem;
             box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
@@ -408,7 +495,6 @@
             position: relative;
             background: linear-gradient(to bottom, rgba(10, 11, 14, 0.85), rgba(10, 11, 14, 0.95)), url('magic-table-bg.jpg') center/cover no-repeat fixed;
             padding: 6rem 2rem;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
         }
 
@@ -432,25 +518,6 @@
             color: var(--gold-light);
             font-size: 2rem;
             margin-bottom: 0.5rem;
-        }
-
-        .quiz-option {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 8px;
-            padding: 1rem 1.2rem;
-            margin-bottom: 0.8rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .quiz-option:hover {
-            background: rgba(212, 175, 55, 0.15);
-            border-color: var(--gold-primary);
-            transform: translateX(5px);
         }
 
         .quiz-progress {
@@ -972,8 +1039,9 @@
         <nav>
             <a href="#historia">El Castillo</a>
             <a href="#casas">Las 4 Casas</a>
+            <a href="#sombrero">Sombrero</a>
+            <a href="#minigames">Carnet & Varita</a>
             <a href="#ficharp">Ficha de Personaje</a>
-            <a href="#minigames">Carnet / Whitelist</a>
             <a href="#reclutamiento">Equipo Fundador</a>
             <a href="https://discord.gg/CdFW8DRc" target="_blank" class="btn-discord">Entrar al Discord</a>
         </nav>
@@ -1006,106 +1074,55 @@
         </div>
     </section>
 
-    <!-- FORMULARIO EN FORMATO PERGAMINO MÁGICO ANTIGUO -->
-    <section class="parchment-form-section" id="ficharp">
-        <div class="parchment-sheet">
-            <img src="Escudo mágico de RavenmereOficial.png" alt="Escudo Oficial Ravenmere" style="width: 100px; height: 100px; display: block; margin: 0 auto 0.5rem auto; object-fit: contain;">
-            <h3>Registro de Expediente Mágico</h3>
-            <p class="parchment-subtitle">Manuscrito oficial de presentación para aspirantes a la Whitelist</p>
+    <!-- PASO 1: EL RITUAL DEL SOMBRERO SELECCIONADOR (EL GRAN SALÓN & EL PENSADERO) -->
+    <section class="pensieve-section" id="sombrero">
+        <h2 class="section-title">PASO I: EL RITUAL DE SELECCIÓN ANCESTRAL</h2>
+        <p class="section-subtitle">Toma asiento en el Gran Salón. El Sombrero Seleccionador se posará sobre tu mente para dictaminar tu Casa Mágica.</p>
 
-            <form id="character-submission-form" onsubmit="submitCharacterSheet(event)">
-                <div class="parchment-grid">
-                    <div class="parchment-group">
-                        <label for="char-name">Nombre y Apellido Mágico:</label>
-                        <input type="text" id="char-name" class="parchment-input" placeholder="Ej: Alistair Blackwood" required>
-                    </div>
-
-                    <div class="parchment-group">
-                        <label for="char-discord">Usuario de Discord:</label>
-                        <input type="text" id="char-discord" class="parchment-input" placeholder="Ej: rubencico#0000" required>
-                    </div>
-
-                    <div class="parchment-group">
-                        <label for="char-age">Edad del Aspirante:</label>
-                        <input type="number" id="char-age" class="parchment-input" min="11" max="90" placeholder="Ej: 17" required>
-                    </div>
-
-                    <div class="parchment-group">
-                        <label for="char-house-pref">Casa Pretendida:</label>
-                        <select id="char-house-pref" class="parchment-select">
-                            <option value="Valerius">Valerius (Valor y Osadía)</option>
-                            <option value="Vipera">Vipera (Ambición y Astucia)</option>
-                            <option value="Corvus">Corvus (Erudición e Ingenio)</option>
-                            <option value="Silvan">Silvan (Lealtad y Magia Natural)</option>
-                            <option value="Indiferente">Sin preferencia (Decisión del Sombrero)</option>
-                        </select>
-                    </div>
-
-                    <div class="parchment-group parchment-field-full">
-                        <label for="char-appearance">Apariencia Física & Rasgos:</label>
-                        <textarea id="char-appearance" class="parchment-textarea" rows="2" placeholder="Describe los rasgos visibles, vestimenta o cicatrices..." required></textarea>
-                    </div>
-
-                    <div class="parchment-group parchment-field-full">
-                        <label for="char-history">Historia y Trasfondo (Lore):</label>
-                        <textarea id="char-history" class="parchment-textarea" rows="4" placeholder="Relata el origen de su poder, sus motivaciones y su llegada a Ravenmere..." required></textarea>
-                    </div>
-                </div>
-
-                <button type="submit" class="parchment-btn" id="btn-submit-ficha">SELLAR Y ENVIAR EXPEDIENTE AL CONSEJO 🦉</button>
-                <p id="ficha-success-msg" style="color: #4a0c0c; font-family: 'Cinzel', serif; text-align: center; margin-top: 1.2rem; font-weight: bold; display: none;">✨ ¡El pergamino ha sido enviado con éxito a la sala-de-equipo!</p>
-            </form>
-        </div>
-    </section>
-
-    <!-- Interactive Minigames Section (Test de Casa y Carnet) -->
-    <section class="minigames-section" id="minigames">
-        <h2 class="section-title">EXPERIENCIAS INTERACTIVAS</h2>
-        <p class="section-subtitle">Descubre a qué Casa perteneces y qué Varita Ancestral responde a tu afinidad psicológica y astral.</p>
-
-        <!-- Sorting Quiz -->
-        <div class="minigame-container">
-            <div class="minigame-header">
-                <h3 class="minigame-title">🔮 EL RITUAL DEL DESTINO (TEST DE CASA)</h3>
-                <p style="color: var(--text-muted)">Responde a 10 dilemas morales e instintivos para revelar tu linaje ancestral y desbloquear tu Varita.</p>
+        <div class="pensieve-container">
+            <div class="pensieve-header">
+                <span class="pensieve-hat-icon">🧙‍♂️</span>
+                <h3 class="pensieve-title">EL PENSADERO DEL SOMBRERO</h3>
+                <p style="color: #94a3b8; margin-top: 0.3rem;">Sumerge tus pensamientos en las aguas místicas y responde a los 10 dilemas morales.</p>
             </div>
 
             <div id="quiz-body">
-                <div class="quiz-progress" id="quiz-progress">Pregunta 1 de 10</div>
-                <h4 id="quiz-question" style="color: var(--gold-light); font-size: 1.2rem; margin-bottom: 1.5rem; text-align: center;"></h4>
+                <div class="quiz-progress" id="quiz-progress">Dilema 1 de 10</div>
+                <h4 id="quiz-question" style="color: var(--gold-light); font-size: 1.25rem; margin-bottom: 1.8rem; text-align: center; font-family: 'Cinzel', serif; position: relative; z-index: 2;"></h4>
                 <div id="quiz-options"></div>
             </div>
 
             <div id="quiz-result" style="display: none;" class="result-box">
-                <p style="color: var(--gold-primary); letter-spacing: 2px;">EL RITUAL HA CONCLUIDO</p>
+                <p style="color: var(--gold-primary); letter-spacing: 2px;">EL SOMBRERO HA DICTAMINADO TU DESTINO</p>
                 <h3 id="result-house-title"></h3>
                 <img id="result-house-crest" src="" alt="Blasón de Casa" class="result-crest">
                 <p id="result-house-desc" style="color: var(--text-main); margin-bottom: 1.5rem;"></p>
                 
-                <div style="text-align: left; background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
-                    <h5 style="color: var(--gold-light); margin-bottom: 0.5rem; font-size: 1.1rem;">INFORME DE PERSONALIDAD Y RASGOS:</h5>
+                <div style="text-align: left; background: rgba(0,0,0,0.6); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid var(--gold-primary);">
+                    <h5 style="color: var(--gold-light); margin-bottom: 0.5rem; font-size: 1.1rem; font-family: 'Cinzel', serif;">INFORME DE VIRTUDES MÁGICAS:</h5>
                     <div id="result-traits" style="margin-bottom: 1rem;"></div>
                     <p id="result-element" style="color: var(--text-muted); font-size: 0.95rem;"></p>
                     <p id="result-style" style="color: var(--text-muted); font-size: 0.95rem;"></p>
                 </div>
 
-                <a href="#wand-section" class="btn-primary" onclick="scrollToWand()">AVANZAR A LA ARTESANÍA DE VARITAS 🪄</a>
-                <button onclick="resetQuiz()" class="btn-secondary" style="margin-top: 0.5rem;">Repetir Test</button>
+                <a href="#minigames" class="btn-primary" onclick="scrollToWandSection()">AVANZAR A LA ARTESANÍA DE VARITAS Y CARNET 🪄</a>
+                <button onclick="resetQuiz()" class="btn-secondary" style="margin-top: 0.5rem;">Repetir Ritual</button>
             </div>
         </div>
+    </section>
 
-        <!-- Wand Generator & Real Student Card -->
+    <!-- PASO 2: CARNET MÁGICO & VARITA ANCESTRAL -->
+    <section class="minigames-section" id="minigames">
+        <h2 class="section-title">PASO II: ARTESANÍA DE VARITAS Y CARNET ESCOLAR</h2>
+        <p class="section-subtitle">Forja tu documento de identidad escolar utilizando tu fecha de nacimiento y la Casa revelada por el Sombrero.</p>
+
         <div class="minigame-container" id="wand-section">
             <div class="minigame-header">
                 <h3 class="minigame-title">🪄 ALARIC & VANE (ARTESANOS DE VARITAS)</h3>
-                <p style="color: var(--text-muted)" id="wand-subtitle">Ingresa tus datos de estudiante y foto de retrato para forjar tu carnet oficial de Ravenmere.</p>
+                <p style="color: var(--text-muted)">Introduce tus datos de estudiante y foto de retrato para sellar tu carnet oficial.</p>
             </div>
 
             <div id="wand-form">
-                <div id="wand-alert-quiz" style="text-align: center; color: var(--gold-primary); margin-bottom: 1rem; font-style: italic;">
-                    ⚠️ Te recomendamos completar primero el Test de Casa superior para que tu varita absorba tu núcleo mágico real.
-                </div>
-
                 <div class="wand-input-grid">
                     <div class="wand-input-group">
                         <label for="student-first-name">Nombre Mágico / RP:</label>
@@ -1205,9 +1222,61 @@
                 <div style="margin-top: 1.5rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
                     <button onclick="downloadCardImage()" class="btn-primary">📸 DESCARGAR CARNET (IMAGEN PNG)</button>
                     <button onclick="copyDiscordCardText()" class="btn-primary" id="btn-copy-card">📋 COPIAR FICHA DISCORD</button>
-                    <button onclick="resetWand()" class="btn-secondary">Modificar Datos</button>
+                    <a href="#ficharp" class="btn-primary" onclick="scrollToFicha()" style="text-decoration:none; display:inline-block; padding: 1rem 2rem;">IR AL PERGAMINO DE FICHA 📜</a>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- PASO 3: PERGAMINO MÁGICO ANTIGUO (FICHA DE PERSONAJE) -->
+    <section class="parchment-form-section" id="ficharp">
+        <div class="parchment-sheet">
+            <img src="Escudo mágico de RavenmereOficial.png" alt="Escudo Oficial Ravenmere" style="width: 100px; height: 100px; display: block; margin: 0 auto 0.5rem auto; object-fit: contain;">
+            <h3>PASO III: REGISTRO DE EXPEDIENTE MÁGICO</h3>
+            <p class="parchment-subtitle">Manuscrito oficial de presentación para aspirantes a la Whitelist</p>
+
+            <form id="character-submission-form" onsubmit="submitCharacterSheet(event)">
+                <div class="parchment-grid">
+                    <div class="parchment-group">
+                        <label for="char-name">Nombre y Apellido Mágico:</label>
+                        <input type="text" id="char-name" class="parchment-input" placeholder="Ej: Alistair Blackwood" required>
+                    </div>
+
+                    <div class="parchment-group">
+                        <label for="char-discord">Usuario de Discord:</label>
+                        <input type="text" id="char-discord" class="parchment-input" placeholder="Ej: rubencico#0000" required>
+                    </div>
+
+                    <div class="parchment-group">
+                        <label for="char-age">Edad del Aspirante:</label>
+                        <input type="number" id="char-age" class="parchment-input" min="11" max="90" placeholder="Ej: 17" required>
+                    </div>
+
+                    <div class="parchment-group">
+                        <label for="char-house-pref">Casa Asignada / Pretendida:</label>
+                        <select id="char-house-pref" class="parchment-select">
+                            <option value="Valerius">Valerius (Valor y Osadía)</option>
+                            <option value="Vipera">Vipera (Ambición y Astucia)</option>
+                            <option value="Corvus">Corvus (Erudición e Ingenio)</option>
+                            <option value="Silvan">Silvan (Lealtad y Magia Natural)</option>
+                            <option value="Indiferente">Sin preferencia (Decisión del Sombrero)</option>
+                        </select>
+                    </div>
+
+                    <div class="parchment-group parchment-field-full">
+                        <label for="char-appearance">Apariencia Física & Rasgos:</label>
+                        <textarea id="char-appearance" class="parchment-textarea" rows="2" placeholder="Describe los rasgos visibles, vestimenta o cicatrices..." required></textarea>
+                    </div>
+
+                    <div class="parchment-group parchment-field-full">
+                        <label for="char-history">Historia y Trasfondo (Lore):</label>
+                        <textarea id="char-history" class="parchment-textarea" rows="4" placeholder="Relata el origen de su poder, sus motivaciones y su llegada a Ravenmere..." required></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="parchment-btn" id="btn-submit-ficha">SELLAR Y ENVIAR EXPEDIENTE AL CONSEJO 🦉</button>
+                <p id="ficha-success-msg" style="color: #4a0c0c; font-family: 'Cinzel', serif; text-align: center; margin-top: 1.2rem; font-weight: bold; display: none;">✨ ¡El pergamino ha sido enviado con éxito a la sala-de-equipo!</p>
+            </form>
         </div>
     </section>
 
@@ -1380,9 +1449,9 @@
         <p>&copy; 2026 Ravenmere RP — Más que un servidor, una familia. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- JavaScript Principal y Configuración del Webhook -->
+    <!-- JavaScript Principal -->
     <script>
-        // --- ENVÍO DE FICHA DE PERSONAJE A SALA-DE-EQUIPO ---
+        // --- ENVÍO DE FICHA DE PERSONAJE A SALA-DE-EQUIPO VIA WEBHOOK ---
         function submitCharacterSheet(event) {
             event.preventDefault();
 
@@ -1394,7 +1463,6 @@
             const history = document.getElementById('char-history').value.trim();
             const submitBtn = document.getElementById('btn-submit-ficha');
 
-            // URL DE WEBHOOK CONFIGURADA PARA sala-de-equipo
             const webhookUrl = "https://discord.com/api/webhooks/1563718916134543440/a7hXEwqK6QjhKtMo1_0DCz_Lmhrs13izCgXm0-dxaXbtNHLgyx859czxXTyejSpdgR5M"; 
 
             const payload = {
@@ -1405,7 +1473,7 @@
                     fields: [
                         { name: "👤 Discord del Usuario", value: discord, inline: true },
                         { name: "⏳ Edad del Personaje", value: age, inline: true },
-                        { name: "🏰 Casa Preferida", value: house, inline: true },
+                        { name: "🏰 Casa Asignada/Pretendida", value: house, inline: true },
                         { name: "👁️ Apariencia", value: appearance },
                         { name: "📜 Historia y Trasfondo", value: history }
                     ],
@@ -1444,7 +1512,7 @@
             }, 5000);
         }
 
-        // --- SISTEMA DE TEST DE CASA ---
+        // --- SISTEMA DE TEST DE CASA (EL PENSADERO) ---
         const questions = [
             {
                 q: "1. Caminas solo por un callejón de noche y presencias a un mago acorralando a alguien indefenso. ¿Cuál es tu reacción instintiva?",
@@ -1561,7 +1629,7 @@
         }
 
         function loadQuestion() {
-            document.getElementById('quiz-progress').innerText = `Pregunta ${currentQuestion + 1} de ${questions.length}`;
+            document.getElementById('quiz-progress').innerText = `Dilema ${currentQuestion + 1} de ${questions.length}`;
             document.getElementById('quiz-question').innerText = questions[currentQuestion].q;
             
             const optionsDiv = document.getElementById('quiz-options');
@@ -1569,7 +1637,7 @@
 
             questions[currentQuestion].options.forEach(opt => {
                 const btn = document.createElement('div');
-                btn.className = 'quiz-option';
+                btn.className = 'quiz-option-pensieve';
                 btn.innerText = opt.text;
                 btn.onclick = () => selectOption(opt.house, opt.id);
                 optionsDiv.appendChild(btn);
@@ -1601,7 +1669,8 @@
                     desc: "La valentía, la osadía y la caballería son el pilar de tu alma. Como miembro de Valerius, nunca te rindes ante la adversidad.",
                     traits: ["Incorruptible", "Protector Definitivo", "Espíritu Inquebrantable", "Líder de Vanguardia"],
                     element: "🔥 Elemento Dominante: Fuego Ancestral",
-                    style: "⚔️ Estilo Mágico: Duelos defensivos y alta resistencia en combate."
+                    style: "⚔️ Estilo Mágico: Duelos defensivos y alta resistencia en combate.",
+                    selectVal: "Valerius"
                 },
                 vipera: {
                     title: "🟢 BIENVENIDO A VIPERA",
@@ -1609,7 +1678,8 @@
                     desc: "La ambición, la astucia y el talento innato fluyen por tus venas. En Vipera, el poder pertenece a quienes saben reclamarlo.",
                     traits: ["Estratega Frío", "Visión de Poder", "Astucia Innata", "Carisma Enigmático"],
                     element: "💧 Elemento Dominante: Agua Subterránea",
-                    style: "🐍 Estilo Mágico: Magia de Sombras, encantamientos mentales y sigilo."
+                    style: "🐍 Estilo Mágico: Magia de Sombras, encantamientos mentales y sigilo.",
+                    selectVal: "Vipera"
                 },
                 corvus: {
                     title: "🔵 BIENVENIDO A CORVUS",
@@ -1617,7 +1687,8 @@
                     desc: "La erudición, el ingenio y la búsqueda incansable de la verdad definen tu mente. En Corvus, el conocimiento es la mayor fuerza.",
                     traits: ["Mente Inquisitiva", "Lógica Impecable", "Descubridor de Secretos", "Perfeccionista"],
                     element: "🌪️ Elemento Dominante: Aire y Estrellas",
-                    style: "🌌 Estilo Mágico: Astromancia, alquimia compleja y encantamientos olvidados."
+                    style: "🌌 Estilo Mágico: Astromancia, alquimia compleja y encantamientos olvidados.",
+                    selectVal: "Corvus"
                 },
                 silvan: {
                     title: "🟡 BIENVENIDO A SILVAN",
@@ -1625,7 +1696,8 @@
                     desc: "La lealtad, el trabajo duro y la armonía con la magia natural son tus virtudes. En Silvan, la unión y la tierra lo sustentan todo.",
                     traits: ["Leal hasta el final", "Espíritu Empático", "Trabajador Incansable", "Guardián de la Naturaleza"],
                     element: "🌱 Elemento Dominante: Tierra Fértil",
-                    style: "🌿 Estilo Mágico: Herbología, sanación y encantos de afinidad natural."
+                    style: "🌿 Estilo Mágico: Herbología, sanación y encantos de afinidad natural.",
+                    selectVal: "Silvan"
                 }
             };
 
@@ -1645,8 +1717,11 @@
                 traitsDiv.appendChild(span);
             });
 
-            const alertDiv = document.getElementById('wand-alert-quiz');
-            if (alertDiv) alertDiv.style.display = 'none';
+            // Sincronizar automáticamente con el formulario del pergamino de ficha
+            const houseSelect = document.getElementById('char-house-pref');
+            if (houseSelect) {
+                houseSelect.value = data.selectVal;
+            }
         }
 
         function resetQuiz() {
@@ -1659,8 +1734,12 @@
             loadQuestion();
         }
 
-        function scrollToWand() {
-            document.getElementById('wand-section').scrollIntoView({ behavior: 'smooth' });
+        function scrollToWandSection() {
+            document.getElementById('minigames').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function scrollToFicha() {
+            document.getElementById('ficharp').scrollIntoView({ behavior: 'smooth' });
         }
 
         function previewStudentPhoto(event) {
