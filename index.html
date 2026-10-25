@@ -282,7 +282,128 @@
             text-transform: uppercase;
         }
 
-        /* Secciones */
+        /* --- NUEVO ESTILO: PERGAMINO DE EXPEDIENTE & FICHA DE PERSONAJE --- */
+        .parchment-form-section {
+            position: relative;
+            background: linear-gradient(to bottom, rgba(10, 11, 14, 0.85), rgba(10, 11, 14, 0.95)), url('magic-table-bg.jpg') center/cover no-repeat fixed;
+            padding: 6rem 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .parchment-sheet {
+            background: radial-gradient(circle, #f7ebd7 0%, #e2cdab 75%, #b89868 100%);
+            color: #2b180d;
+            padding: 4rem 3.5rem;
+            border-radius: 8px;
+            max-width: 850px;
+            margin: 0 auto;
+            position: relative;
+            border: 3px solid #5a3c18;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.95), inset 0 0 100px rgba(70, 40, 15, 0.7);
+        }
+
+        .parchment-sheet h3 {
+            text-align: center;
+            color: #5c0f0f;
+            font-family: 'UnifrakturMaguntia', serif;
+            font-size: 2.6rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.4);
+        }
+
+        .parchment-subtitle {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            color: #6b4d2b;
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-bottom: 2px dashed rgba(92, 15, 15, 0.3);
+            padding-bottom: 1rem;
+        }
+
+        .parchment-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .parchment-grid { grid-template-columns: 1fr; }
+            .parchment-sheet { padding: 2rem 1.5rem; }
+        }
+
+        .parchment-field-full {
+            grid-column: span 2;
+        }
+
+        .parchment-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .parchment-group label {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            color: #4a0c0c;
+            font-size: 0.95rem;
+        }
+
+        .parchment-input, .parchment-select, .parchment-textarea {
+            background: rgba(255, 248, 230, 0.6);
+            border: 2px solid #8c6738;
+            border-radius: 4px;
+            padding: 0.9rem;
+            color: #2b180d;
+            font-family: 'Pinyon Script', cursive; /* Letra estilo manuscrito clásico antiguo */
+            font-size: 1.5rem;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .parchment-select {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+        }
+
+        .parchment-input:focus, .parchment-select:focus, .parchment-textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.9);
+            border-color: #5c0f0f;
+            box-shadow: 0 0 10px rgba(92, 15, 15, 0.2), inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .parchment-btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #7a1c1c, #4a0c0c);
+            color: #f3e5ab;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            padding: 1.1rem;
+            border-radius: 6px;
+            border: 2px solid #d4af37;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+            letter-spacing: 2px;
+            margin-top: 1.5rem;
+        }
+
+        .parchment-btn:hover {
+            background: linear-gradient(135deg, #942525, #5c0f0f);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Secciones Generales */
         .minigames-section {
             position: relative;
             background: linear-gradient(to bottom, rgba(10, 11, 14, 0.85), rgba(10, 11, 14, 0.95)), url('magic-table-bg.jpg') center/cover no-repeat fixed;
@@ -394,30 +515,13 @@
             font-size: 0.9rem;
         }
 
-        .wand-input-group input, .wand-input-group select, .wand-input-group textarea {
+        .wand-input-group input, .wand-input-group select {
             padding: 0.8rem;
             background: #0d0f17;
             border: 1px solid var(--gold-primary);
             color: #fff;
             border-radius: 6px;
             font-size: 0.95rem;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        .character-form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
-            text-align: left;
-            margin-bottom: 1.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .character-form-grid { grid-template-columns: 1fr; }
-        }
-
-        .form-full-width {
-            grid-column: span 2;
         }
 
         /* Carnet Real */
@@ -902,37 +1006,33 @@
         </div>
     </section>
 
-    <!-- FORMULARIO DE FICHA DE PERSONAJE CONECTADO AL WEBHOOK -->
-    <section class="minigames-section" id="ficharp">
-        <h2 class="section-title">REGISTRO DE EXPEDIENTE & FICHA DE PERSONAJE</h2>
-        <p class="section-subtitle">Completa los datos de tu personaje de rol serio. Al enviar la solicitud, el equipo la recibirá directamente en su sala privada de Discord para su revisión.</p>
-
-        <div class="minigame-container">
-            <div class="minigame-header">
-                <h3 class="minigame-title">📜 FORMULARIO DE ADMISIÓN MAGISTRAL</h3>
-                <p style="color: var(--text-muted)">Rellena los campos con el trasfondo de tu personaje para solicitar la aprobación oficial.</p>
-            </div>
+    <!-- FORMULARIO EN FORMATO PERGAMINO MÁGICO ANTIGUO -->
+    <section class="parchment-form-section" id="ficharp">
+        <div class="parchment-sheet">
+            <img src="Escudo mágico de RavenmereOficial.png" alt="Escudo Oficial Ravenmere" style="width: 100px; height: 100px; display: block; margin: 0 auto 0.5rem auto; object-fit: contain;">
+            <h3>Registro de Expediente Mágico</h3>
+            <p class="parchment-subtitle">Manuscrito oficial de presentación para aspirantes a la Whitelist</p>
 
             <form id="character-submission-form" onsubmit="submitCharacterSheet(event)">
-                <div class="character-form-grid">
-                    <div class="wand-input-group">
-                        <label for="char-name">Nombre del Personaje:</label>
-                        <input type="text" id="char-name" placeholder="Ej: Alistair Blackwood" required>
+                <div class="parchment-grid">
+                    <div class="parchment-group">
+                        <label for="char-name">Nombre y Apellido Mágico:</label>
+                        <input type="text" id="char-name" class="parchment-input" placeholder="Ej: Alistair Blackwood" required>
                     </div>
 
-                    <div class="wand-input-group">
-                        <label for="char-discord">Tu Usuario de Discord:</label>
-                        <input type="text" id="char-discord" placeholder="Ej: rubencico#0000" required>
+                    <div class="parchment-group">
+                        <label for="char-discord">Usuario de Discord:</label>
+                        <input type="text" id="char-discord" class="parchment-input" placeholder="Ej: rubencico#0000" required>
                     </div>
 
-                    <div class="wand-input-group">
-                        <label for="char-age">Edad del Personaje:</label>
-                        <input type="number" id="char-age" min="11" max="90" placeholder="Ej: 17" required>
+                    <div class="parchment-group">
+                        <label for="char-age">Edad del Aspirante:</label>
+                        <input type="number" id="char-age" class="parchment-input" min="11" max="90" placeholder="Ej: 17" required>
                     </div>
 
-                    <div class="wand-input-group">
-                        <label for="char-house-pref">Casa Preferida / Afinidad:</label>
-                        <select id="char-house-pref">
+                    <div class="parchment-group">
+                        <label for="char-house-pref">Casa Pretendida:</label>
+                        <select id="char-house-pref" class="parchment-select">
                             <option value="Valerius">Valerius (Valor y Osadía)</option>
                             <option value="Vipera">Vipera (Ambición y Astucia)</option>
                             <option value="Corvus">Corvus (Erudición e Ingenio)</option>
@@ -941,21 +1041,19 @@
                         </select>
                     </div>
 
-                    <div class="wand-input-group form-full-width">
-                        <label for="char-appearance">Apariencia Física y Rasgos Distintivos:</label>
-                        <textarea id="char-appearance" rows="3" placeholder="Describe el físico, vestimenta habitual o cicatrices de tu personaje..." required></textarea>
+                    <div class="parchment-group parchment-field-full">
+                        <label for="char-appearance">Apariencia Física & Rasgos:</label>
+                        <textarea id="char-appearance" class="parchment-textarea" rows="2" placeholder="Describe los rasgos visibles, vestimenta o cicatrices..." required></textarea>
                     </div>
 
-                    <div class="wand-input-group form-full-width">
-                        <label for="char-history">Historia y Trasfondo (Lore del Personaje):</label>
-                        <textarea id="char-history" rows="5" placeholder="¿De dónde procede? ¿Cómo descubrió su magia? ¿Cuáles son sus ambiciones u objetivos al entrar a Ravenmere Castle?" required></textarea>
+                    <div class="parchment-group parchment-field-full">
+                        <label for="char-history">Historia y Trasfondo (Lore):</label>
+                        <textarea id="char-history" class="parchment-textarea" rows="4" placeholder="Relata el origen de su poder, sus motivaciones y su llegada a Ravenmere..." required></textarea>
                     </div>
                 </div>
 
-                <div style="text-align: center; margin-top: 1.5rem;">
-                    <button type="submit" class="btn-primary" id="btn-submit-ficha">ENVIAR FICHA AL EQUIPO 🦉</button>
-                </div>
-                <p id="ficha-success-msg" style="color: #2ecc71; text-align: center; margin-top: 1rem; font-weight: bold; display: none;">✨ ¡Ficha enviada con éxito a sala-de-equipo! El staff la revisará en breve.</p>
+                <button type="submit" class="parchment-btn" id="btn-submit-ficha">SELLAR Y ENVIAR EXPEDIENTE AL CONSEJO 🦉</button>
+                <p id="ficha-success-msg" style="color: #4a0c0c; font-family: 'Cinzel', serif; text-align: center; margin-top: 1.2rem; font-weight: bold; display: none;">✨ ¡El pergamino ha sido enviado con éxito a la sala-de-equipo!</p>
             </form>
         </div>
     </section>
@@ -1336,13 +1434,13 @@
             const successMsg = document.getElementById('ficha-success-msg');
             const submitBtn = document.getElementById('btn-submit-ficha');
             successMsg.style.display = 'block';
-            submitBtn.innerText = "¡FICHA ENVIADA A SALA-DE-EQUIPO! ✅";
-            submitBtn.style.background = "#27ae60";
+            submitBtn.innerText = "¡EXPEDIENTE SELLADO Y ENVIADO! ✅";
+            submitBtn.style.background = "linear-gradient(135deg, #1e7e34, #155724)";
             document.getElementById('character-submission-form').reset();
             
             setTimeout(() => {
-                submitBtn.innerText = "ENVIAR FICHA AL EQUIPO 🦉";
-                submitBtn.style.background = "linear-gradient(135deg, var(--gold-primary), #b38f2a)";
+                submitBtn.innerText = "SELLAR Y ENVIAR EXPEDIENTE AL CONSEJO 🦉";
+                submitBtn.style.background = "linear-gradient(135deg, #7a1c1c, #4a0c0c)";
             }, 5000);
         }
 
@@ -1432,7 +1530,7 @@
             {
                 q: "10. Te encuentras frente al Espejo de la Verdad. ¿Qué ves reflejado al fondo?",
                 options: [
-                    { text: "A tid mismo de pie victorioso tras haber defendido con éxito a tus seres queridos.", house: "valerius", id: 37 },
+                    { text: "A ti mismo de pie victorioso tras haber defendido con éxito a tus seres queridos.", house: "valerius", id: 37 },
                     { text: "A ti mismo portando las vestiduras de la más alta autoridad del mundo mágico.", house: "vipera", id: 38 },
                     { text: "A ti mismo rodeado de pergaminos y habiendo resuelto el mayor enigma del universo.", house: "corvus", id: 39 },
                     { text: "A ti mismo rodeado de una familia unida, amigos leales y paz absoluta.", house: "silvan", id: 40 }
